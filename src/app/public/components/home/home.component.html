@@ -1,0 +1,80 @@
+<header>
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+        <h2 class="nav-logo">ATHLETEHUB</h2>
+      <ul class="nav-left">
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+        <li><a routerLink="/profile">Profile</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a routerLink="/public/login">Login</a></li>
+        <li><a routerLink="/public/register">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  
+  <main>
+    <!-- Image section -->
+    <section class="image-section">
+      <div class="image-wrapper">
+        <img src="assets/Images/home2.jpg" alt="Description of your image">
+      </div>
+      <div class="image-caption">
+        <h2>Discover More</h2>
+        <p>A short article about your image or related content.</p>
+      </div>
+    </section>
+    <section class="main-content">
+        <h1>WELCOME IN ATHLETE HUB</h1>
+        <p>This is the home page content.</p>
+      </section>
+    <!-- Icon section -->
+  <app-icon-section></app-icon-section>
+
+  <section class="image-section2">
+      <img src="assets/Images/home3.jpg" alt="Description of your image">
+  </section>
+
+  <div class="cards-container-title">
+   <h1>OUR PRICE</h1>
+ </div>
+ <div class="cards-container">
+    <app-price-card
+      title="Basic Plan Training"
+      price="$9.99"
+      [features]="['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']"
+      (select)="onSelect('Basic Plan')">
+    </app-price-card>
+    <app-price-card
+      title="Standard Plan Training"
+      price="$19.99"
+      [features]="['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']"
+      buttonText="Choose Standard"
+      (select)="onSelect('Standard Plan')">
+    </app-price-card>
+    <app-price-card
+      title="Premium Plan "
+      price="$29.99"
+      [features]="['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']"
+      buttonText="Choose Premium"
+      (select)="onSelect('Premium Plan')">
+    </app-price-card>
+  </div>
+  
+  
+  </main>
+  <!-- "About Us" section -->
+<section class="about-us" [class.visible]="aboutUsVisible" id="about-us">
+    <h2>About Us</h2>
+    <p>We are dedicated to providing the best athlete hub experience.</p>
+    <p>&copy; 2024 AthleteHub. All rights reserved.</p>
+  </section>
+  
+  
+  <!--<footer>-->
+    <!-- Footer content -->
+    <!--<p>&copy; 2024 AthleteHub. All rights reserved.</p>-->
+  <!--</footer>-->
+  

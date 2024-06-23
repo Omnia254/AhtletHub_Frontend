@@ -1,0 +1,9 @@
+<div class="card">
+    <h3>{{ title }}</h3>
+    <p class="price">{{ price }}</p>
+    <ul>
+      <li *ngFor="let feature of features">{{ feature }}</li>
+    </ul>
+    <button (click)="onSelect()">{{ buttonText }}</button>
+  </div>
+  

@@ -1,0 +1,93 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+  background-image: url('../../../../assets/Images/log.jpg');
+  background-size: cover; /* Cover entire area */
+  background-position: center; /* Center the background image */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+mat-card {
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+
+    form {
+      width: 100%;
+
+      .mat-form-field {
+        width: 100%;
+        min-width: 300px;
+        margin-bottom: 20px;
+        background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .error {
+        padding: 16px;
+        width: 300px;
+        color: white;
+        background-color: #f44336;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .button {
+        display: flex;
+        justify-content: center;
+
+        button {
+          background-color: #775a0c;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #a78016;
+          }
+        }
+      }
+      .button1 {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          background-color: #775a0c;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #a78016;
+          }
+        }
+      }
+
+
+  }
+  }
+}

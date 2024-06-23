@@ -1,0 +1,28 @@
+.icon-section {
+    display: flex;
+    justify-content: space-between; /* Distribute items evenly with space between */
+    align-items: flex-start; /* Align items to the top */
+    margin-top: 20px; /* Adjust as needed */
+  }
+  
+  .icon {
+    text-align: center;
+    width: 50%; /* Adjust width to suit your layout */
+  }
+  
+  .icon img {
+    width: 70px; /* Adjust icon size */
+    height: 60px;
+  }
+  
+  .icon h3 {
+    margin-top: 10px; /* Space between image and heading */
+    font-size: 1.2em; /* Adjust font size */
+  }
+  
+  .icon p {
+    margin-top: 5px; /* Space between heading and paragraph */
+    font-size: 0.9em; /* Adjust font size */
+    color: #666; /* Adjust color as needed */
+  }
+  
