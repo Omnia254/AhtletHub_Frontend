@@ -1,7 +1,8 @@
-
-<app-nav-bar></app-nav-bar>
-
-<!-- The <router-outlet> is used to render the content of the current route inside it 
-  e.g. the LoginComponent for the route `/public/login` -->
-<router-outlet></router-outlet>
-<app-about-us></app-about-us>
+<div class="flex-wrapper">
+  <app-nav-bar></app-nav-bar>
+  <div style="flex-grow:1;">
+    <router-outlet></router-outlet>
+  </div>
+  <app-about-us></app-about-us>
+  
+</div>

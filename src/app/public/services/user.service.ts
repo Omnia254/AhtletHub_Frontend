@@ -13,13 +13,13 @@ export class UserService {
   getUserProfile(): Observable<any> {
     // Mock data, replace with actual API call
     const mockData = {
-      username: 'john_doe',
-      firstName: 'John',
-      lastName: 'Doe',
+      username: 'moazsamy',
+      firstName: 'Moaz',
+      lastName: 'Samy',
       gender: 0,
       dateOfBirth: '1990-01-01',
       profilePicture: null,
-      bio: 'This is a mock bio'
+      bio: ''
     };
     return of(mockData);
   }
