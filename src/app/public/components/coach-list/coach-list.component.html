@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <br>
+    <div class="search-bar">
+      <input type="text" (input)="onSearch($event)" placeholder="&#60442;Search coaches...">
+    </div>
+    <div class="content">
+      <aside class="filter-aside">
+        <app-coach-filter (filterChange)="filterCoaches($event)"></app-coach-filter>
+      </aside>
+      <section class="coach-list-section">
+        <div class="coach-list">
+          <div *ngFor="let coach of filteredCoaches" class="coach-card">
+            <div class="coach-image-container">
+              <img [src]="coach.profilePicture || '../../../../assets/Images/log.jpg'" alt="Coach Image" class="coach-image">
+            </div>
+            <div class="coach-details">
+              <h3>{{ coach.firstName }} {{ coach.lastName }}</h3>
+              <p class="coach-bio">{{ coach.bio }}</p>
+              <p class="coach-gender">{{ coach.gender === 0 ? 'Male' : 'Female' }}</p>
+              <p class="coach-subscriptions">Number of Subscriptions: {{ coach.subscribtions.length }}</p>
+              <div class="coach-rating">
+                <span *ngIf="coach.ratingsCount > 0">
+                  <ng-container *ngFor="let star of [1, 2, 3, 4, 5]" class="star">
+                    <i class="fa" [class.fa-star]="star <= coach.overallRating" [class.fa-star-o]="star > coach.overallRating"></i>
+                  </ng-container>
+                  <span class="ratings-count">({{ coach.ratingsCount }} ratings)</span>
+                </span>
+                <span *ngIf="coach.ratingsCount === 0" class="no-ratings">(No ratings yet)</span>
+              </div>
+              <button class="details-button" (click)="viewDetails(coach.id)">Details</button>
+              <button class="favorite-button" (click)="toggleFavorite(coach)">
+                {{ coach.isFavorite ? 'Remove from Favorite' : 'Add to Favorite' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

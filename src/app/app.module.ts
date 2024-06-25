@@ -1,17 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HomeComponent } from './public/components/home/home.component';
 import { CarouselHomeComponent } from './public/carousel-home/carousel-home.component';
 import { IconSectionComponent } from './public/components/icon-section/icon-section.component';
 import { PriceCardComponent } from './public/components/price-card/price-card.component';
+import { CoachFilterComponent } from './public/components/coach-filter/coach-filter.component';
+import { CoachListComponent } from './public/components/coach-list/coach-list.component';
+import { MockCoachService } from './public/services/mock-coach-service.service';
+import { CoachService } from './public/services/coach.service';
+import { NavBarComponent } from './public/components/nav-bar/nav-bar.component';
+import { LoginComponent } from './public/components/login/login.component';
+import { AboutUsComponent } from './public/components/about-us/about-us.component';
+import { CoachDetailsComponent } from './public/components/coach-details/coach-details.component';
+import { UserProfileComponent } from './public/components/user-profile/user-profile.component';
+import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
+import { SubscriptionComponent } from './public/components/subscription/subscription.component';
+import { PaymentComponent } from './public/components/payment/payment.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 // specify the key where the token is stored in the local storage
 export const LOCALSTORAGE_TOKEN_KEY = 'angular_material_login_and_register_example';
@@ -27,7 +44,18 @@ export function tokenGetter() {
     HomeComponent,
     CarouselHomeComponent,
     IconSectionComponent,
-    PriceCardComponent
+    PriceCardComponent,
+    CoachFilterComponent,
+    CoachListComponent,
+    NavBarComponent,
+    AboutUsComponent,
+    CoachDetailsComponent,
+    UserProfileComponent,
+    FavoriteCoachesComponent,
+    SubscriptionComponent,
+    PaymentComponent,
+    
+
   ],
   imports: [
     BrowserModule,
@@ -35,8 +63,15 @@ export function tokenGetter() {
     HttpClientModule,
     // Import our Routes for this module
     AppRoutingModule,
+    FormsModule,
     // Angular Material Imports
     MatSnackBarModule,
+    MatRadioModule,
+    MatCardModule, 
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     // Jwt Helper Module Import
     JwtModule.forRoot({
       config: {
@@ -45,7 +80,11 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [],
+  //providers: [],
+  providers: [
+    // Use MockCoachService here for testing purposes, replace with CoachService for production
+    { provide: CoachService, useClass: MockCoachService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

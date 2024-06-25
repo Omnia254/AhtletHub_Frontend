@@ -1,0 +1,27 @@
+<div class="subscription-container">
+  <h2>Subscribed Coaches</h2>
+  <div class="coach-list">
+    <div *ngFor="let coach of subscribedCoaches" class="coach-card">
+
+      <div class="subscription-details">
+        <h4>Subscriptions:</h4>
+        <div class="subscription-cards">
+          <mat-card class="subscription-card" *ngFor="let subscription of coach.subscribtions">
+            <mat-card-header>
+              <mat-card-title>{{ subscription.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Price: {{ subscription.price | currency }}</p>
+              <p>Duration: {{ subscription.durationInMonths }} months</p>
+              <ul>
+                <li *ngFor="let feature of subscription.subscribtionsFeatures">
+                  {{ feature.description || 'Feature description not available' }}
+                </li>
+              </ul>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

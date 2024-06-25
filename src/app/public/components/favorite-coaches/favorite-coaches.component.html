@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Your Favorite Coaches</h2>
+    <div class="coach-list">
+      <div *ngFor="let coach of favoriteCoaches" class="coach-card">
+        <div class="coach-header">
+          <img [src]="coach.profilePicture || 'assets/Images/log.jpg'" alt="Coach Image" class="coach-image">
+          <div class="coach-details">
+            <h3>{{ coach.firstName }} {{ coach.lastName }}</h3>
+            <p class="coach-bio">{{ coach.bio }}</p>
+            <p class="coach-gender">{{ coach.gender === 0 ? 'Male' : 'Female' }}</p>
+            <div class="coach-subscriptions">
+              <span class="subscription-label">Number of Subscriptions:</span>
+              <span class="subscription-count">{{ coach.subscribtions.length }}</span>
+            </div>
+            <div class="coach-rating">
+              <div *ngIf="coach.ratingsCount > 0" class="star-rating">
+
+                <span class="ratings-count">({{ coach.ratingsCount }} ratings)</span>
+              </div>
+              <div *ngIf="coach.ratingsCount === 0" class="no-ratings">(No ratings yet)</div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  

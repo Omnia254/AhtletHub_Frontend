@@ -149,20 +149,3 @@ footer {
     padding: 30px;
 }
 
-.about-us, .footer {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.5s, transform 0.5s;
-}
-
-.about-us.visible, .footer.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.about-us {
-    background-color: #333;
-    padding: 50px;
-    text-align: center;
-    margin-top: 20px;
-}

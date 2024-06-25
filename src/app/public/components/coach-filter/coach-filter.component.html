@@ -1,0 +1,49 @@
+<div class="filter-panel mat-elevation-z2">
+    <div class="filter-item">
+      <h3>Age:</h3>
+      <mat-radio-group [(ngModel)]="ageFilter" (change)="onFilterChange()">
+        <mat-radio-button value="">All</mat-radio-button>
+        <mat-radio-button value="lessThan20">Less than 20</mat-radio-button>
+        <mat-radio-button value="between20and25">20-25</mat-radio-button>
+        <mat-radio-button value="between25and30">25-30</mat-radio-button>
+        <mat-radio-button value="moreThan30">More than 30</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    
+    <div class="filter-item">
+      <h3>Rating:</h3>
+      <mat-radio-group [(ngModel)]="ratingFilter" (change)="onFilterChange()">
+        <mat-radio-button value="">All</mat-radio-button>
+        <mat-radio-button value="moreThanOne">More than 1</mat-radio-button>
+        <mat-radio-button value="moreThanTwo">More than 2</mat-radio-button>
+        <mat-radio-button value="moreThanThree">More than 3</mat-radio-button>
+        <mat-radio-button value="moreThanFour">More than 4</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    
+    <div class="filter-item">
+      <h3>Gender:</h3>
+      <mat-radio-group [(ngModel)]="genderFilter" (change)="onFilterChange()">
+        <mat-radio-button value="">All</mat-radio-button>
+        <mat-radio-button value="0">Male</mat-radio-button>
+        <mat-radio-button value="1">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    
+    <div class="filter-item">
+      <h3>Sort by:</h3>
+      <mat-radio-group [(ngModel)]="sortBy" (change)="onFilterChange()">
+        <mat-radio-button value="rate">Rating</mat-radio-button>
+        <mat-radio-button value="price">Price</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    
+    <div class="filter-item">
+      <h3>Order:</h3>
+      <mat-radio-group [(ngModel)]="sortOrder" (change)="onFilterChange()">
+        <mat-radio-button value="asc">Ascending</mat-radio-button>
+        <mat-radio-button value="desc">Descending</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  

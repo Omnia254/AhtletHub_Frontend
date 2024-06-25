@@ -1,0 +1,35 @@
+<div *ngIf="coach" class="coach-details">
+  <div class="coach-header">
+    <img [src]="coach.profilePicture || '../../../../assets/Images/log.jpg'" alt="Coach Image" class="coach-image">
+    <div class="coach-info">
+      <h1>{{ coach.firstName }} {{ coach.lastName }}</h1>
+      <p>{{ coach.bio }}</p>
+    </div>
+  </div>
+  <div>
+    <h1>My subscriptions</h1>
+  </div>
+  <div class="subscription-cards">
+    <mat-card class="subscription-card" *ngFor="let subscription of coach.subscribtions">
+      <mat-card-header>
+        <mat-card-title>{{ subscription.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Price: {{ subscription.price | currency }}</p>
+        <p>Duration: {{ subscription.durationInMonths }} months</p>
+        <ul>
+          <li *ngFor="let feature of subscription.subscribtionsFeatures">
+            {{ feature.description || 'Feature description not available' }}
+          </li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" 
+                (click)="addToSubscriptionList(subscription)" 
+                [disabled]="isSubscribed(subscription)">
+          {{ isSubscribed(subscription) ? 'Subscribed' : 'Add to Subscription' }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

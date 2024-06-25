@@ -1,0 +1,21 @@
+<div class="payment-container">
+    <h1>Payment Page</h1>
+    <p>Please enter your payment details to complete the subscription.</p>
+    <!-- Simulated payment form -->
+    <form (ngSubmit)="processPayment()">
+      <mat-form-field>
+        <mat-label>Card Number</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Expiration Date</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>CVV</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Pay Now</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,112 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+  }
+  
+  .coach-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .coach-card {
+    width: calc(50% - 10px); /* Two coaches per row with gap */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .coach-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .coach-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .coach-details {
+    flex: 1;
+  }
+  
+  .coach-details h3 {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    color: #333;
+  }
+  
+  .coach-bio {
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  .coach-gender {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #007bff;
+  }
+  
+  .coach-subscriptions {
+    margin-bottom: 10px;
+  }
+  
+  .subscription-label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .subscription-count {
+    color: #555;
+  }
+  
+  .coach-rating {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .star-rating {
+    display: flex;
+    align-items: center;
+    color: gold;
+  }
+  
+  .star {
+    font-size: 1.2em;
+  }
+  
+  .no-ratings {
+    color: #999;
+    font-style: italic;
+  }
+  
+  .details-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1em;
+  }
+  
+  .details-button:hover {
+    background-color: #0056b3;
+  }
+  
