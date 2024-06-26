@@ -1,0 +1,23 @@
+<!-- coach-detail.component.html -->
+<div *ngIf="coach; else notFound">
+    <h2>{{ coach.firstName }} {{ coach.lastName }}</h2>
+    <p><strong>Gender:</strong> {{ coach.gender }}</p>
+    <p><strong>Date of Birth:</strong> {{ coach.dateOfBirth }}</p>
+    <p><strong>Bio:</strong> {{ coach.bio }}</p>
+    <p><strong>Ratings Count:</strong> {{ coach.ratingsCount }}</p>
+    <p><strong>Overall Rating:</strong> {{ coach.overallRating }}</p>
+    <!-- Display other fields as needed -->
+    
+    <div *ngFor="let subscription of coach.subscribtions">
+      <h4>{{ subscription.name }}</h4>
+      <p>Price: {{ subscription.price }}</p>
+      <p>Duration: {{ subscription.durationInMonths }} months</p>
+      <button (click)="subscribe(coach.id, subscription.id, subscription.durationInMonths, subscription.price, subscription.name)">Subscribe</button>
+
+    </div>
+
+  </div>
+  <ng-template #notFound>
+    <p>{{ errorMessage }}</p>
+  </ng-template>
+  

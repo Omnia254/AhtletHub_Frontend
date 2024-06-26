@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/ApiComponent/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CoachesComponent } from './components/coaches/coaches.component';
+import { CoachesComponent } from './components/ApiComponent/coaches/coaches.component';
 
 // Routes for child Module (publicModule). Since public module is lazy loaded in in the 
 // app-routing.module the full path is `/public/login` or `/public/regiser`

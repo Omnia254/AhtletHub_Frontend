@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CoachDto, PaginatedResult, SortingDirection } from '../../interfaces';
-import { CoachesService } from '../../services/coaches.service';
+import { CoachDto, PaginatedResult, SortingDirection } from '../../../interfaces';
+import { CoachesService } from '../../../services/ApIServices/coaches.service';
+import { AthleteFavoriteService } from 'src/app/public/services/ApIServices/athlete-favorite.service';
 
 
 @Component({
@@ -19,7 +20,10 @@ export class CoachesComponent implements OnInit {
   currentPage = 1;
   pageSize = 10;
 
-  constructor(private coachService: CoachesService) {}
+  constructor(private coachService: CoachesService,
+    private athleteFavoriteService: AthleteFavoriteService 
+
+  ) {}
 
   ngOnInit(): void {
     this.getAllCoaches();
@@ -57,5 +61,18 @@ export class CoachesComponent implements OnInit {
     if (pageNumber > 0 && pageNumber <= this.totalPages) {
       this.getAllCoaches({ pageNumber });
     }
+  }
+  addToFavorite(coachId: number) {
+    this.athleteFavoriteService.addToFavorite(coachId).subscribe({
+      next: (data) => {
+        // Handle success if needed
+        console.log('Coach added to favorites:', data);
+        // You can add further UI updates or actions upon successful addition
+      },
+      error: (err) => {
+        console.error('Failed to add coach to favorites:', err);
+        // Handle error scenarios
+      }
+    });
   }
 }

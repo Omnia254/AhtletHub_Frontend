@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { CoachDto, PaginatedResult, SearchCriteria } from '../interfaces';
+import { CoachDto, PaginatedResult, SearchCriteria } from '../../interfaces';
 import { Observable } from 'rxjs';
 
 
@@ -20,8 +20,10 @@ export class CoachesService {
         params = params.set(key, query[key]);
       }
     }
-console.log("jhh");
     return this.http.get<PaginatedResult<CoachDto>>(`${this.apiUrl}coaches`, { params });
     
+  }
+  getCoachById(id: number): Observable<CoachDto> {
+    return this.http.get<CoachDto>(`${this.apiUrl}coaches/${id}`);
   }
 }

@@ -1,0 +1,23 @@
+<div>
+    <h2>Add to Favorite</h2>
+    <div>
+      <label for="athleteId">Athlete ID:</label>
+      <input type="number" id="athleteId" [(ngModel)]="athleteId">
+    </div>
+    <div>
+      <label for="coachId">Coach ID:</label>
+      <input type="number" id="coachId" [(ngModel)]="coachId">
+    </div>
+    <button (click)="addToFavorite()">Add to Favorite</button>
+  
+    <div *ngIf="result">
+      <h3>Result:</h3>
+      <p>Athlete ID: {{ result.athleteId }}</p>
+      <p>Coach ID: {{ result.coachId }}</p>
+      <p>Can Add to Favorite: {{ result.canAddToFavourite }}</p>
+    </div>
+    <div *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+  

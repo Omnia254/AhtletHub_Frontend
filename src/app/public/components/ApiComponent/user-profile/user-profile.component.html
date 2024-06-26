@@ -1,0 +1,19 @@
+<!-- update-user.component.html -->
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <label>Username:</label>
+    <input type="text" formControlName="userName">
+    <label>First Name:</label>
+    <input type="text" formControlName="firstName">
+    <label>Last Name:</label>
+    <input type="text" formControlName="lastName">
+    <label>Phone Number:</label>
+    <input type="text" formControlName="phoneNumber">
+    <label>Gender:</label>
+    <input type="text" formControlName="gender">
+    <label>Date of Birth:</label>
+    <input type="date" formControlName="dateOfBirth">
+    <label>Bio:</label>
+    <textarea formControlName="bio"></textarea>
+    <button type="submit">Update</button>
+  </form>
+  

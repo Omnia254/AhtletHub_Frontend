@@ -2,9 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth-service/auth.service';
-import { AccountService } from '../../services/account.service';
-import { LoginInput, UserResponse } from '../../interfaces';
+import { AuthService } from '../../../services/auth-service/auth.service';
+import { AccountService } from '../../../services/ApIServices/account.service';
+import { LoginInput, UserResponse } from '../../../interfaces';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +34,7 @@ export class LoginComponent {
     accessToken: '',
     accessTokenExpiration: new Date(),
     refreshTokenExpiration: new Date(),
+    //Athletid
   };
 
   constructor(
@@ -71,7 +72,17 @@ export class LoginComponent {
         console.log(res);
         
         this.checkIfValid(res);
-        //if (this.isvaildlogin(res)) this.setUserToken();
+
+
+ // Manually set athleteId for testing
+ const athleteId = '1'; // Replace with the athleteId you want to test
+ localStorage.setItem('athleteId', athleteId);
+
+ //const athleteId = this.userResponse.athleteId;
+ //localStorage.setItem('athleteId', athleteId.toString());
+        // const athleteId = localStorage.getItem('athleteId');
+       // const athleteId = "1";
+      
       },
       error: (error) => console.log(error),
     });
@@ -80,6 +91,8 @@ export class LoginComponent {
   setUserToken() {
     localStorage.setItem('user', JSON.stringify(this.userResponse));
   }
+
+
   isvaildlogin(userResponse: UserResponse): boolean {
     return false;
 

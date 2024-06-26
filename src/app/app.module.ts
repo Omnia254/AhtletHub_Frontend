@@ -18,7 +18,7 @@ import { CoachListComponent } from './public/components/coach-list/coach-list.co
 import { MockCoachService } from './public/services/mock-coach-service.service';
 import { CoachService } from './public/services/coach.service';
 import { NavBarComponent } from './public/components/nav-bar/nav-bar.component';
-import { LoginComponent } from './public/components/login/login.component';
+import { LoginComponent } from './public/components/ApiComponent/login/login.component';
 import { AboutUsComponent } from './public/components/about-us/about-us.component';
 import { CoachDetailsComponent } from './public/components/coach-details/coach-details.component';
 import { UserProfileComponent } from './public/components/user-profile/user-profile.component';
@@ -29,7 +29,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { CoachesComponent } from './public/components/coaches/coaches.component';
+import { CoachesComponent } from './public/components/ApiComponent/coaches/coaches.component';
+import { CoachesDetailComponent } from './public/components/ApiComponent/coaches-detail/coaches-detail.component';
+import { SubscribeComponent } from './public/components/ApiComponent/subscribe/subscribe.component';
+//import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
 export const LOCALSTORAGE_TOKEN_KEY = 'angular_material_login_and_register_example';
@@ -56,6 +59,9 @@ export function tokenGetter() {
     SubscriptionComponent,
     PaymentComponent,
     CoachesComponent,
+    CoachesDetailComponent,
+    SubscribeComponent,
+    //AddToFavoriteComponent,
     
 
   ],
@@ -66,6 +72,7 @@ export function tokenGetter() {
     // Import our Routes for this module
     AppRoutingModule,
     FormsModule,
+   
     // Angular Material Imports
     MatSnackBarModule,
     MatRadioModule,
@@ -74,6 +81,7 @@ export function tokenGetter() {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+  
     // Jwt Helper Module Import
     JwtModule.forRoot({
       config: {

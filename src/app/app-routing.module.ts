@@ -8,7 +8,9 @@ import { UserProfileComponent } from './public/components/user-profile/user-prof
 import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
 import { SubscriptionComponent } from './public/components/subscription/subscription.component';
 import { PaymentComponent } from './public/components/payment/payment.component';
-import { CoachesComponent } from './public/components/coaches/coaches.component';
+import { CoachesComponent } from './public/components/ApiComponent/coaches/coaches.component';
+import { CoachesDetailComponent } from './public/components/ApiComponent/coaches-detail/coaches-detail.component';
+import { SubscribeComponent } from './public/components/ApiComponent/subscribe/subscribe.component';
 
 
 const routes: Routes = [
@@ -33,6 +35,24 @@ const routes: Routes = [
     path: 'coaches',
     component: CoachesComponent
   },
+  { 
+    path: 'coachdetail/:id',
+     component: CoachesDetailComponent
+  },
+  { 
+    path: 'subscribe', 
+    component: SubscribeComponent 
+  },
+
+  { 
+    path: 'subscribe/:coachId/:subscribtionId/:subscribtionDurationInMonth/:subscribtionPrice/:subscribtionName', 
+    component: SubscribeComponent 
+  },
+  {
+     path: 'update-user',
+      component: UserProfileComponent 
+    },
+
   {
     path: 'coach', // Add a path for the home component
     component: CoachListComponent
