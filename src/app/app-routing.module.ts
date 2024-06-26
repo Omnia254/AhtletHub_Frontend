@@ -8,6 +8,7 @@ import { UserProfileComponent } from './public/components/user-profile/user-prof
 import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
 import { SubscriptionComponent } from './public/components/subscription/subscription.component';
 import { PaymentComponent } from './public/components/payment/payment.component';
+import { CoachesComponent } from './public/components/coaches/coaches.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'home', // Add a path for the home component
     component: HomeComponent
+  },
+  {
+    path: 'coaches',
+    component: CoachesComponent
   },
   {
     path: 'coach', // Add a path for the home component

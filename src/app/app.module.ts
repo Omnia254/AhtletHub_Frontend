@@ -29,6 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { CoachesComponent } from './public/components/coaches/coaches.component';
 
 // specify the key where the token is stored in the local storage
 export const LOCALSTORAGE_TOKEN_KEY = 'angular_material_login_and_register_example';
@@ -54,6 +55,7 @@ export function tokenGetter() {
     FavoriteCoachesComponent,
     SubscriptionComponent,
     PaymentComponent,
+    CoachesComponent,
     
 
   ],

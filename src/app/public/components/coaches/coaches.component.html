@@ -1,0 +1,15 @@
+<div *ngIf="coaches.length; else noCoaches">
+    <div *ngFor="let coach of coaches">
+      <h3>{{ coach.firstName }} {{ coach.lastName }}</h3>
+      <p>{{ coach.bio }}</p>
+      <!-- Add more coach details as needed -->
+    </div>
+    <div>
+      <button (click)="goToPage(currentPage - 1)" [disabled]="!hasPreviousPage">Previous</button>
+      <button (click)="goToPage(currentPage + 1)" [disabled]="!hasNextPage">Next</button>
+    </div>
+  </div>
+  <ng-template #noCoaches>
+    <p>There are no coaches with that criteria</p>
+  </ng-template>
+  
