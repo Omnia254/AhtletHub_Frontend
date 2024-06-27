@@ -1,21 +1,36 @@
-
-// src/app/services/auth.service.ts
+// src/app/services/register.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CustomEncoder } from '../../custom-encoder';
 import { RegisterUserCommand } from '../../Interfaces/User/RegisterUserCommand';
-import { UserDto } from '../../Interfaces/User/UserDto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  private apiUrl = `${environment.baseUrl}`;// Replace with your API URL
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = `${environment.baseUrl}`; // Replace with your API URL
+  private apiUrl2 = 'http://localhost:5068/api/Identity/register'; // Adjust URL as per your API endpoint
 
-  register(user: RegisterUserCommand): Observable<UserDto> {
-    return this.http.post<UserDto>(`${this.apiUrl}register`, user);
+  constructor(private http: HttpClient) { }
+
+  registerUser(formData: FormData): Observable<any> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    return this.http.post<any>(this.apiUrl2, formData, { headers: headers })
+      .pipe(
+        catchError((error) => {
+          throw error;
+        })
+      );
+    }
+
+  confirmEmail(email: string, token: string): Observable<any> {
+    let params = new HttpParams({ encoder: new CustomEncoder() });
+    params = params.append('email', email);
+    params = params.append('token', token);
+    return this.http.get<any>(`${this.apiUrl}Identity/confirmemail`, { params });
   }
 }

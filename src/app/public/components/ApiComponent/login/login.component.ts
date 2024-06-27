@@ -75,12 +75,17 @@ export class LoginComponent {
 
 
  // Manually set athleteId for testing
-  const athleteId = '1'; // Replace with the athleteId you want to test
- localStorage.setItem('athleteId', athleteId);
+  //const athleteId = '1'; // Replace with the athleteId you want to test
+ //localStorage.setItem('athleteId', athleteId);
 
-      // const accessToken = res.accessToken;
-      //   localStorage.setItem('accessToken', accessToken);
-
+ const accessToken = res.accessToken;
+ if (accessToken) {
+   localStorage.setItem('accessToken', accessToken);
+ } else {
+   console.error('Access token is undefined');
+   // Handle the case where accessToken is undefined, e.g., show an error message or take appropriate action
+ }
+ 
       //   // Call another endpoint to fetch athleteId using email and password
       //   this.fetchAthleteId(this.user.email, this.user.password).subscribe({
       //     next: (athleteId) => {

@@ -34,6 +34,9 @@ import { CoachesDetailComponent } from './public/components/ApiComponent/coaches
 import { SubscribeComponent } from './public/components/ApiComponent/subscribe/subscribe.component';
 import { RegisterComponent } from './public/components/ApiComponent/register/register.component';
 import { CheckoutComponent } from './public/components/ApiComponent/checkout/checkout.component';
+import { CalCalculatecaloryComponent } from './public/components/ApiComponent/cal-calculatecalory/cal-calculatecalory.component';
+import { CustomEncoder } from './public/custom-encoder';
+import { EmailConfirmationComponent } from './public/components/ApiComponent/email-confirmation/email-confirmation.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -65,6 +68,8 @@ export function tokenGetter() {
     SubscribeComponent,
     RegisterComponent,
     CheckoutComponent,
+    CalCalculatecaloryComponent,
+    EmailConfirmationComponent,
     //AddToFavoriteComponent,
     
 
@@ -98,7 +103,7 @@ export function tokenGetter() {
   //providers: [],
   providers: [
     // Use MockCoachService here for testing purposes, replace with CoachService for production
-    { provide: CoachService, useClass: MockCoachService }
+    { provide: CoachService,  useClass: CustomEncoder }
   ],
   bootstrap: [AppComponent]
 })

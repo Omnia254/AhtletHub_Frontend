@@ -1,50 +1,100 @@
-<!-- src/app/components/register/register.component.html -->
-<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-    <label for="email">Email:</label>
-    <input id="email" formControlName="email" type="email" />
-  
-    <label for="confirmEmail">Confirm Email:</label>
-    <input id="confirmEmail" formControlName="confirmEmail" type="email" />
-  
-    <label for="userName">Username:</label>
-    <input id="userName" formControlName="userName" type="text" />
-  
-    <label for="password">Password:</label>
-    <input id="password" formControlName="password" type="password" />
-  
-    <label for="confirmPassword">Confirm Password:</label>
-    <input id="confirmPassword" formControlName="confirmPassword" type="password" />
-  
-    <label for="firstName">First Name:</label>
-    <input id="firstName" formControlName="firstName" type="text" />
-  
-    <label for="lastName">Last Name:</label>
-    <input id="lastName" formControlName="lastName" type="text" />
-  
-    <label for="phoneNumber">Phone Number:</label>
-    <input id="phoneNumber" formControlName="phoneNumber" type="text" />
-  
-    <label for="gender">Gender:</label>
-    <select id="gender" formControlName="gender">
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-  
-    <label for="dateOfBirth">Date of Birth:</label>
-    <input id="dateOfBirth" formControlName="dateOfBirth" type="date" />
-  
-    <label for="height">Height:</label>
-    <input id="height" formControlName="height" type="number" />
-  
-    <label for="bio">Bio:</label>
-    <textarea id="bio" formControlName="bio"></textarea>
-  
-    <label for="isCoach">Are you a coach?</label>
-    <input id="isCoach" formControlName="isCoach" type="checkbox" />
-  
-    <label for="certificate">Certificate:</label>
-    <input id="certificate" formControlName="certificate" type="file" />
-  
+<div class="register-user-container">
+  <h2>Register New User</h2>
+  <form (ngSubmit)="onSubmit()">
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required [(ngModel)]="command.email">
+    </div>
+
+    <!-- Confirm Email -->
+    <div class="form-group">
+      <label for="confirmEmail">Confirm Email</label>
+      <input type="email" id="confirmEmail" name="confirmEmail" required [(ngModel)]="command.confirmEmail">
+    </div>
+
+    <!-- Username -->
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input type="text" id="userName" name="userName" required [(ngModel)]="command.userName">
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required [(ngModel)]="command.password">
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="command.confirmPassword">
+    </div>
+
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" required [(ngModel)]="command.firstName">
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" required [(ngModel)]="command.lastName">
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" required [(ngModel)]="command.phoneNumber">
+    </div>
+
+    <!-- Gender -->
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required [(ngModel)]="command.gender">
+        <option [ngValue]="0">Male</option>
+        <option [ngValue]="1">Female</option>
+      </select>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" id="dateOfBirth" name="dateOfBirth" required [(ngModel)]="command.dateOfBirth">
+    </div>
+
+    <!-- Height -->
+    <div class="form-group">
+      <label for="height">Height (cm)</label>
+      <input type="number" id="height" name="height" [(ngModel)]="command.height">
+    </div>
+
+    <!-- Bio -->
+    <div class="form-group">
+      <label for="bio">Bio</label>
+      <textarea id="bio" name="bio" [(ngModel)]="command.bio"></textarea>
+    </div>
+
+    <!-- Is Coach -->
+    <div class="form-group">
+      <label for="isCoach">Are you a coach?</label>
+      <input type="checkbox" id="isCoach" name="isCoach" [(ngModel)]="command.isCoach">
+    </div>
+
+    <!-- Certificate (PDF) -->
+    <div *ngIf="command.isCoach" class="form-group">
+      <label for="certificate">Certificate (PDF)</label>
+      <input type="file" id="certificate" name="certificate" (change)="onFileSelected($event)">
+    </div>
+
+    <!-- Client Email Confirmation Url -->
+    <div class="form-group">
+      <label for="clientEmailConfirmationUrl">Client Email Confirmation Url</label>
+      <input type="text" id="clientEmailConfirmationUrl" name="clientEmailConfirmationUrl" required [(ngModel)]="command.clientEmailConfirmationUrl">
+    </div>
+
+    <!-- Submit Button -->
     <button type="submit">Register</button>
   </form>
-  
+</div>

@@ -1,0 +1,34 @@
+<div>
+    <h1>Calorie Calculator</h1>
+    <form (ngSubmit)="calculateCalories()">
+      <div>
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" [(ngModel)]="command.weight" name="weight" required>
+      </div>
+      <div>
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" [(ngModel)]="command.height" name="height" required>
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" [(ngModel)]="command.age" name="age" required>
+      </div>
+      <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" [(ngModel)]="command.gender" name="gender" required>
+          <option *ngFor="let g of genderKeys()" [value]="g">{{ g }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="dailyActivityRate">Daily Activity Rate:</label>
+        <select id="dailyActivityRate" [(ngModel)]="command.dailyActivityRate" name="dailyActivityRate" required>
+          <option *ngFor="let dar of dailyActivityRateKeys()" [value]="dar">{{ dar }}</option>
+        </select>
+      </div>
+      <button type="submit">Calculate</button>
+    </form>
+    <div *ngIf="tdee !== null">
+      <h2>Your TDEE is: {{ tdee }} calories/day</h2>
+    </div>
+  </div>
+  

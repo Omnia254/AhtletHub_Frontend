@@ -12,6 +12,7 @@ import { CoachesDetailComponent } from './public/components/ApiComponent/coaches
 import { SubscribeComponent } from './public/components/ApiComponent/subscribe/subscribe.component';
 import { RegisterComponent } from './public/components/ApiComponent/register/register.component';
 import { CheckoutComponent } from './public/components/ApiComponent/checkout/checkout.component';
+import { CalCalculatecaloryComponent } from './public/components/ApiComponent/cal-calculatecalory/cal-calculatecalory.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,10 @@ const routes: Routes = [
      path: 'update-user',
       component: UserProfileComponent 
     },
+    {
+      path: 'calcalory',
+       component: CalCalculatecaloryComponent 
+     },
   { 
       path: 'register', 
       component: RegisterComponent 
