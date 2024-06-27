@@ -113,8 +113,8 @@ export interface SearchCriteria {
 
 export enum Gender {
   Male = 'Male',
-  Female = 'Female',
-  Other = 'Other'
+  Female = 'Female'
+ 
 }
 
 export enum RateFilter {
@@ -145,6 +145,8 @@ export enum SortingDirection {
   Ascending = 'Ascending',
   Descending = 'Descending'
 }
+
+
 //return getallcoaches
 export interface PaginatedResult<T> {
   items: T[];

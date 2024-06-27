@@ -148,8 +148,8 @@ export class LoginComponent {
         }
         else {
            this.setUserToken();
-         
-          this.router.navigate(['../../payment']);
+         console.log("ssssssssss")
+          this.router.navigate(['../../coaches']);
         }
 
 
