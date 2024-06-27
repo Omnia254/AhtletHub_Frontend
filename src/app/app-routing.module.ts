@@ -4,13 +4,14 @@ import { AuthGuard } from './auth-guard/auth.guard';
 import { HomeComponent } from './public/components/home/home.component';
 import { CoachListComponent } from './public/components/coach-list/coach-list.component';
 import { CoachDetailsComponent } from './public/components/coach-details/coach-details.component'; // Import the CoachDetailsComponent
-import { UserProfileComponent } from './public/components/user-profile/user-profile.component';
+import { UserProfileComponent } from './public/components/ApiComponent/user-profile/user-profile.component';
 import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
 import { SubscriptionComponent } from './public/components/subscription/subscription.component';
-import { PaymentComponent } from './public/components/payment/payment.component';
 import { CoachesComponent } from './public/components/ApiComponent/coaches/coaches.component';
 import { CoachesDetailComponent } from './public/components/ApiComponent/coaches-detail/coaches-detail.component';
 import { SubscribeComponent } from './public/components/ApiComponent/subscribe/subscribe.component';
+import { RegisterComponent } from './public/components/ApiComponent/register/register.component';
+import { CheckoutComponent } from './public/components/ApiComponent/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,14 @@ const routes: Routes = [
      path: 'update-user',
       component: UserProfileComponent 
     },
-
+  { 
+      path: 'register', 
+      component: RegisterComponent 
+    },
+    {
+       path: 'checkout',
+        component: CheckoutComponent
+       },
   {
     path: 'coach', // Add a path for the home component
     component: CoachListComponent
@@ -69,7 +77,7 @@ const routes: Routes = [
     path: 'sub', // Add a path for the home component
     component: SubscriptionComponent
   },
-  { path: 'payment', component: PaymentComponent },
+  // { path: 'payment', component: PaymentComponent },
   {
     path: 'coach/:coachId', // Dynamic route parameter for coachId
     component: CoachDetailsComponent, // This component will display detailed information about the coach

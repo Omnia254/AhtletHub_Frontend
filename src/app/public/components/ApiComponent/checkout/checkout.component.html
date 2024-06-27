@@ -1,0 +1,19 @@
+<div>
+    <h2>Create Checkout Session</h2>
+    <form (ngSubmit)="createSession()">
+      <label for="price">Price:</label>
+      <input type="number" id="price" [(ngModel)]="price" name="price" required>
+  
+      <label for="subscriptionName">Subscription Name:</label>
+      <input type="text" id="subscriptionName" [(ngModel)]="subscriptionName" name="subscriptionName" required>
+  
+      <label for="athleteId">Athlete ID:</label>
+      <input type="number" id="athleteId" [(ngModel)]="athleteId" name="athleteId" required>
+  
+      <label for="subscriptionId">Subscription ID:</label>
+      <input type="number" id="subscriptionId" [(ngModel)]="subscriptionId" name="subscriptionId" required>
+  
+      <button type="submit">Create Session</button>
+    </form>
+  </div>
+  

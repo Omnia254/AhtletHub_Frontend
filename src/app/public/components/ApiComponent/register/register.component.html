@@ -1,0 +1,50 @@
+<!-- src/app/components/register/register.component.html -->
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" type="email" />
+  
+    <label for="confirmEmail">Confirm Email:</label>
+    <input id="confirmEmail" formControlName="confirmEmail" type="email" />
+  
+    <label for="userName">Username:</label>
+    <input id="userName" formControlName="userName" type="text" />
+  
+    <label for="password">Password:</label>
+    <input id="password" formControlName="password" type="password" />
+  
+    <label for="confirmPassword">Confirm Password:</label>
+    <input id="confirmPassword" formControlName="confirmPassword" type="password" />
+  
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="firstName" type="text" />
+  
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="lastName" type="text" />
+  
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+  
+    <label for="gender">Gender:</label>
+    <select id="gender" formControlName="gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input id="dateOfBirth" formControlName="dateOfBirth" type="date" />
+  
+    <label for="height">Height:</label>
+    <input id="height" formControlName="height" type="number" />
+  
+    <label for="bio">Bio:</label>
+    <textarea id="bio" formControlName="bio"></textarea>
+  
+    <label for="isCoach">Are you a coach?</label>
+    <input id="isCoach" formControlName="isCoach" type="checkbox" />
+  
+    <label for="certificate">Certificate:</label>
+    <input id="certificate" formControlName="certificate" type="file" />
+  
+    <button type="submit">Register</button>
+  </form>
+  

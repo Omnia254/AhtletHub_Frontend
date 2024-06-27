@@ -21,7 +21,7 @@ import { NavBarComponent } from './public/components/nav-bar/nav-bar.component';
 import { LoginComponent } from './public/components/ApiComponent/login/login.component';
 import { AboutUsComponent } from './public/components/about-us/about-us.component';
 import { CoachDetailsComponent } from './public/components/coach-details/coach-details.component';
-import { UserProfileComponent } from './public/components/user-profile/user-profile.component';
+import { UserProfileComponent } from './public/components/ApiComponent/user-profile/user-profile.component';
 import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
 import { SubscriptionComponent } from './public/components/subscription/subscription.component';
 import { PaymentComponent } from './public/components/payment/payment.component';
@@ -32,6 +32,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CoachesComponent } from './public/components/ApiComponent/coaches/coaches.component';
 import { CoachesDetailComponent } from './public/components/ApiComponent/coaches-detail/coaches-detail.component';
 import { SubscribeComponent } from './public/components/ApiComponent/subscribe/subscribe.component';
+import { RegisterComponent } from './public/components/ApiComponent/register/register.component';
+import { CheckoutComponent } from './public/components/ApiComponent/checkout/checkout.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -61,6 +63,8 @@ export function tokenGetter() {
     CoachesComponent,
     CoachesDetailComponent,
     SubscribeComponent,
+    RegisterComponent,
+    CheckoutComponent,
     //AddToFavoriteComponent,
     
 
@@ -81,7 +85,8 @@ export function tokenGetter() {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-  
+   ReactiveFormsModule,
+   FormsModule,
     // Jwt Helper Module Import
     JwtModule.forRoot({
       config: {

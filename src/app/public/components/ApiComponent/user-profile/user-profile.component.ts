@@ -1,44 +1,49 @@
+// user-profile.component.ts (No changes needed for TypeScript)
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { UpdatedUserDto } from 'src/app/public/Interfaces/User/UpdatedUserDto';
 import { UserService } from 'src/app/public/services/ApIServices/user.service';
-
-@Component({
+ // Adjust path as per your actual structure
+ import { FormsModule } from '@angular/forms';
+ @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss'],
+  
 })
 export class UserProfileComponent implements OnInit {
-  updateForm: FormGroup;
+  user: UpdatedUserDto = {
+    userName: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    gender: '',
+    dateOfBirth: '',
+    bio: ''
+  };
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) {
-    this.updateForm = this.formBuilder.group({
-      userName: [''],
-      firstName: [''],
-      lastName: [''],
-      phoneNumber: [''],
-      gender: [''],
-      dateOfBirth: [''],
-      bio: ['']
-    });
-  }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe(user => {
-      this.updateForm.patchValue(user);
-    }, error => {
-      console.error('Error fetching user:', error);
+    this.userService.getCurrentUser().subscribe({
+      next: (user: UpdatedUserDto) => {
+        this.user = user;
+      },
+      error: (error: any) => {
+        console.error('Error fetching user:', error);
+      }
     });
   }
 
   onSubmit(): void {
-    const updateUserCommand = this.updateForm.value as UpdatedUserDto;
-    this.userService.updateUser(updateUserCommand).subscribe(updatedUser => {
-      // Handle success or show message
-      console.log('User updated successfully:', updatedUser);
-    }, error => {
-      // Handle error
-      console.error('Error updating user:', error);
+    this.userService.updateUser(this.user).subscribe({
+      next: (updatedUser: UpdatedUserDto) => {
+        // Handle success or show message
+        console.log('User updated successfully:', updatedUser);
+      },
+      error: (error: any) => {
+        // Handle error
+        console.error('Error updating user:', error);
+      }
     });
   }
 }

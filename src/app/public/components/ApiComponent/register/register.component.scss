@@ -1,0 +1,14 @@
+/* src/app/components/register/register.component.css */
+form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-top: 10px;
+  }
+  
+  input, select, textarea, button {
+    margin-top: 5px;
+  }
+  

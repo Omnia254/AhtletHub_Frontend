@@ -1,19 +1,95 @@
-<!-- update-user.component.html -->
-<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-    <label>Username:</label>
-    <input type="text" formControlName="userName">
-    <label>First Name:</label>
-    <input type="text" formControlName="firstName">
-    <label>Last Name:</label>
-    <input type="text" formControlName="lastName">
-    <label>Phone Number:</label>
-    <input type="text" formControlName="phoneNumber">
-    <label>Gender:</label>
-    <input type="text" formControlName="gender">
-    <label>Date of Birth:</label>
-    <input type="date" formControlName="dateOfBirth">
-    <label>Bio:</label>
-    <textarea formControlName="bio"></textarea>
-    <button type="submit">Update</button>
-  </form>
+<div class="user-profile-container">
+    <h2>User Profile</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input
+          type="text"
+          id="userName"
+          name="userName"
+          [(ngModel)]="user.userName"
+          required
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          [(ngModel)]="user.firstName"
+          required
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          [(ngModel)]="user.lastName"
+          required
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          [(ngModel)]="user.phoneNumber"
+          required
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select
+          id="gender"
+          name="gender"
+          [(ngModel)]="user.gender"
+          required
+          class="form-control"
+        >
+          <option value="" disabled>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input
+          type="date"
+          id="dateOfBirth"
+          name="dateOfBirth"
+          [(ngModel)]="user.dateOfBirth"
+          required
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea
+          id="bio"
+          name="bio"
+          [(ngModel)]="user.bio"
+          class="form-control"
+        ></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="userForm.form.invalid">
+        Update Profile
+      </button>
+    </form>
+  </div>
   
