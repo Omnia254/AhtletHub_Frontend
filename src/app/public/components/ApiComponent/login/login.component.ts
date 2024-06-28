@@ -143,6 +143,7 @@ export class LoginComponent {
   logOut()
   {
 
+    console.log("logout");
     this.accountService.revokeToken().subscribe({
 
       next: res => {

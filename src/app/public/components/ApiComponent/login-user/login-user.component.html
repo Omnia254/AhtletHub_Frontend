@@ -1,0 +1,31 @@
+<!-- src/app/components/login/login.component.html -->
+
+<div class="login-container">
+    <form (ngSubmit)="login()">
+      <div>
+        <label for="userNameOrEmail">Username or Email:</label>
+        <input type="text" id="userNameOrEmail" [(ngModel)]="userNameOrEmail" name="userNameOrEmail" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  
+    <button (click)="logout()">Logout</button>
+    <!-- <button (click)="getStoredLoginResponse()">Get Stored Login Response</button> -->
+  
+    <div *ngIf="loginResponse">
+      <p *ngIf="!loginResponse.isValidCredentials">Invalid credentials</p>
+      <p *ngIf="loginResponse.isLockedOut">Account is locked out until {{ loginResponse.lockoutEnd }}</p>
+      <p *ngIf="!loginResponse.isActive">Account is not active</p>
+      <p *ngIf="!loginResponse.isApproved">Account is not approved</p>
+      <p *ngIf="loginResponse.isValidCredentials">Login successful!</p>
+    </div>
+  
+    <div *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+  
