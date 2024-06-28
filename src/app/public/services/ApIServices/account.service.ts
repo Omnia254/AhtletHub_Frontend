@@ -10,7 +10,7 @@ export class AccountService {
   http = inject(HttpClient);
   baseUrl = environment.baseUrl;
   login(user: LoginInput) {
-    return this.http.post<UserResponse>(this.baseUrl + 'identity/login', user);
+    return this.http.post<UserResponse>(this.baseUrl + 'identity/login', user,{ withCredentials: true });
   }
 
   revokeToken() {

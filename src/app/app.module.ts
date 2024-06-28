@@ -37,6 +37,8 @@ import { CheckoutComponent } from './public/components/ApiComponent/checkout/che
 import { CalCalculatecaloryComponent } from './public/components/ApiComponent/cal-calculatecalory/cal-calculatecalory.component';
 import { CustomEncoder } from './public/custom-encoder';
 import { EmailConfirmationComponent } from './public/components/ApiComponent/email-confirmation/email-confirmation.component';
+import { SendEmailComponent } from './public/components/ApiComponent/send-email/send-email.component';
+import { LogoutComponent } from './public/components/ApiComponent/logout/logout.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -70,6 +72,8 @@ export function tokenGetter() {
     CheckoutComponent,
     CalCalculatecaloryComponent,
     EmailConfirmationComponent,
+    SendEmailComponent,
+    LogoutComponent,
     //AddToFavoriteComponent,
     
 

@@ -12,11 +12,6 @@ import { LoginInput, UserResponse } from '../../../interfaces';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  // accountService = inject(AccountService);
-  // loginForm: FormGroup = new FormGroup({
-  //   email: new FormControl(null, [Validators.required, Validators.email]),
-  //   password: new FormControl(null, [Validators.required]),
-  // });
 
   user: LoginInput = {
     userNameOrEmail: '',
@@ -74,35 +69,18 @@ export class LoginComponent {
         this.checkIfValid(res);
 
 
- // Manually set athleteId for testing
-  //const athleteId = '1'; // Replace with the athleteId you want to test
- //localStorage.setItem('athleteId', athleteId);
 
- const accessToken = res.accessToken;
- if (accessToken) {
-   localStorage.setItem('accessToken', accessToken);
- } else {
-   console.error('Access token is undefined');
-   // Handle the case where accessToken is undefined, e.g., show an error message or take appropriate action
- }
- 
-      //   // Call another endpoint to fetch athleteId using email and password
-      //   this.fetchAthleteId(this.user.email, this.user.password).subscribe({
-      //     next: (athleteId) => {
-      //       console.log('Retrieved AthleteId:', athleteId);
-      //       localStorage.setItem('athleteId', athleteId);
-      //const accessTokenForid=res.accessToken.;
-
- //const athleteId = this.userResponse.athleteId;
- //localStorage.setItem('athleteId', athleteId.toString());
-        // const athleteId = localStorage.getItem('athleteId');
-       // const athleteId = "1";
+        const accessToken = res.accessToken;
+        if (accessToken) {
+            localStorage.setItem('accessToken', accessToken);
+         } else {
+             console.error('Access token is undefined');
+         }
       
       },
       error: (error) => console.log(error),
     });
   }
-  //{"isValidCredentials":false,"isActive":false,"isApproved":true,"isLockedOut":false,"lockoutEnd":null,"userNameOrEmail":"mostafaayman628@yahoo.com","roles":null,"accessToken":null,"accessTokenExpiration":null,"refreshTokenExpiration":"0001-01-01T00:00:00"}
   setUserToken() {
     localStorage.setItem('user', JSON.stringify(this.userResponse));
   }
@@ -164,7 +142,9 @@ export class LoginComponent {
 
   logOut()
   {
+
     this.accountService.revokeToken().subscribe({
+
       next: res => {
           if(res == true){
             this.removeToken();

@@ -1,0 +1,17 @@
+<p>send-email works!</p>
+<form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+    <label for="mailTo">To:</label>
+    <input id="mailTo" formControlName="mailTo" type="email" />
+  
+    <label for="subject">Subject:</label>
+    <input id="subject" formControlName="subject" />
+  
+    <label for="body">Body:</label>
+    <textarea id="body" formControlName="body"></textarea>
+  
+    <label for="attachments">Attachments:</label>
+    <input id="attachments" formControlName="attachments" type="file" multiple />
+  
+    <button type="submit">Send Email</button>
+  </form>
+  

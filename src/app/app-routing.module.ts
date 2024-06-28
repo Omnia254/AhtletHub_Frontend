@@ -13,6 +13,10 @@ import { SubscribeComponent } from './public/components/ApiComponent/subscribe/s
 import { RegisterComponent } from './public/components/ApiComponent/register/register.component';
 import { CheckoutComponent } from './public/components/ApiComponent/checkout/checkout.component';
 import { CalCalculatecaloryComponent } from './public/components/ApiComponent/cal-calculatecalory/cal-calculatecalory.component';
+import { EmailConfirmationComponent } from './public/components/ApiComponent/email-confirmation/email-confirmation.component';
+import { AccountService } from './public/services/ApIServices/account.service';
+import { LoginComponent } from './public/components/ApiComponent/login/login.component';
+import { LogoutComponent } from './public/components/ApiComponent/logout/logout.component';
 
 
 const routes: Routes = [
@@ -45,7 +49,10 @@ const routes: Routes = [
     path: 'subscribe', 
     component: SubscribeComponent 
   },
-
+  { 
+    path: 'logout', 
+    component: LogoutComponent 
+  },
   { 
     path: 'subscribe/:coachId/:subscribtionId/:subscribtionDurationInMonth/:subscribtionPrice/:subscribtionName', 
     component: SubscribeComponent 
@@ -57,6 +64,10 @@ const routes: Routes = [
     {
       path: 'calcalory',
        component: CalCalculatecaloryComponent 
+     },
+     {
+      path: 'confirmemail',
+       component: EmailConfirmationComponent 
      },
   { 
       path: 'register', 

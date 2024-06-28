@@ -36,7 +36,7 @@ export class SubscribeComponent implements OnInit {
     const entityId = this.tokenService.extractEntityIdFromToken();
     if (entityId !== null) {
       this.athleteId = entityId;
-      console.log(this.athleteId);
+      console.log(this.athleteId );
 
     } else {
       // Handle case where entityId is null

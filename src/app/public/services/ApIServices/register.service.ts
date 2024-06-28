@@ -5,6 +5,7 @@ import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CustomEncoder } from '../../custom-encoder';
 import { RegisterUserCommand } from '../../Interfaces/User/RegisterUserCommand';
+import { EmailConfirmationResponseDto } from '../../Interfaces/User/EmailConfirmationResponseDto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,10 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(formData: FormData): Observable<any> {
+  registerUser(formData: FormData): Observable<EmailConfirmationResponseDto> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
-    return this.http.post<any>(this.apiUrl2, formData, { headers: headers })
+    return this.http.post<EmailConfirmationResponseDto>(this.apiUrl2, formData, { headers: headers })
       .pipe(
         catchError((error) => {
           throw error;
@@ -27,10 +28,12 @@ export class RegisterService {
       );
     }
 
-  confirmEmail(email: string, token: string): Observable<any> {
+  confirmEmail(token: string, email: string): Observable<any> {
     let params = new HttpParams({ encoder: new CustomEncoder() });
-    params = params.append('email', email);
+    params = params.append('useremailtoconfirm', email);
     params = params.append('token', token);
     return this.http.get<any>(`${this.apiUrl}Identity/confirmemail`, { params });
   }
+
+  
 }
