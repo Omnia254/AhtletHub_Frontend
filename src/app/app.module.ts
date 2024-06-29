@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -40,6 +40,19 @@ import { EmailConfirmationComponent } from './public/components/ApiComponent/ema
 import { SendEmailComponent } from './public/components/ApiComponent/send-email/send-email.component';
 import { LogoutComponent } from './public/components/ApiComponent/logout/logout.component';
 import { LoginUserComponent } from './public/components/ApiComponent/login-user/login-user.component';
+import { MeasurementComponent } from './public/components/ApiComponent/measurement/measurement.component';
+import { MeasurementPostComponent } from './public/components/ApiComponent/measurement-post/measurement-post.component';
+import { JwtInterceptor } from './_interceptord/jwt.interceptor';
+import { DeleteMeasurementComponent } from './public/components/ApiComponent/delete-measurement/delete-measurement.component';
+import { ActivateDeactivateUserComponent } from './public/components/ApiComponent/activate-deactivate-user/activate-deactivate-user.component';
+import { AccountSettingComponent } from './public/components/ApiComponent/account-setting/account-setting.component';
+import { ChangePasswordComponent } from './public/components/ApiComponent/change-password/change-password.component';
+import { ChangeEmailComponent } from './public/components/ApiComponent/change-email/change-email.component';
+import { ConfirmChangeEmailComponent } from './public/components/ApiComponent/confirm-change-email/confirm-change-email.component';
+import { CoachHomeComponent } from './public/components/ApiComponent/coach-home/coach-home.component';
+import { CoachnavbarComponent } from './public/components/ApiComponent/coachnavbar/coachnavbar.component';
+import { CreateSubscribtionComponent } from './public/components/ApiComponent/create-subscribtion/create-subscribtion.component';
+import { CoachSubscriptionComponent } from './public/components/ApiComponent/coach-subscription/coach-subscription.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -76,6 +89,18 @@ export function tokenGetter() {
     SendEmailComponent,
     LogoutComponent,
     LoginUserComponent,
+    MeasurementComponent,
+    MeasurementPostComponent,
+    DeleteMeasurementComponent,
+    ActivateDeactivateUserComponent,
+    AccountSettingComponent,
+    ChangePasswordComponent,
+    ChangeEmailComponent,
+    ConfirmChangeEmailComponent,
+    CoachHomeComponent,
+    CoachnavbarComponent,
+    CreateSubscribtionComponent,
+    CoachSubscriptionComponent,
     //AddToFavoriteComponent,
     
 
@@ -109,8 +134,13 @@ export function tokenGetter() {
   //providers: [],
   providers: [
     // Use MockCoachService here for testing purposes, replace with CoachService for production
-    { provide: CoachService,  useClass: CustomEncoder }
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      //useClass: CustomEncoder ,
+      useClass: JwtInterceptor, 
+      multi:true}
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

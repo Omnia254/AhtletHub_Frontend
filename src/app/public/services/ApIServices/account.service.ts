@@ -2,18 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { LoginInput, UserResponse } from '../../interfaces';
+import { RevokeTokenResponseDTO } from '../../Interfaces/User/RevokeTokenResponseDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
   http = inject(HttpClient);
-  baseUrl = environment.baseUrl;
+  //baseUrl = environment.baseUrl;
+  private apiUrl = `${environment.baseUrl}`;
+
   login(user: LoginInput) {
-    return this.http.post<UserResponse>(this.baseUrl + 'identity/login', user,{ withCredentials: true });
+    return this.http.post<UserResponse>(`${this.apiUrl}identity/login`, user,{ withCredentials: true });
   }
 
   revokeToken() {
-    return this.http.post<boolean>(this.baseUrl + 'identity/revokeToken', {});
-  }
+    return this.http.post<RevokeTokenResponseDTO>(`${this.apiUrl}identity/revokeToken`, {}, { withCredentials: true });  }
+  
 }

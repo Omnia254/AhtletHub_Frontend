@@ -1,0 +1,21 @@
+<!-- measurement.component.html
+<div *ngIf="measurement">
+    <h2>Measurement Details</h2>
+    <p>Athlete ID: {{ measurement.athleteId }}</p>
+    <p>Date: {{ measurement.date | date }}</p>
+    <p>Weight: {{ measurement.weightInKg }} kg</p>
+    <p *ngIf="measurement.bodyFatPercentage">Body Fat Percentage: {{ measurement.bodyFatPercentage }}</p>
+    
+  </div>
+   -->
+
+   <div *ngIf="measurement">
+    <h2>Measurement Details</h2>
+    <p>Athlete ID: {{ measurement.athleteId }}</p>
+    <p>Date: {{ measurement.date}}</p>
+    <p>Weight: {{ measurement.weightInKg }} kg</p>
+    <p *ngIf="measurement.bodyFatPercentage">Body Fat Percentage: {{ measurement.bodyFatPercentage }}</p>
+    <!-- Add more fields as needed -->
+    <button (click)="deleteMeasurement(measurement.date)">Delete Measurement</button>
+  </div>
+  

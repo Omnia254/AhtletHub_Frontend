@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth-service/auth.service';
 import { AccountService } from '../../../services/ApIServices/account.service';
 import { LoginInput, UserResponse } from '../../../interfaces';
+import { IsCoachService } from 'src/app/public/services/ApIServices/is-coach.service';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private isCoachService:   IsCoachService
   ) {
     console.log('hhh');
   }
@@ -120,45 +122,72 @@ export class LoginComponent {
   //                          // other wise just show invalid credintals
   //   }
   //     }
-  message = '';
-  checkIfValid(userResponse: UserResponse) {
-    if (userResponse.isValidCredentials) {
-      if (userResponse.isActive) {
-        if (userResponse.roles?.some((c) => c == 'coach')) {
-          if (userResponse.isApproved) this.setUserToken();
-          else this.message = 'show wait for approval please message';
-          this.router.navigate(['../../home']);
-        }
-        else {
-           this.setUserToken();
-         console.log("ssssssssss")
-          this.router.navigate(['../../coaches']);
-        }
+  // // // message = '';
+  // // // checkIfValid(userResponse: UserResponse) {
+  // // //   if (userResponse.isValidCredentials) {
+  // // //     if (userResponse.isActive) {
+  // // //       if (userResponse.roles?.some((c) => c == 'coach')) {
+  // // //         if (userResponse.isApproved) this.setUserToken();
+  // // //         else this.message = 'show wait for approval please message';
+  // // //         this.router.navigate(['../../home']);
+  // // //       }
+  // // //       else {
+  // // //          this.setUserToken();
+  // // //        console.log("ssssssssss")
+  // // //         this.router.navigate(['../../homenav']);
+  // // //       }
 
 
-      }
-    } else this.message = 'other wise just show invalid credintals';
-  }
+  // // //     }
+  // // //   } else this.message = 'other wise just show invalid credintals';
+  // // // }
 
-  logOut()
-  {
 
-    console.log("logout");
-    this.accountService.revokeToken().subscribe({
-
-      next: res => {
-          if(res == true){
-            this.removeToken();
-            this.router.navigate(['../../home']);
-
+    message = '';
+    isCoach = false; 
+    checkIfValid(userResponse: UserResponse) {
+      if (userResponse.isValidCredentials) {
+        if (userResponse.isActive) {
+          if (userResponse.roles?.some((role) => role === 'coach')) {
+            this.isCoachService.isCoach = true;
+            if (userResponse.isApproved) {
+              this.setUserToken();
+              this.router.navigate(['../homenav']);
+            } else {
+              this.message = 'Please wait for approval.';
+            }
+          } else {
+            this.setUserToken();
+            this.isCoach = false;
+            this.router.navigate(['../home']);
           }
+        }
+      } else {
+        this.message = 'Invalid credentials.';
       }
-    });
-  }
+    }
 
-  removeToken()
-  {
-    localStorage.clear();
-  }
+  
+
+  // logOut()
+  // {
+
+  //   console.log("logout");
+  //   this.accountService.revokeToken().subscribe({
+
+  //     next: res => {
+  //         if(res == true){
+  //           this.removeToken();
+  //           this.router.navigate(['../../home']);
+
+  //         }
+  //     }
+  //   });
+  // }
+
+  // removeToken()
+  // {
+  //   localStorage.clear();
+  // }
 
 }

@@ -18,6 +18,13 @@ import { AccountService } from './public/services/ApIServices/account.service';
 import { LoginComponent } from './public/components/ApiComponent/login/login.component';
 import { LogoutComponent } from './public/components/ApiComponent/logout/logout.component';
 import { LoginUserComponent } from './public/components/ApiComponent/login-user/login-user.component';
+import { MeasurementComponent } from './public/components/ApiComponent/measurement/measurement.component';
+import { MeasurementPostComponent } from './public/components/ApiComponent/measurement-post/measurement-post.component';
+import { DeleteMeasurementComponent } from './public/components/ApiComponent/delete-measurement/delete-measurement.component';
+import { AccountSettingComponent } from './public/components/ApiComponent/account-setting/account-setting.component';
+import { ConfirmChangeEmailComponent } from './public/components/ApiComponent/confirm-change-email/confirm-change-email.component';
+import { CoachHomeComponent } from './public/components/ApiComponent/coach-home/coach-home.component';
+import { CreateSubscribtionComponent } from './public/components/ApiComponent/create-subscribtion/create-subscribtion.component';
 
 
 const routes: Routes = [
@@ -39,6 +46,19 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'homenav', // Add a path for the home component
+    component: CoachHomeComponent
+  },
+  
+  {
+    path: 'measurementget', // Add a path for the home component
+    component: MeasurementComponent
+  },
+  {
+    path: 'measurementpost', // Add a path for the home component
+    component: MeasurementPostComponent
+  },
+  {
     path: 'loginuser', // Add a path for the home component
     component: LoginUserComponent
   },
@@ -55,8 +75,16 @@ const routes: Routes = [
     component: SubscribeComponent 
   },
   { 
-    path: 'logout', 
+    path: 'logoutme', 
     component: LogoutComponent 
+  },
+  { 
+    path: 'accountsetting', 
+    component: AccountSettingComponent 
+  },
+  { 
+    path: 'deletemeasurement', 
+    component: DeleteMeasurementComponent 
   },
   { 
     path: 'subscribe/:coachId/:subscribtionId/:subscribtionDurationInMonth/:subscribtionPrice/:subscribtionName', 
@@ -74,6 +102,11 @@ const routes: Routes = [
       path: 'confirmemail',
        component: EmailConfirmationComponent 
      },
+     {
+      path: 'confirmchangeemail',
+       component:ConfirmChangeEmailComponent 
+     },
+     
   { 
       path: 'register', 
       component: RegisterComponent 
@@ -104,6 +137,10 @@ const routes: Routes = [
     component: CoachDetailsComponent, // This component will display detailed information about the coach
   },
 
+  {
+    path: 'addSubscription', // Dynamic route parameter for coachId
+    component: CreateSubscribtionComponent, // This component will display detailed information about the coach
+  },
   {
     // Redirects all paths that are not matching to the 'public' route/path
     path: '**',

@@ -1,0 +1,31 @@
+<!-- measurement-post.component.html -->
+<form (ngSubmit)="addMeasurement()">
+    <!-- Assuming athleteId is provided via binding or input -->
+  
+    <label>Date:</label>
+    <input type="date" [(ngModel)]="newMeasurement.date" name="date" required>
+  
+    <label>Weight (kg):</label>
+    <input type="number" [(ngModel)]="newMeasurement.weightInKg" name="weightInKg" required>
+  
+    <label>Body Fat Percentage:</label>
+    <input type="number" [(ngModel)]="newMeasurement.bodyFatPercentage" name="bodyFatPercentage">
+  
+    <label>BMI:</label>
+    <input type="number" [(ngModel)]="newMeasurement.bmi" name="bmi">
+  
+    <label>Bench Press Weight:</label>
+    <input type="number" [(ngModel)]="newMeasurement.benchPressWeight" name="benchPressWeight">
+  
+    <label>Squat Weight:</label>
+    <input type="number" [(ngModel)]="newMeasurement.squatWeight" name="squatWeight">
+  
+    <label>Deadlift Weight:</label>
+    <input type="number" [(ngModel)]="newMeasurement.deadliftWeight" name="deadliftWeight">
+  
+    <button type="submit">Add Measurement</button>
+</form>
+
+<a routerLink="/measurementget">Get Measurement</a>
+
+<a routerLink="/deletemeasurement">Delete Measurement</a>

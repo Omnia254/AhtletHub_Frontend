@@ -1,0 +1,29 @@
+<div>
+    <h2>Create Subscription</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" [(ngModel)]="command.name" name="name" required />
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input id="price" [(ngModel)]="command.price" name="price" type="number" required />
+      </div>
+      <div>
+        <label for="duration">Duration (Months):</label>
+        <input id="duration" [(ngModel)]="command.durationInMonths" name="durationInMonths" type="number" required />
+      </div>
+      <div>
+        <h3>Features</h3>
+        <button type="button" (click)="addFeature()">Add Feature</button>
+        <div *ngFor="let feature of command.subscribtionsFeatures; let i = index">
+          <label for="featureId">Feature ID:</label>
+          <input [(ngModel)]="feature.featureId" name="featureId-{{i}}" type="number" required />
+          <button type="button" (click)="removeFeature(i)">Remove</button>
+        </div>
+      </div>
+      <button type="submit">Create Subscription</button>
+    </form>
+  </div>
+  
+  <app-coach-subscription></app-coach-subscription>

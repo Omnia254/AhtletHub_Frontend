@@ -1,8 +1,20 @@
-<div class="flex-wrapper">
+<!-- <div class="flex-wrapper">
   <app-nav-bar></app-nav-bar>
   <div style="flex-grow:1;">
     <router-outlet></router-outlet>
   </div>
   <app-about-us></app-about-us>
   
+</div> -->
+
+<div class="flex-wrapper">
+  <app-coachnavbar *ngIf="isCoachService.isCoach; else normalNav"></app-coachnavbar>
+  <ng-template #normalNav>
+    <app-nav-bar></app-nav-bar>
+  </ng-template>
+  <div style="flex-grow: 1;">
+    <router-outlet></router-outlet>
+  </div>
+  <app-about-us></app-about-us>
 </div>
+

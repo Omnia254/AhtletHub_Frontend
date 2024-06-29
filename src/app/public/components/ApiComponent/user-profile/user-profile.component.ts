@@ -53,7 +53,7 @@
 //   }
 // }
 import { Component, OnInit } from '@angular/core';
-import { UpdatedUserDto } from 'src/app/public/Interfaces/User/UpdatedUserDto';
+import { Gender, UpdatedUserDto } from 'src/app/public/Interfaces/User/UpdatedUserDto';
 import { UserService } from 'src/app/public/services/ApIServices/user.service';
 import { UserDto } from 'src/app/public/Interfaces/User/UserDto';
 import {   jwtDecode } from 'jwt-decode';
@@ -73,7 +73,7 @@ export class UserProfileComponent implements OnInit {
     firstName: '',
     lastName: '',
     phoneNumber: '',
-    gender: '',
+    gender: Gender.Male ,
     dateOfBirth: '',
     bio: ''
   };
@@ -110,6 +110,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   private getUserById(id: string): void {
+ 
     this.userService.getUserById(id).subscribe({
       next: (user: UserDto) => {
         console.log('User fetched successfully:', user);
@@ -117,7 +118,17 @@ export class UserProfileComponent implements OnInit {
         this.user.firstName = user.firstName;
         this.user.lastName = user.lastName;
         this.user.phoneNumber = user.phoneNumber;
-        this.user.gender = user.gender;
+        if(user.gender == "Female")
+        {
+          this.user.gender = 1;
+        }
+        else
+        {
+          
+            this.user.gender = 0;
+          
+        }
+        // this.user.gender = user.gender;
         this.user.dateOfBirth = user.dateOfBirth;
         this.user.bio = user.bio;
       },
@@ -128,7 +139,12 @@ export class UserProfileComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.userService.updateUser(this.user).subscribe({
+
+    const commandToSend = {
+      ...this.user,
+      gender: Gender[this.user.gender as unknown as keyof typeof Gender] // Convert enum to number
+    };
+    this.userService.updateUser(commandToSend).subscribe({
       next: (updatedUser: UpdatedUserDto) => {
         console.log('User updated successfully:', updatedUser);
         this.user = updatedUser; // Update local user object with updated data
@@ -138,4 +154,9 @@ export class UserProfileComponent implements OnInit {
       }
     });
   }
+  
+  genderKeys(): string[] {
+    return Object.keys(Gender).filter(k => isNaN(Number(k)));
+  }
+
 }

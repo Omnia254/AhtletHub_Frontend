@@ -1,0 +1,41 @@
+<div class="change-email-container">
+    <h2>Change Email</h2>
+    <form [formGroup]="changeEmailForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="currentEmail">Current Email</label>
+        <input type="email" id="currentEmail" formControlName="currentEmail">
+        <!-- Add validation messages if needed -->
+      </div>
+      <div class="form-group">
+        <label for="newEmail">New Email</label>
+        <input type="email" id="newEmail" formControlName="newEmail">
+        <!-- Add validation messages if needed -->
+      </div>
+      <div class="form-group">
+        <label for="confirmNewEmail">Confirm New Email</label>
+        <input type="email" id="confirmNewEmail" formControlName="confirmNewEmail">
+        <!-- Add validation messages if needed -->
+      </div>
+      <!-- Optional: If clientEmailChangingConfirmationUrl is dynamic, include it here -->
+      <!-- <div class="form-group">
+        <label for="clientEmailChangingConfirmationUrl">Confirmation URL</label>
+        <input type="text" id="clientEmailChangingConfirmationUrl" formControlName="clientEmailChangingConfirmationUrl">
+        Add validation messages if needed
+      </div> -->
+      <button type="submit">Change Email</button>
+    </form>
+  
+    <div *ngIf="response">
+      <h3>Email Change Successful</h3>
+      <p>Entity ID: {{ response.entityId }}</p>
+      <p>User Email to Confirm: {{ response.userEmailToConfirm }}</p>
+      <p>Email Confirmation Link: {{ response.emailConfirmationLink }}</p>
+      <p>Roles: {{ response.roles.join(', ') }}</p>
+    </div>
+  
+    <div *ngIf="error">
+      <h3>Error</h3>
+      <p>{{ error }}</p>
+    </div>
+  </div>
+  

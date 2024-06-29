@@ -4,8 +4,15 @@ export interface UpdatedUserDto {
     firstName?: string;
     lastName?: string;
     phoneNumber?: string;
-    gender?: string; // Adjust as per your enums or types
+    gender?: Gender; // Adjust as per your enums or types
     dateOfBirth?: string; // Use Date or another appropriate type
     bio?: string;
+  }
+  
+
+  // Gender enum
+  export enum Gender {
+    Male = 0,
+    Female = 1
   }
   

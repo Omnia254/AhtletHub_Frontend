@@ -17,16 +17,15 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  log()
+  logout()
   {
-
+console.log("logout");
     this.accountService.revokeToken().subscribe({
-
       next: res => {
-          if(res == true){
+          if(res){
+            console.log(res.isRevoked);
             this.removeToken();
             this.router.navigate(['../../home']);
-
           }
       }
     });
