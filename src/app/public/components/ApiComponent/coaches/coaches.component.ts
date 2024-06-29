@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoachDto, PaginatedResult, SortingDirection, Gender } from '../../../interfaces';
+import { CoachDto, PaginatedResult, SortingDirection, Gender, SearchCriteria, RateFilter, AgeFilter, PriceFilter, SortBy } from '../../../interfaces';
 import { CoachesService } from '../../../services/ApIServices/coaches.service';
 import { AthleteFavoriteService } from 'src/app/public/services/ApIServices/athlete-favorite.service';
 
@@ -20,6 +20,7 @@ export class CoachesComponent implements OnInit {
   currentPage = 1;
   pageSize = 10;
   Gender = Gender;
+  canAddToFavorite?:boolean;
 
   constructor(private coachService: CoachesService,
     private athleteFavoriteService: AthleteFavoriteService 
@@ -30,12 +31,27 @@ export class CoachesComponent implements OnInit {
     this.getAllCoaches();
   }
 
+  genderKeys = Object.entries(Gender).map(([key, value]) => ({ key, value }));
+  rateKeys = Object.entries(RateFilter).map(([key, value]) => ({ key, value }));
+  ageKeys = Object.entries(AgeFilter).map(([key, value]) => ({ key, value }));
+  priceKeys = Object.entries(PriceFilter).map(([key, value]) => ({ key, value }));
+
+  // Define initial filter criteria
+  filterCriteria: SearchCriteria = {
+    includeCoachesRatings: true,
+    searchCritrea: '',
+    genderFilterCritrea: Gender.Male,
+    rateFilterCritrea: RateFilter.moreThanTwo,
+    ageFilterCritrea: AgeFilter.between20and25,
+    priceFilterCritrea: PriceFilter.lessThan500,
+    pageSize: 5,
+    pageNumber: 1,
+    //sortByCritrea: SortBy.Price,
+    sortingDirection: SortingDirection.Ascending,
+  };
   getAllCoaches(queryParams: any = {}): void {
     const query = {
-      pageSize: 5,
-      pageNumber: 1,
-      includeCoachesRatings:false,
-      sortingDirection:SortingDirection.Ascending,
+      ...this.filterCriteria,
       ...queryParams // Merge any additional query parameters
     };
 
@@ -49,6 +65,9 @@ export class CoachesComponent implements OnInit {
         this.hasNextPage = data.hasNextPage;
         this.hasPreviousPage = data.hasPreviousPage;
         this.currentPage = query.pageNumber; // Update current page
+        this.filterCriteria = query; // Update the criteria with the latest state
+console.log(data);
+      
       },
       error: (err) => {
         console.error('Error fetching coaches', err);
@@ -57,6 +76,30 @@ export class CoachesComponent implements OnInit {
   
   }
 
+  updateSearchCriteria(searchValue: string): void {
+      this.getAllCoaches({ searchCritrea: searchValue });
+    }
+
+    updateGenderFilter(event: Event): void {
+      const gender = (event.target as HTMLSelectElement).value;
+      this.getAllCoaches({ genderFilterCritrea: gender || undefined });
+    }
+    
+    updateRateFilter(event: Event): void {
+      const rate = (event.target as HTMLSelectElement).value;
+      this.getAllCoaches({ rateFilterCritrea: rate || undefined });
+    }
+    
+    updateAgeFilter(event: Event): void {
+      const age = (event.target as HTMLSelectElement).value;
+      this.getAllCoaches({ ageFilterCritrea: age || undefined });
+    }
+    
+    updatePriceFilter(event: Event): void {
+      const price = (event.target as HTMLSelectElement).value;
+      this.getAllCoaches({ priceFilterCritrea: price || undefined });
+    }
+    
   goToPage(pageNumber: number): void {
     if (pageNumber > 0 && pageNumber <= this.totalPages) {
       this.getAllCoaches({ pageNumber });
@@ -65,7 +108,9 @@ export class CoachesComponent implements OnInit {
   addToFavorite(coachId: number) {
     this.athleteFavoriteService.addToFavorite(coachId).subscribe({
       next: (data) => {
+        
         // Handle success if needed
+        return data.canAddToFavourite;
         console.log('Coach added to favorites:', data);
         // You can add further UI updates or actions upon successful addition
       },

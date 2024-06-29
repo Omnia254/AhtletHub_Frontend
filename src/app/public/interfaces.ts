@@ -101,49 +101,51 @@ export interface UserResponse {
 export interface SearchCriteria {
   includeCoachesRatings: boolean;
   searchCritrea?: string;
-  genderFilterCritrea?: Gender;
-  rateFilterCritrea?: RateFilter;
-  ageFilterCritrea?: AgeFilter;
-  priceFilterCritrea?: PriceFilter;
+  genderFilterCritrea?: Gender |null;
+  rateFilterCritrea?: RateFilter|null;
+  ageFilterCritrea?: AgeFilter|null;
+  priceFilterCritrea?: PriceFilter|null;
   pageSize: number;
   pageNumber: number;
-  sortByCritrea?: SortBy;
+  sortByCritrea?: SortBy|null;
   sortingDirection: SortingDirection;
 }
 
 export enum Gender {
-  Male = 'Male',
-  Female = 'Female'
+  Male = 0,
+  Female = 1
  
 }
 
 export enum RateFilter {
-  Low = 'Low',
-  Medium = 'Medium',
-  High = 'High'
+  moreThanOne=0,
+  moreThanTwo=1,
+  moreThanThree=2, 
+  moreThanFour=3
 }
 
 export enum AgeFilter {
-  Young = 'Young',
-  MiddleAged = 'MiddleAged',
-  Senior = 'Senior'
+  lessThan20=0,
+ between20and25=1,
+ between25and30=2,
+ moeThan30=3
 }
 
 export enum PriceFilter {
-  Cheap = 'Cheap',
-  Moderate = 'Moderate',
-  Expensive = 'Expensive'
+  lessThan500=0,
+between500and1000=1,
+between1000and1500=2,
+moreThan1500=3
 }
 
 export enum SortBy {
-  Rate = 'rate',
-  Price = 'price',
-  Age = 'age'
+  rate=0,
+  Price=1
 }
 
 export enum SortingDirection {
-  Ascending = 'Ascending',
-  Descending = 'Descending'
+  Ascending = 0,
+  Descending = 1
 }
 
 
