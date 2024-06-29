@@ -20,6 +20,7 @@ export class CoachesService {
         params = params.set(key, query[key]);
       }
     }
+    console.log(this);
     return this.http.get<PaginatedResult<CoachDto>>(`${this.apiUrl}coaches`, { params });
     
   }

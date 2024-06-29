@@ -1,0 +1,35 @@
+img{
+    width: 200px;
+    height: 200px;
+}
+.coach-details{
+    background-image: url("../../../../../assets/Images/coach-details-background.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    color: white;
+    flex-grow:1;
+}
+.card{
+    color:black;
+    background-color:rgba(255, 255, 255, 0.623) !important;
+    transition: all 0.3s ease;
+}
+.card:hover{
+    background-color: white !important;
+    transition: background-color 0.3s ease-in-out;
+}
+.subscribe{
+    color: #f98c00;
+    background-color: transparent;
+    border:#f98c00 1px solid;
+}
+.subscribe:hover{
+    color: white;
+    background-color: #f98c00;
+    border:white 1px solid;
+}
+.subscribe:focus{
+    color: white;
+    background-color: #ff6200;
+    border:white 1px solid;
+}

@@ -14,6 +14,7 @@ header .nav-bar {
 header .nav-logo {
     font-size: 1.7em;
     font-weight: bold;
+    font-family: "Playwrite NZ", cursive;
     color: #fff;
   }
 
@@ -47,4 +48,22 @@ header nav ul li a {
 
 header nav ul li a:hover {
     background-color: #555;
+    color: #f98c00 !important;
+    border-bottom:#f98c00 solid 2px !important;
+    border-inline:#f98c00 solid 2px !important;
+    transition: all 0.5s ease;
+}
+
+a.active{
+    color: #f98c00 !important;
+    background-color: #333;
+    font-weight:bold;
+    border-bottom:#f98c00 solid 2px !important;
+    border-inline:#f98c00 solid 2px !important;
+}
+h2 a, h2 a:active{
+    color:white !important;
+    text-decoration: none;
+    border-bottom: solid 0px !important;
+    border-inline: solid 0px !important;
 }

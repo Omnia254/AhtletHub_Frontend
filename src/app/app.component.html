@@ -1,8 +1,10 @@
 <div class="flex-wrapper">
   <app-nav-bar></app-nav-bar>
-  <div style="flex-grow:1;">
+  <div class="flex-grow-1 d-flex flex-column">
     <router-outlet></router-outlet>
   </div>
-  <app-about-us></app-about-us>
+  <footer class="footer">
+    <app-about-us></app-about-us>
+  </footer>
   
 </div>
