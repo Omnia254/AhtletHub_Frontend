@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoachDto, PaginatedResult, SortingDirection } from '../../../interfaces';
+import { CoachDto, PaginatedResult, SortingDirection, Gender } from '../../../interfaces';
 import { CoachesService } from '../../../services/ApIServices/coaches.service';
 import { AthleteFavoriteService } from 'src/app/public/services/ApIServices/athlete-favorite.service';
 
@@ -19,6 +19,7 @@ export class CoachesComponent implements OnInit {
   hasPreviousPage = false;
   currentPage = 1;
   pageSize = 10;
+  Gender = Gender;
 
   constructor(private coachService: CoachesService,
     private athleteFavoriteService: AthleteFavoriteService 
@@ -39,7 +40,6 @@ export class CoachesComponent implements OnInit {
     };
 
     this.coachService.getAllCoaches(query).subscribe({
-      
       next: (data: PaginatedResult<CoachDto>) => {
         this.coaches = data.items;
         this.totalItemsCount = data.totalItemsCount;

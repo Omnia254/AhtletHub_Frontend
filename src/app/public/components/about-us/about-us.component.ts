@@ -10,18 +10,19 @@ export class AboutUsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.showAboutUsAndFooter();
   }
   aboutUsVisible = false;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const pos = (document.documentElement.scrollTop || document.body.scrollTop) + window.innerHeight;
-    const max = document.documentElement.scrollHeight;
+  // @HostListener('window:scroll', [])
+  // onWindowScroll() {
+  //   const pos = (document.documentElement.scrollTop || document.body.scrollTop) + window.innerHeight;
+  //   const max = document.documentElement.scrollHeight;
 
-    if (pos >= max) {
-      this.showAboutUsAndFooter();
-    }
-  }
+  //   if (pos >= max) {
+  //     this.showAboutUsAndFooter();
+  //   }
+  // }
 
   showAboutUsAndFooter() {
     this.aboutUsVisible = true;

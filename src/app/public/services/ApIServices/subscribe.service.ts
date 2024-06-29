@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SubscribeCommand } from './../../Interfaces/Athlete/SubscribeCommand';
-import {  AthleteActiveSubscribtionDto } from './../../Interfaces/Athlete/AthleteActiveSubscribtionDto';
+import { AthleteActiveSubscribtionDto } from './../../Interfaces/Athlete/AthleteActiveSubscribtionDto';
 
 @Injectable({
   providedIn: 'root'

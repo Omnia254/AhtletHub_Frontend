@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <h1>Calorie Calculator</h1>
     <form (ngSubmit)="calculateCalories()">
       <div>
@@ -31,4 +31,87 @@
       <h2>Your TDEE is: {{ tdee }} calories/day</h2>
     </div>
   </div>
-  
+   -->
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     <style>
+       .form-control:focus {
+         border-color: #f98c00;
+         box-shadow: 0 0 0 0.2rem rgba(249, 140, 0, 0.25);
+       }
+   
+       .custom-select:focus {
+         border-color: #f98c00;
+         box-shadow: 0 0 0 0.2rem rgba(249, 140, 0, 0.25);
+       }
+   
+       .custom-select option:checked,
+       .custom-select option:hover {
+         background-color: #f98c00;
+         color: white;
+       }
+   
+       .btn-custom {
+         background-color: #f98c00;
+         color: white;
+       }
+   
+       .btn-custom:hover {
+         background-color: #e07c00;
+         color: white;
+       }
+     </style>
+     <title>Calorie Calculator</title>
+   </head>
+   <body class="page">
+     <div class="container py-5">
+       <div class="card shadow-lg" style="border-color: #f98c00;">
+         <div class="card-header text-white text-center" style="background-color: #f98c00; height: 45px;">
+           <h2>Calorie Calculator</h2>
+         </div>
+         <div class="card-body">
+           <form (ngSubmit)="calculateCalories()">
+             <div class="form-group">
+               <label for="weight">Weight (kg):</label>
+               <input type="number" id="weight" [(ngModel)]="command.weight" name="weight" required class="form-control">
+             </div>
+             <div class="form-group">
+               <label for="height">Height (cm):</label>
+               <input type="number" id="height" [(ngModel)]="command.height" name="height" required class="form-control">
+             </div>
+             <div class="form-group">
+               <label for="age">Age:</label>
+               <input type="number" id="age" [(ngModel)]="command.age" name="age" required class="form-control">
+             </div>
+             <div class="form-group">
+               <label for="gender">Gender:</label>
+               <select id="gender" [(ngModel)]="command.gender" name="gender" required class="form-control custom-select">
+                 <option *ngFor="let g of genderKeys()" [value]="g">{{ g }}</option>
+               </select>
+             </div>
+             <div class="form-group">
+               <label for="dailyActivityRate">Daily Activity Rate:</label>
+               <select id="dailyActivityRate" [(ngModel)]="command.dailyActivityRate" name="dailyActivityRate" required class="form-control custom-select">
+                 <option *ngFor="let dar of dailyActivityRateKeys()" [value]="dar">{{ dar }}</option>
+               </select>
+             </div>
+             <div class="text-center">
+               <button type="submit" class="btn btn-custom">Calculate</button>
+             </div>
+           </form>
+           <div *ngIf="tdee !== null" class="mt-4">
+             <h2 class="text-center">Your TDEE is: {{ tdee }} calories/day</h2>
+           </div>
+         </div>
+       </div>
+     </div>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </body>
+   </html>
+   

@@ -45,9 +45,9 @@
   }
   
   .filter-panel {
-    background-color: #fff;
+    background-color: #ffffffca;
     padding: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -77,4 +77,9 @@
     flex-direction: column;
   }
   
-  
+::ng-deep .mat-radio-outer-circle{
+  border-color: #f98c00 !important;
+}
+::ng-deep .mat-radio-inner-circle{
+  background-color: #f98c00 !important;
+}

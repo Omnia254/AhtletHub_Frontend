@@ -1,23 +1,33 @@
 <!-- coach-detail.component.html -->
-<div *ngIf="coach; else notFound">
-    <h2>{{ coach.firstName }} {{ coach.lastName }}</h2>
-    <p><strong>Gender:</strong> {{ coach.gender }}</p>
-    <p><strong>Date of Birth:</strong> {{ coach.dateOfBirth }}</p>
-    <p><strong>Bio:</strong> {{ coach.bio }}</p>
-    <p><strong>Ratings Count:</strong> {{ coach.ratingsCount }}</p>
-    <p><strong>Overall Rating:</strong> {{ coach.overallRating }}</p>
-    <!-- Display other fields as needed -->
-    
-    <div *ngFor="let subscription of coach.subscribtions">
-      <h4>{{ subscription.name }}</h4>
-      <p>Price: {{ subscription.price }}</p>
-      <p>Duration: {{ subscription.durationInMonths }} months</p>
-      <button (click)="subscribe(coach.id, subscription.id, subscription.durationInMonths, subscription.price, subscription.name)">Subscribe</button>
-
+<div class="coach-details d-flex row pt-3 px-3 flex-grow-1" *ngIf="coach; else notFound">
+  <div class="img-container d-flex flex-row col-auto">  
+    <img class="rounded-circle border" src="{{ coach.sasProfilePicture === null? 'assets/Images/default-pp.jpg': coach.sasProfilePicture }}"/>
+    <div class="mx-3">
+      <h1><strong>{{ coach.firstName }} {{ coach.lastName }}</strong></h1>
+      <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Female" : "Male" }}</p>
+      <p><strong>Date of Birth:</strong> {{ coach.dateOfBirth }}</p>
+      <p><strong>Bio:</strong> {{ coach.bio?.length == undefined ? "This coach has no bio" : coach.bio }}</p>
+      <p><strong>Ratings Count:</strong> {{ coach.ratingsCount }}</p>
+      <p><strong>Overall Rating:</strong> {{ coach.overallRating }}</p>
     </div>
-
   </div>
-  <ng-template #notFound>
-    <p>{{ errorMessage }}</p>
-  </ng-template>
+    <!-- Display other fields as needed -->
+  <div class="mx-3 my-5 row flex-grow-1 justify-content-around">
+    <div class="card p-3 col col-3 shadow bg-white rounded" *ngFor="let subscription of coach.subscribtions">
+      <h1><strong>{{ subscription.name }}</strong></h1>
+      <p>Price: {{ subscription.price }}$</p>
+      <p>Duration: {{ subscription.durationInMonths }} months</p>
+      <h4 style="margin:0px;">Features:</h4>
+      <div class="mb-3">
+        <li *ngFor="let feature of subscription.subscribtionsFeatures">{{feature.name}}</li>
+      </div>
+      <button style="margin-top: auto" class="subscribe btn btn-primary align-content-end" (click)="subscribe(coach.id, subscription.id, subscription.durationInMonths, subscription.price, subscription.name)">Subscribe</button>
+      
+    </div>
+  </div>
+
+</div>
+<ng-template #notFound>
+  <p>{{ errorMessage }}</p>
+</ng-template>
   
