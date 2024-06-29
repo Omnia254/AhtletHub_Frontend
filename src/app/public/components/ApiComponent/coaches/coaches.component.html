@@ -1,18 +1,44 @@
-<div *ngIf="coaches.length; else noCoaches">
-  <div *ngFor="let coach of coaches">
-    <h3>{{ coach.firstName }} {{ coach.lastName }}</h3>
-    <p>{{ coach.bio }}</p>
-    <!-- Add more coach details as needed -->
-
-    <li><a [routerLink]="['/coachdetail', coach.id]">Details</a></li>
-    <button (click)="addToFavorite(coach.id)">Add to Favorites</button>
-
+<div id="search-container" class="pt-3">
+  <div class="d-flex">
+    <br>
+    <aside class="col-lg-2 col-md-3 me-3">
+      <app-coach-filter></app-coach-filter>
+    </aside>
+    <div class="flex-grow-1 align-content-start">
+      <div class="col-1 search-bar">
+        <input type="text" placeholder="Search coaches...">
+      </div>
+      <section class="d-flex row flex-grow-1" style="margin-right: 0px;">
+        <div class="flex-grow-1">
+          <div class="card col-3 offset-1 p-3" *ngFor="let coach of coaches">
+            <div *ngIf="coaches.length; else noCoaches">
+              <div class="d-flex">
+                <div class="me-3">
+                  <img class="rounded-circle border" src="{{ coach.sasProfilePicture === null? 'assets/Images/default-pp.jpg': coach.sasProfilePicture }}"/>
+                </div>
+                <div>
+                  <h2><strong>{{ coach.firstName }} {{ coach.lastName }}</strong></h2>
+                  <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Female" : "Male" }}</p>
+                  <p><strong>Ratings Count:</strong> {{ coach.ratingsCount }}</p>
+                  <p><strong>Overall Rating:</strong> {{ coach.overallRating }}</p>
+                </div>
+              </div>
+              <div>
+                <a [routerLink]="['/coachdetail', coach.id]"><button class="btn btn-primary w-100 mb-1">Details</button></a>
+              </div>
+              <div>
+                <button class="btn btn-secondary w-100" (click)="addToFavorite(coach.id)">Add to Favorites</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-self-end justify-content-between me-5">
+          <button class="btn btn-primary" (click)="goToPage(currentPage - 1)" [disabled]="!hasPreviousPage">Previous</button>
+          <button class="btn btn-primary" (click)="goToPage(currentPage + 1)" [disabled]="!hasNextPage">Next</button>
+        </div>
+      </section>
+    </div>
   </div>
-  <div>
-    <button (click)="goToPage(currentPage - 1)" [disabled]="!hasPreviousPage">Previous</button>
-    <button (click)="goToPage(currentPage + 1)" [disabled]="!hasNextPage">Next</button>
-  </div>
-
 </div>
 <ng-template #noCoaches>
   <p>There are no coaches with that criteria</p>

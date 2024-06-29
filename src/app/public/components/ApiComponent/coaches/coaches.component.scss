@@ -1,0 +1,41 @@
+.search-bar {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content:end;
+    margin-bottom: 20px;
+    height:5%;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+.search-bar input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+section{
+    min-height: 91%;
+}
+
+button a{
+    text-decoration: none;
+    color:white;
+}
+button{
+    background-color:#f98c00 !important;
+}
+.btn{
+    border-color: transparent;
+}
+.card{
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+#search-container{
+    background-image: url("https://www.datocms-assets.com/61076/1663109402-your-personality-as-a-personal-trainer.jpg");
+    background-size: cover;
+}
