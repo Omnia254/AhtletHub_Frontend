@@ -5,7 +5,6 @@ import { HomeComponent } from './public/components/home/home.component';
 import { CoachListComponent } from './public/components/coach-list/coach-list.component';
 import { CoachDetailsComponent } from './public/components/coach-details/coach-details.component'; // Import the CoachDetailsComponent
 import { UserProfileComponent } from './public/components/ApiComponent/user-profile/user-profile.component';
-import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
 import { SubscriptionComponent } from './public/components/subscription/subscription.component';
 import { CoachesComponent } from './public/components/ApiComponent/coaches/coaches.component';
 import { CoachesDetailComponent } from './public/components/ApiComponent/coaches-detail/coaches-detail.component';
@@ -25,6 +24,10 @@ import { AccountSettingComponent } from './public/components/ApiComponent/accoun
 import { ConfirmChangeEmailComponent } from './public/components/ApiComponent/confirm-change-email/confirm-change-email.component';
 import { CoachHomeComponent } from './public/components/ApiComponent/coach-home/coach-home.component';
 import { CreateSubscribtionComponent } from './public/components/ApiComponent/create-subscribtion/create-subscribtion.component';
+import { FavoriteCoachesComponent } from './public/components/ApiComponent/favorite-coaches/favorite-coaches.component';
+import { AthleteSubscriptionComponent } from './public/components/ApiComponent/athlete-subscription/athlete-subscription.component';
+import { ResetPasswordComponent } from './public/components/ApiComponent/reset-password/reset-password.component';
+import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-reset/confirm-reset.component';
 
 
 const routes: Routes = [
@@ -130,6 +133,18 @@ const routes: Routes = [
   {
     path: 'sub', // Add a path for the home component
     component: SubscriptionComponent
+  },
+  {
+    path: 'resetpassword', // Add a path for the home component
+    component: ResetPasswordComponent
+  },
+  {
+    path: 'confirmresetpassword', // Add a path for the home component
+    component: ConfirmResetComponent
+  },
+  {
+    path: 'ahtletesub', // Add a path for the home component
+    component: AthleteSubscriptionComponent
   },
   // { path: 'payment', component: PaymentComponent },
   {

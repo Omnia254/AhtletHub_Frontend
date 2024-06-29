@@ -32,10 +32,10 @@ export class ConfirmChangeEmailComponent {
 
     private confirmEmail = () => {
   
-      const useroldemail = this._route.snapshot.queryParams['useroldemail'];
+      const useroldemail = this._route.snapshot.queryParams['oldemail'];
       const token = this._route.snapshot.queryParams['token'];
-      const email = this._route.snapshot.queryParams['email'];
-  
+      const email = this._route.snapshot.queryParams['newemail'];
+      console.log(useroldemail,token,email);
         this.emailService.confirmChangeEmail(useroldemail,email, token)
           .subscribe({
            

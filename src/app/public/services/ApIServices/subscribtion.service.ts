@@ -66,4 +66,18 @@ export class SubscribtionService implements OnInit{
      console.log(params);
     return this.http.get<PageResults<Subscription>>(`${this.apiUrl}coaches/${this.coach}/subscribtions`, { params });
   }
+
+  getAthleteSubscriptions(includeSubscriptionFeature: boolean, sortByCriteria: string, sortingDirection: string): Observable<Subscription[]> {
+    const params = {
+      includeSubscribtionFeature: includeSubscriptionFeature.toString(),
+      sortByCritrea: sortByCriteria,
+      sortingDirection: sortingDirection
+    };
+
+    return this.http.get<Subscription[]>(`${this.apiUrl}AthleteSubscribtion`, { params })
+      .pipe(
+        //catchError(this.handleError)
+      );
+  }
+
 }

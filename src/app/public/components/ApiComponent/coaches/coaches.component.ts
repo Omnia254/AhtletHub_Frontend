@@ -110,7 +110,8 @@ console.log(data);
       next: (data) => {
         
         // Handle success if needed
-        return data.canAddToFavourite;
+      //  return data.canAddToFavourite;
+      console.log(data);
         console.log('Coach added to favorites:', data);
         // You can add further UI updates or actions upon successful addition
       },
