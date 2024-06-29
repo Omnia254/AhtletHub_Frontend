@@ -39,6 +39,7 @@ import { CustomEncoder } from './public/custom-encoder';
 import { EmailConfirmationComponent } from './public/components/ApiComponent/email-confirmation/email-confirmation.component';
 import { SendEmailComponent } from './public/components/ApiComponent/send-email/send-email.component';
 import { LogoutComponent } from './public/components/ApiComponent/logout/logout.component';
+import { LoginUserComponent } from './public/components/ApiComponent/login-user/login-user.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -74,6 +75,7 @@ export function tokenGetter() {
     EmailConfirmationComponent,
     SendEmailComponent,
     LogoutComponent,
+    LoginUserComponent,
     //AddToFavoriteComponent,
     
 

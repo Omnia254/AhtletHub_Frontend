@@ -17,6 +17,7 @@ import { EmailConfirmationComponent } from './public/components/ApiComponent/ema
 import { AccountService } from './public/services/ApIServices/account.service';
 import { LoginComponent } from './public/components/ApiComponent/login/login.component';
 import { LogoutComponent } from './public/components/ApiComponent/logout/logout.component';
+import { LoginUserComponent } from './public/components/ApiComponent/login-user/login-user.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'home', // Add a path for the home component
     component: HomeComponent
+  },
+  {
+    path: 'loginuser', // Add a path for the home component
+    component: LoginUserComponent
   },
   {
     path: 'coaches',
