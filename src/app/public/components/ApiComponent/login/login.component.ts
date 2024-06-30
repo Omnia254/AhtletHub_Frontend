@@ -1,8 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, Output, inject, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth-service/auth.service';
+import { AuthService } from 'src/app/public/services/ApIServices/auth.service';
 import { AccountService } from '../../../services/ApIServices/account.service';
 import { LoginInput, UserResponse } from '../../../interfaces';
 import { IsCoachService } from 'src/app/public/services/ApIServices/is-coach.service';
@@ -13,7 +13,6 @@ import { IsCoachService } from 'src/app/public/services/ApIServices/is-coach.ser
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   user: LoginInput = {
     userNameOrEmail: '',
     password: '',
@@ -30,7 +29,6 @@ export class LoginComponent {
     accessToken: '',
     accessTokenExpiration: new Date(),
     refreshTokenExpiration: new Date(),
-    //Athletid
   };
 
   constructor(
@@ -39,29 +37,9 @@ export class LoginComponent {
     private accountService: AccountService,
     private isCoachService:   IsCoachService
   ) {
-    console.log('hhh');
   }
 
-  // login() {
-  //   if (!this.loginForm.valid) {
-  //     return;
-  //   }
-  //   this.authService
-  //     .login(this.loginForm.value)
-  //     .pipe
-
-  //     // route to protected/dashboard, if login was successfull
-  //     // tap(() => this.router.navigate(['../../home']))
-  //     ()
-  //     .subscribe();
-
-  //   console.log(this.loginForm.value);
-  // }
-
   newLogin() {
-    console.log('kkk');
-
-    console.log(this.user);
 
     this.accountService.login(this.user).subscribe({
       next: (res) => {
@@ -90,57 +68,8 @@ export class LoginComponent {
 
   isvaildlogin(userResponse: UserResponse): boolean {
     return false;
-
-    // if isvalid crednital --> if islocked ? show lockout end,
-    // if not chehck if isactive
-    //     if is active, check if roles.contains(coach)
-    //     if is coach && isapproaved --> login
-    //     if is not coach --> log in to active
   }
-  //   check(test:any)
-  //   {
-  // if(test.isValidCredentials)
-  //   {
-  //     {if(test.isActive)}
-  //     {
-  //       if(test.roles.contains("coach"))
-  //         {
-  //           if(test.isapproaved)
-  //                //log him in
-  //           else
-  //              //show wait for approval please
-  //       }
-  //       else
-  //          //log him in
-  //     }
-  //        //redirect to activation page
-  //   }
-  //   else
-  //   {
-  //     test.islocked== null //show invalid credintals + tell user he is locked untill
-  //Test.lockoutEnd,
-  //                          // other wise just show invalid credintals
-  //   }
-  //     }
-  // // // message = '';
-  // // // checkIfValid(userResponse: UserResponse) {
-  // // //   if (userResponse.isValidCredentials) {
-  // // //     if (userResponse.isActive) {
-  // // //       if (userResponse.roles?.some((c) => c == 'coach')) {
-  // // //         if (userResponse.isApproved) this.setUserToken();
-  // // //         else this.message = 'show wait for approval please message';
-  // // //         this.router.navigate(['../../home']);
-  // // //       }
-  // // //       else {
-  // // //          this.setUserToken();
-  // // //        console.log("ssssssssss")
-  // // //         this.router.navigate(['../../homenav']);
-  // // //       }
 
-
-  // // //     }
-  // // //   } else this.message = 'other wise just show invalid credintals';
-  // // // }
 
 
     message = '';
@@ -152,6 +81,7 @@ export class LoginComponent {
             this.isCoachService.isCoach = true;
             if (userResponse.isApproved) {
               this.setUserToken();
+              this.authService.loggingIn();
               this.router.navigate(['../homenav']);
             } else {
               this.message = 'Please wait for approval.';
@@ -159,35 +89,14 @@ export class LoginComponent {
           } else {
             this.setUserToken();
             this.isCoach = false;
+            this.authService.loggingIn();
             this.router.navigate(['../home']);
           }
         }
+
       } else {
         this.message = 'Invalid credentials.';
       }
     }
-
-  
-
-  // logOut()
-  // {
-
-  //   console.log("logout");
-  //   this.accountService.revokeToken().subscribe({
-
-  //     next: res => {
-  //         if(res == true){
-  //           this.removeToken();
-  //           this.router.navigate(['../../home']);
-
-  //         }
-  //     }
-  //   });
-  // }
-
-  // removeToken()
-  // {
-  //   localStorage.clear();
-  // }
 
 }

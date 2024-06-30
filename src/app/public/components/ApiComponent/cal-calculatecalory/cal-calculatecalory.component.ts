@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { CalCalculatecaloryCommand, DailyActivityRate, Gender } from 'src/app/public/Interfaces/Athlete/cal-calculatecalory.interface';
 
 import { CalCalculatecaloryService } from 'src/app/public/services/ApIServices/cal-calculatecalory.service';
@@ -17,7 +17,7 @@ export class CalCalculatecaloryComponent {
     dailyActivityRate: DailyActivityRate.Sedentary // Default to Sedentary
   };
   tdee: number | null = null;
-
+  @HostBinding('class') dFlex = 'd-flex flex-grow-1';
   constructor(private calCalculatecaloryService: CalCalculatecaloryService) { }
 
   calculateCalories(): void {

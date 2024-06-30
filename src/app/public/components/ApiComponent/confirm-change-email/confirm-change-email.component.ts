@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/public/services/ApIServices/user.service';
@@ -16,7 +16,7 @@ export class ConfirmChangeEmailComponent {
   //confirmChangeEmailForm: FormGroup;
   successMessage: string | undefined;
   errorMessage: string | undefined;
-
+  @HostBinding('class') dFlex = 'd-flex flex-grow-1';
 
   constructor(private fb: FormBuilder, private emailService: UserService,private _route:ActivatedRoute) {
     // this.confirmChangeEmailForm = this.fb.group({
@@ -32,10 +32,10 @@ export class ConfirmChangeEmailComponent {
 
     private confirmEmail = () => {
   
-      const useroldemail = this._route.snapshot.queryParams['useroldemail'];
+      const useroldemail = this._route.snapshot.queryParams['oldemail'];
       const token = this._route.snapshot.queryParams['token'];
-      const email = this._route.snapshot.queryParams['email'];
-  
+      const email = this._route.snapshot.queryParams['newemail'];
+      console.log(useroldemail,token,email);
         this.emailService.confirmChangeEmail(useroldemail,email, token)
           .subscribe({
            

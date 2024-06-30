@@ -1,0 +1,11 @@
+<!-- site-info.component.html -->
+<div *ngIf="siteInfo">
+    <p>Coach Count: {{ siteInfo.coachCount }}</p>
+    <p>Athlete Count: {{ siteInfo.athleteCount }}</p>
+    <p>Active Subscriptions: {{ siteInfo.activeSubscriptionCount }}</p>
+    <p>Total Subscriptions: {{ siteInfo.totalSubscribtionsCount }}</p>
+  </div>
+  <div *ngIf="!siteInfo">
+    <p>Loading site information...</p>
+  </div>
+  

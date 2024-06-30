@@ -5,7 +5,6 @@ import { HomeComponent } from './public/components/home/home.component';
 import { CoachListComponent } from './public/components/coach-list/coach-list.component';
 import { CoachDetailsComponent } from './public/components/coach-details/coach-details.component'; // Import the CoachDetailsComponent
 import { UserProfileComponent } from './public/components/ApiComponent/user-profile/user-profile.component';
-import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
 import { SubscriptionComponent } from './public/components/subscription/subscription.component';
 import { CoachesComponent } from './public/components/ApiComponent/coaches/coaches.component';
 import { CoachesDetailComponent } from './public/components/ApiComponent/coaches-detail/coaches-detail.component';
@@ -25,6 +24,14 @@ import { AccountSettingComponent } from './public/components/ApiComponent/accoun
 import { ConfirmChangeEmailComponent } from './public/components/ApiComponent/confirm-change-email/confirm-change-email.component';
 import { CoachHomeComponent } from './public/components/ApiComponent/coach-home/coach-home.component';
 import { CreateSubscribtionComponent } from './public/components/ApiComponent/create-subscribtion/create-subscribtion.component';
+import { FavoriteCoachesComponent } from './public/components/ApiComponent/favorite-coaches/favorite-coaches.component';
+import { AthleteSubscriptionComponent } from './public/components/ApiComponent/athlete-subscription/athlete-subscription.component';
+import { ResetPasswordComponent } from './public/components/ApiComponent/reset-password/reset-password.component';
+import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-reset/confirm-reset.component';
+import { CoachSubscriptionComponent } from './public/components/ApiComponent/coach-subscription/coach-subscription.component';
+import { SiteInfoComponent } from './public/components/ApiComponent/site-info/site-info.component';
+import { PaymentSuccessComponent } from './public/components/ApiComponent/payment-success/payment-success.component';
+import { PaymentCancelComponent } from './public/components/ApiComponent/payment-cancel/payment-cancel.component';
 
 
 const routes: Routes = [
@@ -131,6 +138,18 @@ const routes: Routes = [
     path: 'sub', // Add a path for the home component
     component: SubscriptionComponent
   },
+  {
+    path: 'resetpassword', // Add a path for the home component
+    component: ResetPasswordComponent
+  },
+  {
+    path: 'confirmresetpassword', // Add a path for the home component
+    component: ConfirmResetComponent
+  },
+  {
+    path: 'ahtletesub', // Add a path for the home component
+    component: AthleteSubscriptionComponent
+  },
   // { path: 'payment', component: PaymentComponent },
   {
     path: 'coach/:coachId', // Dynamic route parameter for coachId
@@ -140,6 +159,24 @@ const routes: Routes = [
   {
     path: 'addSubscription', // Dynamic route parameter for coachId
     component: CreateSubscribtionComponent, // This component will display detailed information about the coach
+  },
+  {
+    path: 'getSubscription', // Dynamic route parameter for coachId
+    component: CoachSubscriptionComponent, // This component will display detailed information about the coach
+  },
+
+  //Admin
+  {
+    path: 'siteinfo', // Dynamic route parameter for coachId
+    component: SiteInfoComponent, // This component will display detailed information about the coach
+  },
+  {
+    path: 'successpayment', 
+    component: PaymentSuccessComponent, 
+  },
+  {
+    path: 'cancelpayment', 
+    component: PaymentCancelComponent, 
   },
   {
     // Redirects all paths that are not matching to the 'public' route/path

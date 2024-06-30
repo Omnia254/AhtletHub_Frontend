@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CoachesService } from '../../../services/ApIServices/coaches.service';
 import { CoachDto,Gender } from '../../../interfaces';
 import { AthleteFavoriteService } from 'src/app/public/services/ApIServices/athlete-favorite.service';
+import { SubscribeService } from 'src/app/public/services/ApIServices/subscribe.service';
+import { CheckSubscribeResponseDto } from 'src/app/public/Interfaces/Athlete/CheckSubscribeResponseDto';
 
 @Component({
   selector: 'app-coach-detail',
@@ -22,6 +24,8 @@ export class CoachesDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private coachService: CoachesService,
+    private subscribeService:SubscribeService
+
 
   ) { }
 
@@ -31,7 +35,7 @@ export class CoachesDetailComponent implements OnInit {
     this.coachService.getCoachById(id).subscribe(
       (data: CoachDto) => {
         this.coach = data;
-        console.log(this.coach.bio?.length);
+       // console.log(this.coach.bio?.length);
       },
       (error) => {
         this.errorMessage = 'There is no coach with the specified ID : ' + id;
@@ -39,8 +43,34 @@ export class CoachesDetailComponent implements OnInit {
     );
   }
 
-  subscribe(coachId: number, subscribtionId: number,subscribtionDurationInMonth:number,subscribtionPrice:number,subscribtionName:string) {
-    this.router.navigate(['/subscribe', coachId, subscribtionId,subscribtionDurationInMonth,subscribtionPrice,subscribtionName]);
+  // subscribe(coachId: number, subscribtionId: number,subscribtionDurationInMonth:number,subscribtionPrice:number,subscribtionName:string) {
+  //   this.router.navigate(['/subscribe', coachId, subscribtionId,subscribtionDurationInMonth,subscribtionPrice,subscribtionName]);
 
+  // }
+  subscribe(coachId: number, subscriptionId: number, subscriptionDurationInMonths: number, subscriptionPrice: number, subscriptionName: string) {
+   console.log(coachId, subscriptionId, subscriptionDurationInMonths, subscriptionPrice, subscriptionName);
+    this.subscribeService.checkSubscribeAbility(coachId, subscriptionId).subscribe(
+      (response: CheckSubscribeResponseDto) => {
+        if (response.canSubscribe) {
+          this.subscribeService.createCheckoutSession(subscriptionPrice, subscriptionName, 0, subscriptionId).subscribe(
+            response => {
+              console.log('Checkout session URL:', response.sessionUrl);
+              window.location.href = response.sessionUrl; // Redirect user to the checkout session
+            },
+            error => {
+              console.error('Error creating checkout session:', error);
+              // Handle error accordingly
+            }
+          );
+        //  console.log(response.canSubscribe);
+         // this.router.navigate(['/subscribe', coachId, subscriptionId, subscriptionDurationInMonths, subscriptionPrice, subscriptionName]);
+        } else {
+          this.errorMessage = response.message;
+        }
+      },
+      (error) => {
+        this.errorMessage = 'Error checking subscription ability';
+      }
+    );
   }
 }

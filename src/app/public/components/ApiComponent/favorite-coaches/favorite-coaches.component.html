@@ -1,0 +1,27 @@
+<div class="background">
+  <div class="container mt-5">
+    <h2>Favorite Coaches</h2>
+    <div class="card col-6 p-3" *ngFor="let coach of favoriteCoaches">
+      <div *ngIf="favoriteCoaches.length; else noCoaches">
+        <div class="d-flex">
+          <div class="me-3">
+            <img class="rounded-circle border" src="{{ coach.sasProfilePicture === null? 'assets/Images/default-pp.jpg': coach.sasProfilePicture }}"/>
+          </div>
+        <div>
+          <h2><strong>{{ coach.firstName }} {{ coach.lastName }}</strong></h2>
+          <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Male" : "Female" }}</p>
+          <p><strong>Ratings Count:</strong> {{ coach.ratingsCount }}</p>
+          <p><strong>Overall Rating:</strong> {{ coach.overallRating }}</p>
+        </div>
+      </div>
+      <div>
+        <a [routerLink]="['/coachdetail', coach.id]"><button class="btn btn-primary w-100 mb-1">Details</button></a>
+      </div>
+    </div>
+
+    <ng-template #noCoaches>
+      <p>You have no current favorited coaches.</p>
+    </ng-template>
+
+  </div>
+</div>

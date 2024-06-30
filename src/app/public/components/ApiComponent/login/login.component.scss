@@ -68,13 +68,13 @@ mat-card-content {
 
     .button {
       display: flex;
-      justify-content:center;
+
+      margin-block-end: 10px;
 
       button {
-        background-color: #775a0c;
+        background-color: #f98c00;
         color: white;
         border: none;
-        padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
@@ -86,10 +86,11 @@ mat-card-content {
     }
     .button1 {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      margin-top: 10px;
 
       button {
-        background-color: #775a0c;
+        background-color: #f98c00;
         color: white;
         border: none;
         padding: 10px 20px;

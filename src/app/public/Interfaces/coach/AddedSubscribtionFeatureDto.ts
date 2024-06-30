@@ -1,4 +1,4 @@
 export interface AddedSubscribtionFeatureDto {
-    featureId: number;
+  featureId: number;
   }
   

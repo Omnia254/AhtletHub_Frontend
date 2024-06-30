@@ -4,7 +4,7 @@
     <img class="rounded-circle border" src="{{ coach.sasProfilePicture === null? 'assets/Images/default-pp.jpg': coach.sasProfilePicture }}"/>
     <div class="mx-3">
       <h1><strong>{{ coach.firstName }} {{ coach.lastName }}</strong></h1>
-      <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Female" : "Male" }}</p>
+      <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Male" : "Female" }}</p>
       <p><strong>Date of Birth:</strong> {{ coach.dateOfBirth }}</p>
       <p><strong>Bio:</strong> {{ coach.bio?.length == undefined ? "This coach has no bio" : coach.bio }}</p>
       <p><strong>Ratings Count:</strong> {{ coach.ratingsCount }}</p>
@@ -22,6 +22,8 @@
         <li *ngFor="let feature of subscription.subscribtionsFeatures">{{feature.name}}</li>
       </div>
       <button style="margin-top: auto" class="subscribe btn btn-primary align-content-end" (click)="subscribe(coach.id, subscription.id, subscription.durationInMonths, subscription.price, subscription.name)">Subscribe</button>
+ 
+      
       
     </div>
   </div>
