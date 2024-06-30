@@ -7,3 +7,7 @@ export interface SubscribeCommand {
     subscribtionPrice: number;
     subscribtionName: string;
   }
+
+  export interface SubscribeCommandforAthlete {
+    sessionId:string;
+  }
