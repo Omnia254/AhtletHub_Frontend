@@ -56,6 +56,9 @@ import { FavoriteCoachesComponent } from './public/components/ApiComponent/favor
 import { AthleteSubscriptionComponent } from './public/components/ApiComponent/athlete-subscription/athlete-subscription.component';
 import { ResetPasswordComponent } from './public/components/ApiComponent/reset-password/reset-password.component';
 import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-reset/confirm-reset.component';
+import { SiteInfoComponent } from './public/components/ApiComponent/site-info/site-info.component';
+import { CoachApprovalComponent } from './public/components/ApiComponent/coach-approval/coach-approval.component';
+import { NotApprovedCoachesComponent } from './public/components/ApiComponent/not-approved-coaches/not-approved-coaches.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -107,6 +110,9 @@ export function tokenGetter() {
     AthleteSubscriptionComponent,
     ResetPasswordComponent,
     ConfirmResetComponent,
+    SiteInfoComponent,
+    CoachApprovalComponent,
+    NotApprovedCoachesComponent,
     //AddToFavoriteComponent,
     
 

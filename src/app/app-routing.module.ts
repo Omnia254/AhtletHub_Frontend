@@ -29,6 +29,7 @@ import { AthleteSubscriptionComponent } from './public/components/ApiComponent/a
 import { ResetPasswordComponent } from './public/components/ApiComponent/reset-password/reset-password.component';
 import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-reset/confirm-reset.component';
 import { CoachSubscriptionComponent } from './public/components/ApiComponent/coach-subscription/coach-subscription.component';
+import { SiteInfoComponent } from './public/components/ApiComponent/site-info/site-info.component';
 
 
 const routes: Routes = [
@@ -161,6 +162,13 @@ const routes: Routes = [
     path: 'getSubscription', // Dynamic route parameter for coachId
     component: CoachSubscriptionComponent, // This component will display detailed information about the coach
   },
+
+  //Admin
+  {
+    path: 'siteinfo', // Dynamic route parameter for coachId
+    component: SiteInfoComponent, // This component will display detailed information about the coach
+  },
+
 
   {
     // Redirects all paths that are not matching to the 'public' route/path
