@@ -10,20 +10,17 @@ import { UserService } from 'src/app/public/services/ApIServices/user.service';
   styleUrls: ['./activate-deactivate-user.component.scss']
 })
 export class ActivateDeactivateUserComponent {
-  isDeactivating: boolean = false;
 
   constructor(private userService: UserService,private router: Router) {}
 
   toggleUserActivation() {
-    this.isDeactivating = !this.isDeactivating;
+  
     
-    const command: ActivateDeactivateUser = { isDeactivating: this.isDeactivating };
+    const command: ActivateDeactivateUser={};
 
     this.userService.activateOrDeactivateUser(command).subscribe({
       next: () => {
         this.router.navigate(['../logout']);
-        console.log(command);
-        console.log('User activation status changed successfully.');
       },
       error: (err) => {
         console.error('Error changing user activation status:', err);

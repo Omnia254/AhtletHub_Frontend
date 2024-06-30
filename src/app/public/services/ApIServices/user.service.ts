@@ -31,7 +31,7 @@ export class UserService {
   }
 
   activateOrDeactivateUser(command: ActivateDeactivateUser): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}Identity/activateOrDeactivateUser`, command, { withCredentials: true });
+    return this.http.patch<void>(`${this.apiUrl}Identity/deactivateUser`, command, { withCredentials: true });
   }
 
   changePassword(request: ChangePasswordRequest): Observable<void> {

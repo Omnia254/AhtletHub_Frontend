@@ -54,7 +54,7 @@ export class CoachesComponent implements OnInit {
     rateFilterCritrea: undefined,
     ageFilterCritrea: undefined,
     priceFilterCritrea: undefined,
-    pageSize: 5,
+    pageSize: 6,
     pageNumber: 1,
     //sortByCritrea: SortBy.Price,
     sortingDirection: SortingDirection.Ascending,
@@ -67,15 +67,17 @@ export class CoachesComponent implements OnInit {
 
     this.coachService.getAllCoaches(query).subscribe({
       next: (data: PaginatedResult<CoachDto>) => {
-        this.coaches = data.items;
-        this.totalItemsCount = data.totalItemsCount;
-        this.totalPages = data.totalPages;
-        this.itemsFrom = data.itemsFrom;
-        this.itemsTo = data.itemsTo;
-        this.hasNextPage = data.hasNextPage;
-        this.hasPreviousPage = data.hasPreviousPage;
-        this.currentPage = query.pageNumber; // Update current page
-        this.filterCriteria = query; // Update the criteria with the latest state
+        setTimeout(()=>{
+          this.coaches = data.items;
+          this.totalItemsCount = data.totalItemsCount;
+          this.totalPages = data.totalPages;
+          this.itemsFrom = data.itemsFrom;
+          this.itemsTo = data.itemsTo;
+          this.hasNextPage = data.hasNextPage;
+          this.hasPreviousPage = data.hasPreviousPage;
+          this.currentPage = query.pageNumber; // Update current page
+          this.filterCriteria = query; // Update the criteria with the latest state
+        },500)
       },
       error: (err) => {
         console.error('Error fetching coaches', err);

@@ -17,6 +17,8 @@ export class LoginComponent {
     userNameOrEmail: '',
     password: '',
   };
+  validation = '';
+  validationCoach = '';
 
   userResponse: UserResponse = {
     isValidCredentials: false,
@@ -30,6 +32,12 @@ export class LoginComponent {
     accessTokenExpiration: new Date(),
     refreshTokenExpiration: new Date(),
   };
+  options: Intl.DateTimeFormatOptions = {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true // Use 12-hour time format with AM/PM
+  };
 
   constructor(
     private authService: AuthService,
@@ -39,26 +47,25 @@ export class LoginComponent {
   ) {
   }
 
+
+
   newLogin() {
 
     this.accountService.login(this.user).subscribe({
       next: (res) => {
         this.userResponse = res;
-        console.log(res);
-        
         this.checkIfValid(res);
-
-
-
         const accessToken = res.accessToken;
         if (accessToken) {
-            localStorage.setItem('accessToken', accessToken);
-         } else {
-             console.error('Access token is undefined');
-         }
+          localStorage.setItem('accessToken', accessToken);
+        } else {
+            console.error('Access token is undefined');
+        }
       
       },
-      error: (error) => console.log(error),
+      error: (error) => {
+        this.validation = "Enter a valid password.";
+      },
     });
   }
   setUserToken() {
@@ -84,18 +91,25 @@ export class LoginComponent {
               this.authService.loggingIn();
               this.router.navigate(['../homenav']);
             } else {
-              this.message = 'Please wait for approval.';
+              this.validationCoach = 'Your documents are being approved, please wait for approval email.';
             }
-          } else {
+          }else{
             this.setUserToken();
             this.isCoach = false;
             this.authService.loggingIn();
             this.router.navigate(['../home']);
           }
+        }else{
+          this.validation = 'Your account is deactivated, please contact the admin to reactivate it.';
         }
-
-      } else {
-        this.message = 'Invalid credentials.';
+      }else if(userResponse.isLockedOut){
+        console.log(userResponse.lockoutEnd);
+        console.log(typeof userResponse.lockoutEnd);
+        const lockoutEndDate = new Date(userResponse.lockoutEnd??"");
+        this.validation = 'Your account is locked. You can login again after ' + lockoutEndDate.toLocaleTimeString('en-EG',this.options);
+      }
+      else {
+        this.validation = 'Username/Email or password are incorrect.';
       }
     }
 

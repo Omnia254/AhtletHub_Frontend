@@ -37,9 +37,9 @@
         <button class="btn btn-primary ms-3" (click)="updateSearchCriteria(searchInput.value)"> Search </button>
       </div>
       <section class="d-flex row flex-grow-1" style="margin-right: 0px;">
-        <div class="flex-grow-1">
-          <div class="card col-3 offset-1 p-3" *ngFor="let coach of coaches">
-            <div *ngIf="coaches.length; else noCoaches">
+        <div class="flex-grow-1 d-flex flex-wrap justify-content-around">
+          <div class="card col-3 p-3 mx-5 mt-3" *ngFor="let coach of coaches">
+            <div class="flex-grow-1" *ngIf="coaches.length; else noCoaches">
               <div class="d-flex">
                 <div class="me-3">
                   <img class="rounded-circle border" src="{{ coach.sasProfilePicture === null? 'assets/Images/default-pp.jpg': coach.sasProfilePicture }}"/>
@@ -51,11 +51,13 @@
                   <p><strong>Overall Rating:</strong> {{ coach.overallRating }}</p>
                 </div>
               </div>
-              <div>
-                <a [routerLink]="['/coachdetail', coach.id]"><button class="btn btn-primary w-100 mb-1">Details</button></a>
-              </div>
-              <div>
-                <button class="btn btn-secondary w-100" (click)="addToFavorite(coach.id)">Add to Favorites</button>
+              <div class="align-content-end">
+                <div>
+                  <a [routerLink]="['/coachdetail', coach.id]"><button class="btn btn-primary w-100 mb-1">Details</button></a>
+                </div>
+                <div>
+                  <button class="btn btn-secondary w-100" (click)="addToFavorite(coach.id)">Add to Favorites</button>
+                </div>
               </div>
             </div>
           </div>

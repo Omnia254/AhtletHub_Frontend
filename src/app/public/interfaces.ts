@@ -88,7 +88,7 @@ export interface UserResponse {
   isActive: boolean;
   isApproved: boolean;
   isLockedOut: boolean;
-  lockoutEnd?: Date; // Optional, as it is nullable in C#
+  lockoutEnd?: string; // Optional, as it is nullable in C#
   userNameOrEmail: string;
   roles?: string[]; // Optional, as it is nullable in C#
   accessToken?: string; // Optional, as it is nullable in C#

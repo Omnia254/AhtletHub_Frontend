@@ -34,7 +34,10 @@ export class CoachesDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id')!; 
     this.coachService.getCoachById(id).subscribe(
       (data: CoachDto) => {
-        this.coach = data;
+        setTimeout(()=>{
+          this.coach = data;
+
+        },400)
        // console.log(this.coach.bio?.length);
       },
       (error) => {

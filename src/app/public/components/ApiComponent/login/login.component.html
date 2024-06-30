@@ -1,4 +1,4 @@
-<div>
+
   <mat-card>
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
@@ -16,19 +16,23 @@
             #email="ngModel"
           >
         </mat-form-field>
-
         <mat-form-field>
           <input
-            type="password"
-            matInput
-            placeholder="Password"
-            [(ngModel)]="user.password"
-            name="password"
-            required
-            #password="ngModel"
+          type="password"
+          matInput
+          placeholder="Password"
+          [(ngModel)]="user.password"
+          name="password"
+          required
+          #password="ngModel"
           >
         </mat-form-field>
-          <div></div>
+        <div *ngIf="validation" class="alert alert-danger mt-3">
+          {{ validation }}
+        </div>
+        <div *ngIf="validationCoach" class="alert alert-success mt-3">
+          {{ validationCoach }}
+        </div>
         <div class="button">
           <button
             type="submit"
@@ -50,6 +54,6 @@
       </form>
     </mat-card-content>
   </mat-card>
-</div>
+
 
 
