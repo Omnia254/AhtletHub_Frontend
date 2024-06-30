@@ -1,31 +1,61 @@
 <!-- measurement-post.component.html -->
-<form (ngSubmit)="addMeasurement()">
-    <!-- Assuming athleteId is provided via binding or input -->
+<div class="background">
+    <div class="container py-5">
+      <div class="card shadow-lg" style="border-color: #f98c00;">
+        <div class="card-header text-white" style="background-color: #f98c00;">
+          <h2 class="text-center">Add Measurement</h2>
+        </div>
+        <div class="card-body">
+          <form class="measurement-form" (ngSubmit)="addMeasurement()" #measurementForm="ngForm">
+            <div class="form-group">
+              <label for="date">Date:</label>
+              <input id="date" type="date" class="form-control" [(ngModel)]="newMeasurement.date" name="date" required>
+            </div>
   
-    <label>Date:</label>
-    <input type="date" [(ngModel)]="newMeasurement.date" name="date" required>
+            <div class="form-group">
+              <label for="weightInKg">Weight (kg):</label>
+              <input id="weightInKg" type="number" class="form-control" [(ngModel)]="newMeasurement.weightInKg" name="weightInKg" required>
+            </div>
   
-    <label>Weight (kg):</label>
-    <input type="number" [(ngModel)]="newMeasurement.weightInKg" name="weightInKg" required>
+            <div class="form-group">
+              <label for="bodyFatPercentage">Body Fat Percentage:</label>
+              <input id="bodyFatPercentage" type="number" class="form-control" [(ngModel)]="newMeasurement.bodyFatPercentage" name="bodyFatPercentage">
+            </div>
   
-    <label>Body Fat Percentage:</label>
-    <input type="number" [(ngModel)]="newMeasurement.bodyFatPercentage" name="bodyFatPercentage">
+            <div class="form-group">
+              <label for="bmi">BMI:</label>
+              <input id="bmi" type="number" class="form-control" [(ngModel)]="newMeasurement.bmi" name="bmi">
+            </div>
   
-    <label>BMI:</label>
-    <input type="number" [(ngModel)]="newMeasurement.bmi" name="bmi">
+            <div class="form-group">
+              <label for="benchPressWeight">Bench Press Weight:</label>
+              <input id="benchPressWeight" type="number" class="form-control" [(ngModel)]="newMeasurement.benchPressWeight" name="benchPressWeight">
+            </div>
   
-    <label>Bench Press Weight:</label>
-    <input type="number" [(ngModel)]="newMeasurement.benchPressWeight" name="benchPressWeight">
+            <div class="form-group">
+              <label for="squatWeight">Squat Weight:</label>
+              <input id="squatWeight" type="number" class="form-control" [(ngModel)]="newMeasurement.squatWeight" name="squatWeight">
+            </div>
   
-    <label>Squat Weight:</label>
-    <input type="number" [(ngModel)]="newMeasurement.squatWeight" name="squatWeight">
+            <div class="form-group">
+              <label for="deadliftWeight">Deadlift Weight:</label>
+              <input id="deadliftWeight" type="number" class="form-control" [(ngModel)]="newMeasurement.deadliftWeight" name="deadliftWeight">
+            </div>
   
-    <label>Deadlift Weight:</label>
-    <input type="number" [(ngModel)]="newMeasurement.deadliftWeight" name="deadliftWeight">
-  
-    <button type="submit">Add Measurement</button>
-</form>
+            <div class="text-center">
+              <button type="submit" class="btn-primary" [disabled]="measurementForm.form.invalid">Add Measurement</button>
+            </div>
 
-<a routerLink="/measurementget">Get Measurement</a>
-
-<a routerLink="/deletemeasurement">Delete Measurement</a>
+            <a routerLink="/measurementget" >
+              <button class=" btn-primary">Get Measurement</button>
+            </a>
+            
+            <a routerLink="/deletemeasurement">
+              <button class=" btn-primary">Delete Measurement</button>
+            </a>
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+  

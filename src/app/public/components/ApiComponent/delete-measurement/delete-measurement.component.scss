@@ -1,0 +1,109 @@
+.background {
+    background-image: url("../../../../../assets/Images/log - Copy.jpg");
+    background-size: cover;
+    height: 100vh; /* Adjust as needed */
+  }
+  
+  .container {
+    width: 40%;
+    
+    margin-left: 30%;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    color: white;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #000000;
+  }
+  
+  .measurement-form {
+    display: flex;
+    flex-direction: column;
+  
+    .form-group {
+      margin-bottom: 15px;
+  
+      label {
+        font-size: 1.2rem;
+        color: #f98c00;
+        margin-bottom: 5px;
+      }
+  
+      .form-control {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 1rem;
+        width: 100%; /* Make input full width */
+  
+        &:focus {
+          border-color: #f98c00;
+          box-shadow: 0 0 0 0.2rem rgba(249, 140, 0, 0.25);
+        }
+      }
+    }
+  
+    .btn-link {
+      display: inline-block;
+      text-decoration: none; /* Remove default underline */
+      margin-top: 15px;
+  
+      .btn {
+        background-color: #f98c00 !important;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        text-align: center;
+        width: auto; /* Adjust as needed */
+  
+        &:hover {
+          background-color: #d47a00;
+          transform: scale(1.05);
+        }
+  
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 0.2rem rgba(249, 140, 0, 0.5);
+        }
+      }
+    }
+  
+    .btn-primary {
+      background-color: #f98c00;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      width: 100%; /* Make button full width */
+      margin-top: 15px;
+  
+      &:hover {
+        background-color: #d47a00;
+        transform: scale(1.05);
+      }
+  
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(249, 140, 0, 0.5);
+      }
+    }
+  }
+  
