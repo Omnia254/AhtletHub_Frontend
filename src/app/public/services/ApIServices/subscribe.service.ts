@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { SubscribeCommand } from './../../Interfaces/Athlete/SubscribeCommand';
-import { AthleteActiveSubscribtionDto } from './../../Interfaces/Athlete/AthleteActiveSubscribtionDto';
+import { SubscribeCommand, SubscribeCommandforAthlete } from './../../Interfaces/Athlete/SubscribeCommand';
+import { AthleteActiveSubscribtionDto, AthleteActiveSubscribtionDtos } from './../../Interfaces/Athlete/AthleteActiveSubscribtionDto';
 import { CheckSubscribeResponseDto } from '../../Interfaces/Athlete/CheckSubscribeResponseDto';
 import { TokenService } from './token.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -46,6 +46,9 @@ export class SubscribeService {
   }
 
 
+  subscribeAndPayement(subscribeCommand: SubscribeCommandforAthlete): Observable<AthleteActiveSubscribtionDtos> {
+    return this.http.post<AthleteActiveSubscribtionDtos>(`${this.apiUrl}Subscribe`, subscribeCommand);
+  }
   checkSubscribeAbility(coachId: number, subscriptionId: number): Observable<CheckSubscribeResponseDto> {
      console.log(coachId,subscriptionId)
     return this.http.get<CheckSubscribeResponseDto>(`${this.apiUrl}CheckSubscribeAblity`, {

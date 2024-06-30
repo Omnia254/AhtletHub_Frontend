@@ -6,3 +6,8 @@ export interface AthleteActiveSubscribtionDto {
     subscribtionEndDate?: string;   // Date string in ISO format
     canSubscribe: boolean;
   }
+
+  export interface AthleteActiveSubscribtionDtos {
+    athleteEmail: string;  
+
+  }
