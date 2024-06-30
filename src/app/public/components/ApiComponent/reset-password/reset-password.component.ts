@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmailService } from 'src/app/public/services/ApIServices/email.service';
 import { ResetPasswordService } from 'src/app/public/services/ApIServices/reset-password.service';
-import { MessageBodyType } from 'src/app/public/Interfaces/User/SendEmailCommand';
+import { MessageBodyType } from 'src/app/public/Interfaces/User/SendEmailCommand' ;
 
 @Component({
   selector: 'app-reset-password',
@@ -27,7 +27,7 @@ export class ResetPasswordComponent implements OnInit {
   initiateReset(): void {
     this.resetPasswordService.initiateReset(this.email, this.confirmationUrl).subscribe(
       (data) => {
-        const templateUrl = 'assets/EmailsTemplete/EmailConfirmationTempleteForCoach.html';
+        const templateUrl = 'assets/EmailsTemplete/ResetPasswordTemplete.html';
         this.http.get(templateUrl, { responseType: 'text' }).subscribe(
           templateContent => {
             const sendEmailFormData = new FormData();

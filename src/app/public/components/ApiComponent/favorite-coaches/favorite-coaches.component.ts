@@ -14,7 +14,7 @@ export class FavoriteCoachesComponent implements OnInit {
   totalItemsCount: number = 0;
   currentPage: number = 1;
   pageSize: number = 10;
-  athleteId: number = 1; // Update this with your logic to get athleteId
+ // athleteId: number = 1; // Update this with your logic to get athleteId
   Gender = Gender;
   @HostBinding('class') dFlex = 'd-flex flex-grow-1';
 
@@ -24,8 +24,10 @@ export class FavoriteCoachesComponent implements OnInit {
     this.loadFavoriteCoaches();
   }
 
+  
+
   loadFavoriteCoaches(): void {
-    this.coachService.getFavoriteCoaches(this.athleteId, this.currentPage, this.pageSize)
+    this.coachService.getFavoriteCoaches(0, this.currentPage, this.pageSize)
       .subscribe({
         next: (result: PaginatedResult<CoachDto>) => {
           this.favoriteCoaches = result.items;
@@ -36,4 +38,6 @@ export class FavoriteCoachesComponent implements OnInit {
         }
       });
   }
+
+  
 }

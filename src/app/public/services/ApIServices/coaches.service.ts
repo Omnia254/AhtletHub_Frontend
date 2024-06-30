@@ -27,7 +27,7 @@ export class CoachesService {
   }
 
   ngOnInit(): void {
-    this.athlete = +this.route.snapshot.paramMap.get('coachId')!;
+    this.athlete = +this.route.snapshot.paramMap.get('athleteId')!;
 }
 
   fetchEntityId() {

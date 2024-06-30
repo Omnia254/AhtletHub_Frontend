@@ -48,7 +48,7 @@ export class ChangeEmailComponent {
             this.response = data;
            
 
-            let templateUrl = 'assets/EmailsTemplete/EmailConfirmationTempleteForCoach.html';
+            let templateUrl = 'assets/EmailsTemplete/ChangeEmailConfirmationTemplete.html';
 
             this.http.get(templateUrl, { responseType: 'text' }).subscribe(
               templateContent => {
