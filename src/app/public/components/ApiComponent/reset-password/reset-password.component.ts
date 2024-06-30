@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmailService } from 'src/app/public/services/ApIServices/email.service';
 import { ResetPasswordService } from 'src/app/public/services/ApIServices/reset-password.service';
@@ -12,6 +12,9 @@ import { MessageBodyType } from 'src/app/public/Interfaces/User/SendEmailCommand
 export class ResetPasswordComponent implements OnInit {
   email: string = '';
   confirmationUrl: string = 'http://localhost:4200/confirmresetpassword'; // Set your dynamic or constant value here
+  @HostBinding('class') dFlex = 'd-flex flex-grow-1';
+  successMessage: string = '';
+  errorMessage: string = '';
 
   constructor(
     private resetPasswordService: ResetPasswordService,
@@ -22,12 +25,9 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {}
 
   initiateReset(): void {
-    console.log(this.email, this.confirmationUrl)
     this.resetPasswordService.initiateReset(this.email, this.confirmationUrl).subscribe(
       (data) => {
         const templateUrl = 'assets/EmailsTemplete/EmailConfirmationTempleteForCoach.html';
-      
-        console.log( data.userEmailToConfirm);
         this.http.get(templateUrl, { responseType: 'text' }).subscribe(
           templateContent => {
             const sendEmailFormData = new FormData();
@@ -51,9 +51,13 @@ export class ResetPasswordComponent implements OnInit {
             console.error('Failed to load email template:', error);
           }
         );
+        this.successMessage = 'Please check your email for the password reset link';
+        this.errorMessage = '';
         console.log('Reset initiated successfully');
       },
       error => {
+        this.successMessage = '';
+        this.errorMessage = "This email doesn't match any records in our database. Please check your email and try again";
         console.error('Error initiating reset:', error);
       }
     );

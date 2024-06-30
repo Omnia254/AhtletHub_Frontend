@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterUserCommand } from 'src/app/public/Interfaces/User/RegisterUserCommand';
 import { MessageBodyType } from 'src/app/public/Interfaces/User/SendEmailCommand';
@@ -30,6 +30,7 @@ export class RegisterComponent {
     certificate: undefined, // Assigning undefined instead of null
     clientEmailConfirmationUrl: ''
   };
+  @HostBinding('class') dFlex = 'd-flex flex-column flex-grow-1';
 
   constructor(
     private http: HttpClient,

@@ -1,8 +1,8 @@
 // favorite-coaches.component.ts
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { CoachesService } from 'src/app/public/services/ApIServices/coaches.service';
-import { CoachDto, PaginatedResult } from 'src/app/public/interfaces'; // Adjust path as necessary
+import { CoachDto, PaginatedResult, Gender } from 'src/app/public/interfaces'; // Adjust path as necessary
 
 @Component({
   selector: 'app-favorite-coaches',
@@ -14,7 +14,9 @@ export class FavoriteCoachesComponent implements OnInit {
   totalItemsCount: number = 0;
   currentPage: number = 1;
   pageSize: number = 10;
-  athleteId: number = 0; // Update this with your logic to get athleteId
+  athleteId: number = 1; // Update this with your logic to get athleteId
+  Gender = Gender;
+  @HostBinding('class') dFlex = 'd-flex flex-grow-1';
 
   constructor(private coachService: CoachesService) {}
 
@@ -34,6 +36,4 @@ export class FavoriteCoachesComponent implements OnInit {
         }
       });
   }
-
-  // Add methods for pagination, sorting, etc., as needed
 }

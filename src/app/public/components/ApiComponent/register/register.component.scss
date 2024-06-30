@@ -1,18 +1,30 @@
-.register-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+.register-user-container {
+  background-image: url("../../../../../assets/Images/register.jpg");
+  background-size: cover;
+  display:flex;
+  flex-grow: 1;
+  flex-direction: column;
 }
-
+.container{
+  color:white;
+  width:50%;
+}
 .form-group {
   margin-bottom: 15px;
 }
 
 label {
   font-weight: bold;
+}
+button{
+  background-color:#f98c00;
+  border-color: transparent;
+  color:white;
+}
+button:focus{
+  background-color: #f96400;
+  border-color: transparent;
+  color:white;
 }
 
 input[type="text"],
@@ -23,7 +35,6 @@ input[type="date"],
 textarea,
 input[type="number"],
 input[type="file"] {
-  width: 100%;
   padding: 8px;
   font-size: 14px;
   border: 1px solid #ccc;

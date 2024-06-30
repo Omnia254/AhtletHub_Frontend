@@ -15,12 +15,6 @@
             email
             #email="ngModel"
           >
-          <!-- <mat-error *ngIf="email.touched && email.errors?.required">
-            Email is required
-          </mat-error>
-          <mat-error *ngIf="email.touched && email.errors?.email">
-            Email must be a valid email
-          </mat-error> -->
         </mat-form-field>
 
         <mat-form-field>
@@ -33,9 +27,6 @@
             required
             #password="ngModel"
           >
-          <!-- <mat-error *ngIf="password.touched && password.errors?.required">
-            Password is required
-          </mat-error> -->
         </mat-form-field>
           <div></div>
         <div class="button">
@@ -51,8 +42,8 @@
 
         <div class="button1">
           <button [routerLink]="['/register']" >Register Now</button>
+          <button [routerLink]="['/resetpassword']" >Forget My Password</button>
         </div>
-        <button [routerLink]="['/resetpassword']" >Forget My Password</button>
 
 
 
