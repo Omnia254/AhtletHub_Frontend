@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from 'src/app/public/services/ApIServices/register.service';
 
@@ -12,6 +12,7 @@ export class EmailConfirmationComponent implements OnInit {
   showSuccess!: boolean;
   showError!: boolean;
   errorMessage!: string;
+  @HostBinding('class') dFlex = 'd-flex flex-grow-1';
   constructor(private _route: ActivatedRoute,private authService:RegisterService) 
   { }
 

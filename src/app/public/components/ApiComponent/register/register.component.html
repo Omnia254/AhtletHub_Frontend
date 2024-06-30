@@ -1,98 +1,100 @@
 <div class="register-user-container">
-  <h2>Register New User</h2>
-  <form (ngSubmit)="onSubmit()">
-    <!-- Email -->
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required [(ngModel)]="command.email">
-    </div>
+  <div class="container pt-5">
 
-    <!-- Confirm Email -->
-    <div class="form-group">
-      <label for="confirmEmail">Confirm Email</label>
-      <input type="email" id="confirmEmail" name="confirmEmail" required [(ngModel)]="command.confirmEmail">
-    </div>
+    <h2>Registration form</h2>
+    <form (ngSubmit)="onSubmit()">
 
-    <!-- Username -->
-    <div class="form-group">
-      <label for="userName">Username</label>
-      <input type="text" id="userName" name="userName" required [(ngModel)]="command.userName">
-    </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input class="form-control" type="email" id="email" name="email" [(ngModel)]="command.email">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="confirmEmail">Confirm Email</label>
+          <input class="form-control" type="email" id="confirmEmail" name="confirmEmail" required [(ngModel)]="command.confirmEmail">
+        </div>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      
+      <div class="row">
+      <div class="form-group col-md-4">
+        <label for="userName">Username</label>
+        <input class="form-control" type="text" id="userName" name="userName" required [(ngModel)]="command.userName">
+      </div>
 
-    <!-- Password -->
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required [(ngModel)]="command.password">
-    </div>
+        <div class="form-group col-md-4">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" id="password" name="password" required [(ngModel)]="command.password">
+        </div>
 
-    <!-- Confirm Password -->
-    <div class="form-group">
-      <label for="confirmPassword">Confirm Password</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="command.confirmPassword">
-    </div>
+        <div class="form-group col-md-4">
+          <label for="confirmPassword">Confirm Password</label>
+          <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="command.confirmPassword">
+        </div>
+      </div>
 
-    <!-- First Name -->
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" required [(ngModel)]="command.firstName">
-    </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="firstName">First Name</label>
+          <input class="form-control" type="text" id="firstName" name="firstName" required [(ngModel)]="command.firstName">
+        </div>
+        
+        <div class="form-group col-md-6">
+          <label for="lastName">Last Name</label>
+          <input class="form-control" type="text" id="lastName" name="lastName" required [(ngModel)]="command.lastName">
+        </div>
+      </div>
+        
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label for="phoneNumber">Phone Number</label>
+          <input class="form-control"type="text" id="phoneNumber" name="phoneNumber" required [(ngModel)]="command.phoneNumber">
+        </div>
 
-    <!-- Last Name -->
-    <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" required [(ngModel)]="command.lastName">
-    </div>
 
-    <!-- Phone Number -->
-    <div class="form-group">
-      <label for="phoneNumber">Phone Number</label>
-      <input type="text" id="phoneNumber" name="phoneNumber" required [(ngModel)]="command.phoneNumber">
-    </div>
+        <div class="form-group col-md-4">
+          <label for="gender">Gender</label>
+          <select class="form-control" id="gender" name="gender" required [(ngModel)]="command.gender">
+            <option [ngValue]="0">Male</option>
+            <option [ngValue]="1">Female</option>
+          </select>
+        </div>
+      
+      
+        <div class="form-group col-md-4">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" required [(ngModel)]="command.dateOfBirth">
+        </div>
+      </div>
+      
 
-    <!-- Gender -->
-    <div class="form-group">
-      <label for="gender">Gender</label>
-      <select id="gender" name="gender" required [(ngModel)]="command.gender">
-        <option [ngValue]="0">Male</option>
-        <option [ngValue]="1">Female</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea class="form-control" id="bio" name="bio" [(ngModel)]="command.bio"></textarea>
+      </div>
+    
 
-    <!-- Date of Birth -->
-    <div class="form-group">
-      <label for="dateOfBirth">Date of Birth</label>
-      <input type="date" id="dateOfBirth" name="dateOfBirth" required [(ngModel)]="command.dateOfBirth">
-    </div>
-
-    <!-- Bio -->
-    <div class="form-group">
-      <label for="bio">Bio</label>
-      <textarea id="bio" name="bio" [(ngModel)]="command.bio"></textarea>
-    </div>
-
-    <!-- Are you a coach? Dropdown -->
-    <div class="form-group">
-      <label for="role">Are you a coach?</label>
-      <select id="role" name="role" required [(ngModel)]="command.isCoach">
-        <option [ngValue]="false">Athlete</option>
-        <option [ngValue]="true">Coach</option>
-      </select>
-    </div>
-
-    <!-- Conditional rendering for certificate (PDF) -->
-    <div *ngIf="command.isCoach" class="form-group">
-      <label for="certificate">Certificate (PDF)</label>
-      <input type="file" id="certificate" name="certificate"  (change)="onFileSelected($event)">
-      <!-- <button type="button" (click)="onUpload()">Upload</button> -->
-    </div>
-
-    <!-- Conditional rendering for height -->
-    <div *ngIf="!command.isCoach" class="form-group">
-      <label for="height">Height (cm)</label>
-      <input type="number" id="height" name="height" [(ngModel)]="command.height">
-    </div>
-
-    <!-- Submit Button -->
-    <button type="submit" >Register</button>
-  </form>
+      <div class="form-group">
+        <label for="role">Are you a coach?</label>
+        <select class="form-control" id="role" name="role" required [(ngModel)]="command.isCoach">
+          <option [ngValue]="false">No, I just want to register as an athlete</option>
+          <option [ngValue]="true">Yes, I want to register as a coach</option>
+        </select>
+      </div>
+    
+      <div *ngIf="command.isCoach" class="form-group">
+        <label for="certificate">Certificate (PDF)</label>
+        <input class="form-control" type="file" id="certificate" name="certificate"  (change)="onFileSelected($event)">
+      </div>
+    
+      <div *ngIf="!command.isCoach" class="form-group">
+        <label for="height">Height (cm)</label>
+        <input class="form-control" type="number" id="height" name="height" [(ngModel)]="command.height">
+      </div>
+    
+      <button class="form-control" type="submit" >Register</button>
+    </form>
+  </div>
 </div>

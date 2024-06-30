@@ -9,22 +9,19 @@
     <ul class="nav-left">
       <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
       <li><a routerLink="/sub" routerLinkActive="active">Dashboard</a></li>
-      <!--<li><a routerLink="/user-profile">Profile</a></li>-->
       <li><a routerLink="/coaches" routerLinkActive="active">Coaches</a></li>
       <li><a routerLink="/update-user" routerLinkActive="active">Profile</a></li>
-      <li><a routerLink="/calcalory" routerLinkActive="active">Calccalery</a></li>
-      <li><a routerLink="/accountsetting">Accountsetting</a></li>
-      <li><a routerLink="/measurementpost">Measurement</a></li>
-      <li><a routerLink="/fav">FavoriteCoaches</a></li>
-      <li><a routerLink="/ahtletesub">AhtleteSub</a></li>
-      <li><a routerLink="/siteinfo">siteinfo</a></li>
-
-      <li><a routerLink="/logoutme">logout</a></li>
+      <li><a routerLink="/calcalory" routerLinkActive="active">Calory Calculator</a></li>
+      <li><a routerLink="/accountsetting" routerLinkActive="active">Account settings</a></li>
+      <li><a routerLink="/measurementpost" routerLinkActive="active">Measurement</a></li>
+      <li><a routerLink="/fav" routerLinkActive="active">Favorite Coaches</a></li>
+      <li><a routerLink="/ahtletesub" routerLinkActive="active">AhtleteSub</a></li>
+      
     </ul>
 
     <ul class="nav-right">
       <li *ngIf="!isLoggedIn"><a routerLink="/public/login" routerLinkActive="active">Login</a></li>
-      <!-- <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li> -->
+      <li *ngIf="isLoggedIn"><a routerLink="/logoutme" routerLinkActive="active">Logout</a></li>
     </ul>
   </nav>
 </header>

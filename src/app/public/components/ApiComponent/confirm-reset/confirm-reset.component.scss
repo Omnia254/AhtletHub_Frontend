@@ -1,0 +1,27 @@
+.background {
+    background-image: url("../../../../../assets/Images/register.jpg");
+    background-size: cover;
+    display:flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+.container{
+    color:white;
+    width:50%;
+}
+button{
+    background-color:#f98c00;
+    border-color: transparent;
+    color:white;
+}
+button:focus{
+    background-color: #a78016 !important;
+    border-color: transparent !important;
+    color:white;
+}
+button:hover{
+    background-color: #a78016;
+    border-color: transparent;
+    color:white;
+    transition: all 0.3s ease;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { CoachDto, PaginatedResult, SortingDirection, Gender, SearchCriteria, RateFilter, AgeFilter, PriceFilter, SortBy } from '../../../interfaces';
 import { CoachesService } from '../../../services/ApIServices/coaches.service';
 import { AthleteFavoriteService } from 'src/app/public/services/ApIServices/athlete-favorite.service';
@@ -22,6 +22,8 @@ export class CoachesComponent implements OnInit {
   Gender = Gender;
   canAddToFavorite?:boolean;
 
+  @HostBinding('class') dFlex = 'd-flex flex-column flex-grow-1';
+
   constructor(private coachService: CoachesService,
     private athleteFavoriteService: AthleteFavoriteService 
 
@@ -31,19 +33,27 @@ export class CoachesComponent implements OnInit {
     this.getAllCoaches();
   }
 
-  genderKeys = Object.entries(Gender).map(([key, value]) => ({ key, value }));
-  rateKeys = Object.entries(RateFilter).map(([key, value]) => ({ key, value }));
-  ageKeys = Object.entries(AgeFilter).map(([key, value]) => ({ key, value }));
-  priceKeys = Object.entries(PriceFilter).map(([key, value]) => ({ key, value }));
+  genderKeys = Object.entries(Gender)
+  .filter(([key, value]) => isNaN(Number(key)))
+  .map(([key, value]) => ({ key, value }));
+  rateKeys = Object.entries(RateFilter)
+  .filter(([key, value]) => isNaN(Number(key)))
+  .map(([key, value]) => ({ key, value }));
+  ageKeys = Object.entries(AgeFilter)
+  .filter(([key, value]) => isNaN(Number(key)))
+  .map(([key, value]) => ({ key, value }));
+  priceKeys = Object.entries(PriceFilter)
+  .filter(([key, value]) => isNaN(Number(key)))
+  .map(([key, value]) => ({ key, value }));
 
   // Define initial filter criteria
   filterCriteria: SearchCriteria = {
     includeCoachesRatings: true,
     searchCritrea: '',
-    genderFilterCritrea: Gender.Male,
-    rateFilterCritrea: RateFilter.moreThanTwo,
-    ageFilterCritrea: AgeFilter.between20and25,
-    priceFilterCritrea: PriceFilter.lessThan500,
+    genderFilterCritrea: undefined,
+    rateFilterCritrea: undefined,
+    ageFilterCritrea: undefined,
+    priceFilterCritrea: undefined,
     pageSize: 5,
     pageNumber: 1,
     //sortByCritrea: SortBy.Price,
@@ -66,8 +76,6 @@ export class CoachesComponent implements OnInit {
         this.hasPreviousPage = data.hasPreviousPage;
         this.currentPage = query.pageNumber; // Update current page
         this.filterCriteria = query; // Update the criteria with the latest state
-console.log(data);
-      
       },
       error: (err) => {
         console.error('Error fetching coaches', err);
@@ -77,43 +85,42 @@ console.log(data);
   }
 
   updateSearchCriteria(searchValue: string): void {
-      this.getAllCoaches({ searchCritrea: searchValue });
-    }
+    this.getAllCoaches({ searchCritrea: searchValue });
+  }
 
-    updateGenderFilter(event: Event): void {
-      const gender = (event.target as HTMLSelectElement).value;
-      this.getAllCoaches({ genderFilterCritrea: gender || undefined });
-    }
-    
-    updateRateFilter(event: Event): void {
-      const rate = (event.target as HTMLSelectElement).value;
-      this.getAllCoaches({ rateFilterCritrea: rate || undefined });
-    }
-    
-    updateAgeFilter(event: Event): void {
-      const age = (event.target as HTMLSelectElement).value;
-      this.getAllCoaches({ ageFilterCritrea: age || undefined });
-    }
-    
-    updatePriceFilter(event: Event): void {
-      const price = (event.target as HTMLSelectElement).value;
-      this.getAllCoaches({ priceFilterCritrea: price || undefined });
-    }
-    
+  updateGenderFilter(event: Event): void {
+    const gender = (event.target as HTMLSelectElement).value;
+    this.getAllCoaches({ genderFilterCritrea: gender || undefined });
+  }
+  
+  updateRateFilter(event: Event): void {
+    const rate = (event.target as HTMLSelectElement).value;
+    this.getAllCoaches({ rateFilterCritrea: rate || undefined });
+  }
+  
+  updateAgeFilter(event: Event): void {
+    const age = (event.target as HTMLSelectElement).value;
+    this.getAllCoaches({ ageFilterCritrea: age || undefined });
+  }
+  
+  updatePriceFilter(event: Event): void {
+    const price = (event.target as HTMLSelectElement).value;
+    this.getAllCoaches({ priceFilterCritrea: price || undefined });
+  }
+  
   goToPage(pageNumber: number): void {
     if (pageNumber > 0 && pageNumber <= this.totalPages) {
       this.getAllCoaches({ pageNumber });
     }
   }
+
   addToFavorite(coachId: number) {
     this.athleteFavoriteService.addToFavorite(coachId).subscribe({
       next: (data) => {
         
-        // Handle success if needed
-      //  return data.canAddToFavourite;
+      //return data.canAddToFavourite;
       console.log(data);
-        console.log('Coach added to favorites:', data);
-        // You can add further UI updates or actions upon successful addition
+      console.log('Coach added to favorites:', data);
       },
       error: (err) => {
         console.error('Failed to add coach to favorites:', err);

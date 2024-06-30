@@ -1,6 +1,5 @@
-<!-- confirm-reset.component.html -->
-
-<div class="container">
+<div class="background justify-content-around">
+  <div class="container">
     <h2>Confirm Password Reset</h2>
     <form (ngSubmit)="confirmReset()">
 
@@ -12,7 +11,16 @@
         <label for="confirmNewPassword">Confirm New Password:</label>
         <input type="password" id="confirmNewPassword" name="confirmNewPassword" [(ngModel)]="confirmNewPassword" class="form-control" required>
       </div>
-      <button type="submit" class="btn btn-primary">Confirm Reset</button>
+      <div *ngIf="successMessage" class="alert alert-success mt-3">
+        {{ successMessage }}
+      </div>
+
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Confirm Reset</button>
     </form>
   </div>
+</div>
   

@@ -1,13 +1,40 @@
-<!-- <div id="search-container" class="pt-3">
-  <div class="d-flex">
+<div id="search-container" class="d-flex flex-grow-1 pt-3">
+  <div class="d-flex flex-grow-1">
     <br>
-    <aside class="col-lg-2 col-md-3 me-3">
-       <app-coach-filter></app-coach-filter> 
-       
+    <aside class="d-flex col-lg-2 col-md-3 m-3">
+      <div class="card filter-section flex-grow-1 p-3">
+        <label for="genderFilter">Gender</label>
+        <select id="genderFilter" class="form-control" (change)="updateGenderFilter($event)">
+          <option value="">All</option>
+          <option *ngFor="let gender of genderKeys" [value]="gender.value">{{ gender.key }}</option>
+        </select>
+
+
+        <label for="rateFilter">Rate</label>
+        <select id="rateFilter" class="form-control" (change)="updateRateFilter($event)">
+          <option value="">All</option>
+          <option *ngFor="let rate of rateKeys" [value]="rate.value">{{ rate.key }}</option>
+        </select>
+
+
+        <label for="ageFilter">Age</label>
+        <select id="ageFilter" class="form-control" (change)="updateAgeFilter($event)">
+          <option value="">All</option>
+          <option *ngFor="let age of ageKeys" [value]="age.value">{{ age.key }}</option>
+        </select>
+
+
+        <label for="priceFilter">Price</label>
+        <select id="priceFilter" class="form-control" (change)="updatePriceFilter($event)">
+          <option value="">All</option>
+          <option *ngFor="let price of priceKeys" [value]="price.value">{{ price.key }}</option>
+        </select>
+      </div>
     </aside>
     <div class="flex-grow-1 align-content-start">
       <div class="col-1 search-bar">
-        <input type="text" placeholder="Search coaches..." #searchInput (input)="updateSearchCriteria(searchInput.value)">
+        <input type="text" placeholder="Search coaches..." #searchInput>
+        <button class="btn btn-primary ms-3" (click)="updateSearchCriteria(searchInput.value)"> Search </button>
       </div>
       <section class="d-flex row flex-grow-1" style="margin-right: 0px;">
         <div class="flex-grow-1">
@@ -19,7 +46,7 @@
                 </div>
                 <div>
                   <h2><strong>{{ coach.firstName }} {{ coach.lastName }}</strong></h2>
-                  <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Female" : "Male" }}</p>
+                  <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Male" : "Female" }}</p>
                   <p><strong>Ratings Count:</strong> {{ coach.ratingsCount }}</p>
                   <p><strong>Overall Rating:</strong> {{ coach.overallRating }}</p>
                 </div>
@@ -45,37 +72,37 @@
   <p>There are no coaches with that criteria</p>
 </ng-template>
 
- -->
 
 
- <div id="search-container" class="pt-3">
+
+ <!-- <div id="search-container" class="pt-3">
   <div class="d-flex">
     <aside class="col-lg-2 col-md-3 me-3">
       <div class="filter-section">
         <h5>Filters</h5>
         
-        <!-- Gender Filter -->
+
         <label for="genderFilter">Gender</label>
         <select id="genderFilter" class="form-control" (change)="updateGenderFilter($event)">
           <option value="">All</option>
           <option *ngFor="let gender of genderKeys" [value]="gender.value">{{ gender.key }}</option>
         </select>
 
-        <!-- Rate Filter -->
+
         <label for="rateFilter">Rate</label>
         <select id="rateFilter" class="form-control" (change)="updateRateFilter($event)">
           <option value="">All</option>
           <option *ngFor="let rate of rateKeys" [value]="rate.value">{{ rate.key }}</option>
         </select>
 
-        <!-- Age Filter -->
+
         <label for="ageFilter">Age</label>
         <select id="ageFilter" class="form-control" (change)="updateAgeFilter($event)">
           <option value="">All</option>
           <option *ngFor="let age of ageKeys" [value]="age.value">{{ age.key }}</option>
         </select>
 
-        <!-- Price Filter -->
+
         <label for="priceFilter">Price</label>
         <select id="priceFilter" class="form-control" (change)="updatePriceFilter($event)">
           <option value="">All</option>
@@ -141,4 +168,4 @@
 
 <ng-template #noCoaches>
   <p>There are no coaches with that criteria</p>
-</ng-template>
+</ng-template> -->

@@ -1,6 +1,6 @@
 // confirm-reset.component.ts
 
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResetPasswordService } from 'src/app/public/services/ApIServices/reset-password.service';
 
@@ -14,6 +14,9 @@ export class ConfirmResetComponent {
 
   newPassword: string = '';
   confirmNewPassword: string = '';
+  successMessage: string ='';
+  errorMessage: string ='';
+  @HostBinding('class') dFlex = 'd-flex flex-grow-1';
 
   constructor(private resetPasswordService: ResetPasswordService,private _route:ActivatedRoute,
     private router: Router
@@ -27,13 +30,10 @@ export class ConfirmResetComponent {
     this.resetPasswordService.confirmReset(token, email, this.newPassword, this.confirmNewPassword).subscribe(
       () => {
         this.router.navigate(['../logout']);
-        console.log(this.newPassword);
-        console.log('Password reset confirmed successfully');
-        // Handle success (e.g., show message to user)
+        this.successMessage = 'Password reset confirmed successfully.';
       },
       error => {
-        console.error('Error confirming reset:', error);
-        // Handle error (e.g., show error message)
+        this.errorMessage = 'The password was not reset. Please try again.';
       }
     );
   }
