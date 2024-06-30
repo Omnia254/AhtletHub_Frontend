@@ -32,6 +32,9 @@ import { CoachSubscriptionComponent } from './public/components/ApiComponent/coa
 import { SiteInfoComponent } from './public/components/ApiComponent/site-info/site-info.component';
 import { PaymentSuccessComponent } from './public/components/ApiComponent/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './public/components/ApiComponent/payment-cancel/payment-cancel.component';
+import { ActivateDeactivateUserComponent } from './public/components/ApiComponent/activate-deactivate-user/activate-deactivate-user.component';
+import { ChangePasswordComponent } from './public/components/ApiComponent/change-password/change-password.component';
+import { ChangeEmailComponent } from './public/components/ApiComponent/change-email/change-email.component';
 
 
 const routes: Routes = [
@@ -178,6 +181,19 @@ const routes: Routes = [
     path: 'cancelpayment', 
     component: PaymentCancelComponent, 
   },
+  {
+    path: 'activatedeactivateuser', 
+    component: ActivateDeactivateUserComponent, 
+  },
+  {
+    path: 'changepassword', 
+    component: ChangePasswordComponent, 
+  },
+  {
+    path: 'changeemail', 
+    component: ChangeEmailComponent, 
+  },
+  
   {
     // Redirects all paths that are not matching to the 'public' route/path
     path: '**',

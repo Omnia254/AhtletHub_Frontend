@@ -1,0 +1,96 @@
+.background {
+  background-image: url("../../../../../assets/Images/log - Copy.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; // Added padding for better layout on smaller screens
+}
+
+.subscription-container {
+  width: 30%; // Increased width for a wider look
+  max-width: 1200px; // Added max-width to maintain good layout on larger screens
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box; // Ensures padding is included in width calculation
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center; // Centered the heading
+}
+
+.subscription-card {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; // Ensures rounded corners on children
+}
+
+.card-header {
+  background-color: #f98c00;
+  padding: 10px 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+
+  h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+}
+
+.card-body {
+  padding: 20px;
+
+  p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  .features-list {
+    h4 {
+      font-size: 1.2rem;
+      color: #f98c00;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        p {
+          margin: 0;
+          color: #666;
+          font-size: 1rem;
+
+          strong {
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}
+
+.no-subscriptions {
+  text-align: center;
+  color: #666;
+  font-size: 1.2rem;
+}

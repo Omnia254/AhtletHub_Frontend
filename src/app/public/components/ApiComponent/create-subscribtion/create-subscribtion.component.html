@@ -143,11 +143,8 @@
 
 
  -->
-
-
-
-
- <div class="subscription-form-container">
+<!-- Here is the last code before Ayman Edit -->
+ <!-- <div class="subscription-form-container">
   <h2>Create Subscription</h2>
   <form (ngSubmit)="onSubmit()">
     <div>
@@ -178,8 +175,8 @@
 
     <button type="submit">Create Subscription</button>
   </form>
-</div>
-
+</div> -->
+<!-- Here is the End last code before Ayman Edit -->
 
 
 
@@ -218,5 +215,49 @@
   </form>
 </div>
 </div> -->
+
+<div class="BG">
+  <div class="container py-3">
+    <div class="card shadow-lg" style="border-color: #f98c00;">
+      <div class="card-header text-white text-center" style="background-color: #f98c00;">
+        <h2>Create Subscription</h2>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #subscriptionForm="ngForm">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" [(ngModel)]="command.name" name="name" required class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input id="price" [(ngModel)]="command.price" name="price" type="number" required class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="duration">Duration (Months):</label>
+            <input id="duration" [(ngModel)]="command.durationInMonths" name="durationInMonths" type="number" required class="form-control" />
+          </div>
+          
+          <div *ngIf="featuresLoaded">
+            <h3>Features</h3>
+            <ul class="list-unstyled">
+              <li *ngFor="let feature of features" class="form-check">
+                <input type="checkbox" id="feature-{{feature.id}}" [checked]="isSelected(feature)" (change)="toggleFeatureSelection(feature)" class="form-check-input" />
+                <label for="feature-{{feature.id}}" class="form-check-label">{{ feature.name }}</label>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="!featuresLoaded" class="loading">
+            Loading features...
+          </div>
+  
+          <div class="text-center">
+            <button type="submit" class="btn btn-custom" [disabled]="subscriptionForm.invalid">Create Subscription</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>
 
 

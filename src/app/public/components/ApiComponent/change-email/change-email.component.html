@@ -1,4 +1,5 @@
-<div class="change-email-container">
+<div class="background">
+  <div class="container change-email-container">
     <h2>Change Email</h2>
     <form [formGroup]="changeEmailForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -22,10 +23,10 @@
         <input type="text" id="clientEmailChangingConfirmationUrl" formControlName="clientEmailChangingConfirmationUrl">
         Add validation messages if needed
       </div> -->
-      <button type="submit">Change Email</button>
+      <button type="submit" class="btn btn-primary">Change Email</button>
     </form>
   
-    <div *ngIf="response">
+    <div *ngIf="response" class="response-success">
       <h3>Email Change Successful</h3>
       <p>Entity ID: {{ response.entityId }}</p>
       <p>User Email to Confirm: {{ response.userEmailToConfirm }}</p>
@@ -33,9 +34,9 @@
       <p>Roles: {{ response.roles.join(', ') }}</p>
     </div>
   
-    <div *ngIf="error">
+    <div *ngIf="error" class="response-error">
       <h3>Error</h3>
       <p>{{ error }}</p>
     </div>
   </div>
-  
+</div>

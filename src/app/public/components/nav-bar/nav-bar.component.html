@@ -11,7 +11,19 @@
       <li><a routerLink="/coaches" routerLinkActive="active">Coaches</a></li>
       <li><a routerLink="/update-user" routerLinkActive="active">Profile</a></li>
       <li><a routerLink="/calcalory" routerLinkActive="active">Calory Calculator</a></li>
-      <li><a routerLink="/accountsetting" routerLinkActive="active">Account settings</a></li>
+
+      <li class="dropdown" *ngIf="isLoggedIn">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/activatedeactivateuser">Activate/Deactivate User</a>
+          <a class="dropdown-item" routerLink="/changepassword">Change Password</a>
+          <a class="dropdown-item" routerLink="/changeemail">Change Email</a>
+        </div>
+      </li>
+      
       <li><a routerLink="/measurementpost" routerLinkActive="active">Measurement</a></li>
       <li><a routerLink="/fav" routerLinkActive="active">Favorite Coaches</a></li>
       <li><a routerLink="/ahtletesub" routerLinkActive="active">Ahtlete Subscriptions</a></li>
