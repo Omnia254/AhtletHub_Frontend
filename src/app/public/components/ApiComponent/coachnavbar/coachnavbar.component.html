@@ -10,7 +10,19 @@
         <!-- <li><a routerLink="/fav">Favorite Coaches</a></li> -->
         <li><a routerLink="/addSubscription">AddSubscription</a></li> 
         <li><a routerLink="/getSubscription">Subscription</a></li> 
-        <li><a routerLink="/accountsetting">Accountsetting</a></li>
+
+        <li class="dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/activatedeactivateuser">Activate/Deactivate User</a>
+          <a class="dropdown-item" routerLink="/changepassword">Change Password</a>
+          <a class="dropdown-item" routerLink="/changeemail">Change Email</a>
+        </div>
+      </li>
+
         <li><a routerLink="/update-user">Profile</a></li>
         <li><a routerLink="/logoutme">logout</a></li>
       </ul> 

@@ -1,7 +1,13 @@
-<!-- src/app/components/activate-deactivate-user/activate-deactivate-user.component.html -->
-<div>
-    <button (click)="toggleUserActivation()">
-      {{ isDeactivating ? 'Deactivate User' : 'Activate User' }}
-    </button>
+<div class="background">
+  <div class="container activate-deactivate-user-container">
+    <h2>{{ isDeactivating ? 'Activate User' : 'Deactivate User' }}</h2>
+    <form (ngSubmit)="toggleUserActivation()">
+      <div class="warning" *ngIf="!isDeactivating">
+        Are you sure you want to deactivate your account?
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ isDeactivating ? 'Activate User' : 'Deactivate User' }}
+      </button>
+    </form>
   </div>
-  
+</div>

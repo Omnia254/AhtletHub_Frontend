@@ -1,0 +1,91 @@
+.background {
+    background-image: url("../../../../../assets/Images/log - Copy.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; // Added padding for better layout on smaller screens
+  }
+  
+  .container {
+    width: 80%; // Adjust as needed
+    max-width: 800px; // Adjust as needed
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box; // Ensures padding is included in width calculation
+    margin-bottom: 20px; // Added margin for spacing between elements
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center; // Centered the heading
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  
+    label {
+      display: block;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
+  
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  }
+  
+  .btn-primary {
+    background-color: #f98c00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%; // Make button full width
+    margin-top: 15px;
+  
+    &:hover {
+      background-color: #d47a00;
+      transform: scale(1.05);
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 0.2rem rgba(249, 140, 0, 0.5);
+    }
+  }
+  
+  .response-success, .response-error {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .response-success h3, .response-error h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .response-success p, .response-error p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
