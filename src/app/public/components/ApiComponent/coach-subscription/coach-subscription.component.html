@@ -1,6 +1,5 @@
-<!-- coach-subscription.component.html -->
 
-<div>
+<!-- <div>
     <h2>Subscriptions</h2>
   
     <div>
@@ -8,7 +7,6 @@
       <select id="sort" [(ngModel)]="sortBy" (change)="onSortChange(sortBy)">
         <option value="name">Name</option>
         <option value="price">Price</option>
-        <!-- Add more options as needed -->
       </select>
   
       <label for="direction">Direction:</label>
@@ -18,16 +16,7 @@
       </select>
     </div>
   
-    <!-- <ul>
-      <li *ngFor="let subscription of subscriptions">
-        {{ subscription.name }} - {{ subscription.price }}$
-        <li *ngFor="let subscriptionfeature of subscription.subscribtionsFeatures">
-            {{ subscriptionfeature.name }} - {{ subscriptionfeature.price }}$
-        </li>    
-      </li>
-    </ul> -->
-
-
+  
     <div class="subscription-cards">
         <mat-card class="subscription-card" *ngFor="let subscription of subscriptions">
           <mat-card-header>
@@ -48,5 +37,48 @@
     <button (click)="onPageChange(pageNumber - 1)" [disabled]="pageNumber === 1">Previous</button>
     <span>Page {{ pageNumber }}</span>
     <button (click)="onPageChange(pageNumber + 1)" [disabled]="pageNumber >= totalItems / pageSize">Next</button>
+  </div>
+   -->
+
+
+   <div class="subscriptions-container">
+    <h2>Subscriptions</h2>
+  
+    <div class="sort-controls">
+      <label for="sort">Sort By:</label>
+      <select id="sort" [(ngModel)]="sortBy" (change)="onSortChange(sortBy)">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+      </select>
+  
+      <label for="direction">Direction:</label>
+      <select id="direction" [(ngModel)]="sortingDirection" (change)="onDirectionChange(sortingDirection)">
+        <option value="Ascending">Ascending</option>
+        <option value="Descending">Descending</option>
+      </select>
+    </div>
+  
+    <div class="subscription-cards">
+      <mat-card class="subscription-card" *ngFor="let subscription of subscriptions">
+        <mat-card-header>
+          <mat-card-title>{{ subscription.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Price: {{ subscription.price | currency }}</p>
+          <p>Duration: {{ subscription.durationInMonths }} months</p>
+          <ul>
+            <li *ngFor="let feature of subscription.subscriptionsFeatures">
+              {{ feature.name || 'Feature description not available' }}
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="pagination-controls">
+      <button (click)="onPageChange(pageNumber - 1)" [disabled]="pageNumber === 1">Previous</button>
+      <span>Page {{ pageNumber }}</span>
+      <button (click)="onPageChange(pageNumber + 1)" [disabled]="pageNumber >= totalItems / pageSize">Next</button>
+    </div>
   </div>
   

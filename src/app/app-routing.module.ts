@@ -28,6 +28,7 @@ import { FavoriteCoachesComponent } from './public/components/ApiComponent/favor
 import { AthleteSubscriptionComponent } from './public/components/ApiComponent/athlete-subscription/athlete-subscription.component';
 import { ResetPasswordComponent } from './public/components/ApiComponent/reset-password/reset-password.component';
 import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-reset/confirm-reset.component';
+import { CoachSubscriptionComponent } from './public/components/ApiComponent/coach-subscription/coach-subscription.component';
 
 
 const routes: Routes = [
@@ -156,6 +157,11 @@ const routes: Routes = [
     path: 'addSubscription', // Dynamic route parameter for coachId
     component: CreateSubscribtionComponent, // This component will display detailed information about the coach
   },
+  {
+    path: 'getSubscription', // Dynamic route parameter for coachId
+    component: CoachSubscriptionComponent, // This component will display detailed information about the coach
+  },
+
   {
     // Redirects all paths that are not matching to the 'public' route/path
     path: '**',
