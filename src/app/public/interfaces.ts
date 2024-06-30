@@ -112,44 +112,42 @@ export interface SearchCriteria {
 }
 
 export enum Gender {
-  Male = 0,
-  Female = 1
+  "Male" = 0,
+  "Female" = 1
  
 }
 
 export enum RateFilter {
-  moreThanOne=0,
-  moreThanTwo=1,
-  moreThanThree=2, 
-  moreThanFour=3
+  "More than one"=0,
+  "More than two"=1,
+  "More than three"=2, 
+  "More than four"=3
 }
 
 export enum AgeFilter {
-  lessThan20=0,
- between20and25=1,
- between25and30=2,
- moeThan30=3
+ "Younger than 20"=0,
+ "Between 20 and 25"=1,
+ "Between 25 and 30"=2,
+ "Older than 30"=3
 }
 
 export enum PriceFilter {
-  lessThan500=0,
-between500and1000=1,
-between1000and1500=2,
-moreThan1500=3
+  "Cheaper than 500"=0,
+  "Between 500 and 1000"=1,
+  "Between 1000 and 1500"=2,
+  "More than 1500"=3
 }
 
 export enum SortBy {
-  rate=0,
-  Price=1
+  "Rate"=0,
+  "Price"=1
 }
 
 export enum SortingDirection {
-  Ascending = 0,
-  Descending = 1
+  "Ascending" = 0,
+  "Descending" = 1
 }
 
-
-//return getallcoaches
 export interface PaginatedResult<T> {
   items: T[];
   totalItemsCount: number;

@@ -16,11 +16,11 @@ export class CoachesService {
   getAllCoaches(query: any): Observable<PaginatedResult<CoachDto>> {
     let params = new HttpParams();
     for (const key in query) {
-      if (query.hasOwnProperty(key)) {
+      if (query.hasOwnProperty(key) && query[key] !== undefined && query[key] !== '') {
         params = params.set(key, query[key]);
       }
     }
-    console.log(this);
+    
     return this.http.get<PaginatedResult<CoachDto>>(`${this.apiUrl}coaches`, { params });
     
   }
