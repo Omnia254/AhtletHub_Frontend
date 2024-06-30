@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { PageResultsDto } from '../../Interfaces/coach/coach';
 import { TokenService } from './token.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -19,6 +20,7 @@ export class CoachesService {
   constructor(private http: HttpClient ,
     private tokenService: TokenService,
     private route:ActivatedRoute,
+    private router:Router,
   ) {
 
     this.fetchEntityId();
@@ -55,8 +57,7 @@ export class CoachesService {
   }
 
   getFavoriteCoaches(
-    athleteId: number ,
-    
+    athleteId: number,
     pageNumber: number = 1,
     pageSize: number = 10,
     sortingDirection: 'Ascending' | 'Descending' = 'Ascending'
@@ -67,7 +68,7 @@ export class CoachesService {
     //   .set('PageSize', pageSize.toString())
     //   .set('SortingDirection', sortingDirection);
     if (this.athlete === undefined) {
-      console.error('AthleteId is undefined.');
+      this.router.navigate(['../public/login']);
     }
 
     const params = new HttpParams()

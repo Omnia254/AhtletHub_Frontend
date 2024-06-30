@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserLoginResponseDto } from '../../Interfaces/User/UserLoginResponseDto';
 
@@ -9,8 +9,21 @@ import { UserLoginResponseDto } from '../../Interfaces/User/UserLoginResponseDto
 })
 export class AuthService {
   private apiUrl = 'http://localhost:5068/api/';
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
+
+  get isLoggedIn(): Observable<boolean>{
+    return this.loggedIn.asObservable();
+  }
+
+  loggingIn():void{
+    this.loggedIn.next(true);
+  }
+
+  loggingOut():void{
+    this.loggedIn.next(false);
+  }
 
   login(userNameOrEmail: string, password: string): Observable<UserLoginResponseDto> {
     const loginData = { userNameOrEmail, password };

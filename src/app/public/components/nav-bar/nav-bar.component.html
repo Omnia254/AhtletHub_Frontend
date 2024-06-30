@@ -16,12 +16,12 @@
       <li><a routerLink="/measurementpost" routerLinkActive="active">Measurement</a></li>
       <li><a routerLink="/fav" routerLinkActive="active">Favorite Coaches</a></li>
       <li><a routerLink="/ahtletesub" routerLinkActive="active">AhtleteSub</a></li>
-      <li><a routerLink="/logoutme" routerLinkActive="active">Logout</a></li>
+      
     </ul>
 
     <ul class="nav-right">
       <li *ngIf="!isLoggedIn"><a routerLink="/public/login" routerLinkActive="active">Login</a></li>
-      <!-- <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li> -->
+      <li *ngIf="isLoggedIn"><a routerLink="/logoutme" routerLinkActive="active">Logout</a></li>
     </ul>
   </nav>
 </header>

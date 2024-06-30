@@ -24,11 +24,9 @@ export class ActivateDeactivateUserComponent {
         this.router.navigate(['../logout']);
         console.log(command);
         console.log('User activation status changed successfully.');
-        // Handle success (e.g., show a message to the user)
       },
       error: (err) => {
         console.error('Error changing user activation status:', err);
-        // Handle error (e.g., show an error message to the user)
       }
     });
   }

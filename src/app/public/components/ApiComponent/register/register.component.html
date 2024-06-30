@@ -7,12 +7,14 @@
       <div class="row">
         <div class="form-group col-md-6">
           <label for="email">Email</label>
-          <input class="form-control" type="email" id="email" name="email" required [(ngModel)]="command.email">
+          <input class="form-control" type="email" id="email" name="email" [(ngModel)]="command.email">
         </div>
-        
         <div class="form-group col-md-6">
           <label for="confirmEmail">Confirm Email</label>
           <input class="form-control" type="email" id="confirmEmail" name="confirmEmail" required [(ngModel)]="command.confirmEmail">
+        </div>
+        <div class="valid-feedback">
+          Looks good!
         </div>
       </div>
       
