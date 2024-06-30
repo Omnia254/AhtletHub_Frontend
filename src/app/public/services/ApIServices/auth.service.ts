@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserLoginResponseDto } from '../../Interfaces/User/UserLoginResponseDto';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,15 @@ export class AuthService {
   private apiUrl = 'http://localhost:5068/api/';
   private loggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient,private tokenService: TokenService) {
+    this.checkLoginStatus();
+  }
+
+  checkLoginStatus() {
+    const token = this.tokenService.extractEntityIdFromToken();
+    this.loggedIn.next(!!token);
+  }
 
   get isLoggedIn(): Observable<boolean>{
     return this.loggedIn.asObservable();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/ApIServices/auth.service';
+import { TokenService } from '../../services/ApIServices/token.service';
 
 
 @Component({
@@ -11,13 +12,17 @@ export class NavBarComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+    private tokenService:TokenService
+  ) {
 
   }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe((status:boolean)=>{
-      this.isLoggedIn = status;
-    })
+     this.authService.checkLoginStatus();
+     this.authService.isLoggedIn.subscribe((status:boolean)=>{
+       this.isLoggedIn = status;
+     })
+
   }
 }

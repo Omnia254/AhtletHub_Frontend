@@ -61,8 +61,10 @@ export class SubscribeComponent implements OnInit {
     };
 
     console.log('Subscribe command:', command);
-
+ 
     this.subscribeService.subscribe(command).subscribe(
+      
+    
       response => {
         console.log('Subscription successful', response);
         this.router.navigate(['/checkout']);

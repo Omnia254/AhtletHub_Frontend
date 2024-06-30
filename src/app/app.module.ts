@@ -59,6 +59,8 @@ import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-
 import { SiteInfoComponent } from './public/components/ApiComponent/site-info/site-info.component';
 import { CoachApprovalComponent } from './public/components/ApiComponent/coach-approval/coach-approval.component';
 import { NotApprovedCoachesComponent } from './public/components/ApiComponent/not-approved-coaches/not-approved-coaches.component';
+import { PaymentSuccessComponent } from './public/components/ApiComponent/payment-success/payment-success.component';
+import { PaymentCancelComponent } from './public/components/ApiComponent/payment-cancel/payment-cancel.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -113,6 +115,8 @@ export function tokenGetter() {
     SiteInfoComponent,
     CoachApprovalComponent,
     NotApprovedCoachesComponent,
+    PaymentSuccessComponent,
+    PaymentCancelComponent,
     //AddToFavoriteComponent,
     
 

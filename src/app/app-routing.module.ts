@@ -30,6 +30,8 @@ import { ResetPasswordComponent } from './public/components/ApiComponent/reset-p
 import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-reset/confirm-reset.component';
 import { CoachSubscriptionComponent } from './public/components/ApiComponent/coach-subscription/coach-subscription.component';
 import { SiteInfoComponent } from './public/components/ApiComponent/site-info/site-info.component';
+import { PaymentSuccessComponent } from './public/components/ApiComponent/payment-success/payment-success.component';
+import { PaymentCancelComponent } from './public/components/ApiComponent/payment-cancel/payment-cancel.component';
 
 
 const routes: Routes = [
@@ -168,8 +170,14 @@ const routes: Routes = [
     path: 'siteinfo', // Dynamic route parameter for coachId
     component: SiteInfoComponent, // This component will display detailed information about the coach
   },
-
-
+  {
+    path: 'successpayment', 
+    component: PaymentSuccessComponent, 
+  },
+  {
+    path: 'cancelpayment', 
+    component: PaymentCancelComponent, 
+  },
   {
     // Redirects all paths that are not matching to the 'public' route/path
     path: '**',
