@@ -22,7 +22,6 @@ import { LoginComponent } from './public/components/ApiComponent/login/login.com
 import { AboutUsComponent } from './public/components/about-us/about-us.component';
 import { CoachDetailsComponent } from './public/components/coach-details/coach-details.component';
 import { UserProfileComponent } from './public/components/ApiComponent/user-profile/user-profile.component';
-import { FavoriteCoachesComponent } from './public/components/favorite-coaches/favorite-coaches.component';
 import { SubscriptionComponent } from './public/components/subscription/subscription.component';
 import { PaymentComponent } from './public/components/payment/payment.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -53,6 +52,10 @@ import { CoachHomeComponent } from './public/components/ApiComponent/coach-home/
 import { CoachnavbarComponent } from './public/components/ApiComponent/coachnavbar/coachnavbar.component';
 import { CreateSubscribtionComponent } from './public/components/ApiComponent/create-subscribtion/create-subscribtion.component';
 import { CoachSubscriptionComponent } from './public/components/ApiComponent/coach-subscription/coach-subscription.component';
+import { FavoriteCoachesComponent } from './public/components/ApiComponent/favorite-coaches/favorite-coaches.component';
+import { AthleteSubscriptionComponent } from './public/components/ApiComponent/athlete-subscription/athlete-subscription.component';
+import { ResetPasswordComponent } from './public/components/ApiComponent/reset-password/reset-password.component';
+import { ConfirmResetComponent } from './public/components/ApiComponent/confirm-reset/confirm-reset.component';
 //import { AddToFavoriteComponent } from './public/components/ApiComponent/add-to-favorite/add-to-favorite.component';
 
 // specify the key where the token is stored in the local storage
@@ -101,6 +104,9 @@ export function tokenGetter() {
     CoachnavbarComponent,
     CreateSubscribtionComponent,
     CoachSubscriptionComponent,
+    AthleteSubscriptionComponent,
+    ResetPasswordComponent,
+    ConfirmResetComponent,
     //AddToFavoriteComponent,
     
 

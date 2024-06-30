@@ -1,0 +1,30 @@
+<!-- favorite-coaches.component.html -->
+
+<div class="container">
+    <h2>Favorite Coaches</h2>
+  
+    <!-- Display coaches if there are any -->
+    <div *ngIf="favoriteCoaches.length > 0; else noCoaches">
+      <div *ngFor="let coach of favoriteCoaches" class="coach-card">
+        <div class="coach-info">
+          <h3>{{ coach.firstName }} {{ coach.lastName }}</h3>
+          <p>{{ coach.bio }}</p>
+          <p>Overall Rating: {{ coach.overallRating }}</p>
+          <p>Number of Ratings: {{ coach.ratingsCount }}</p>
+          <!-- Add more details as needed -->
+        </div>
+        <!-- Example: Display coach's profile picture if available -->
+        <!-- <div class="coach-profile">
+          <img *ngIf="coach.sasProfilePicture" [src]="coach.sasProfilePicture" alt="Coach Profile Picture">
+          <div *ngIf="!coach.sasProfilePicture" class="placeholder">No profile picture available</div>
+        </div> -->
+      </div>
+    </div>
+  
+    <!-- Show message if no coaches found -->
+    <ng-template #noCoaches>
+      <p>No favorite coaches found.</p>
+    </ng-template>
+
+  </div>
+  

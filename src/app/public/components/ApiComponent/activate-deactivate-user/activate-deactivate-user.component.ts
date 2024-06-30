@@ -22,7 +22,6 @@ export class ActivateDeactivateUserComponent {
     this.userService.activateOrDeactivateUser(command).subscribe({
       next: () => {
         this.router.navigate(['../logout']);
-
         console.log(command);
         console.log('User activation status changed successfully.');
         // Handle success (e.g., show a message to the user)
