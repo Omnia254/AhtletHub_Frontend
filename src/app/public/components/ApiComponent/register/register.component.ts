@@ -5,6 +5,7 @@ import { MessageBodyType } from 'src/app/public/Interfaces/User/SendEmailCommand
 import { EmailService } from 'src/app/public/services/ApIServices/email.service';
 import { RegisterService } from 'src/app/public/services/ApIServices/register.service';
 import { UploadingService } from 'src/app/public/services/ApIServices/uploading.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -54,7 +55,8 @@ export class RegisterComponent {
     private http: HttpClient,
     private registerUserService: RegisterService,
     private sendEmailService: EmailService,
-    private uploadSevice: UploadingService
+    private uploadSevice: UploadingService,
+    private router: Router
   ) { }
 
   ValidateEmail(email:string){
@@ -177,17 +179,17 @@ export class RegisterComponent {
   ValidateForm(){
     if(!(
       (
-      this.emailValidator == ''||
-      this.confirmEmailValidator == ''||
-      this.usernameValidator == ''||
-      this.passwordValidator == ''||
-      this.confirmPasswordValidator == ''||
-      this.firstnameValidator == ''||
-      this.lastnameValidator == ''||
-      this.phoneNumberValidator == ''||
-      this.dobValidator == ''||
-      this.heightValidator == ''||
-      this.bioValidator == '')
+      this.emailValidator != ''||
+      this.confirmEmailValidator != ''||
+      this.usernameValidator != ''||
+      this.passwordValidator != ''||
+      this.confirmPasswordValidator != ''||
+      this.firstnameValidator != ''||
+      this.lastnameValidator != ''||
+      this.phoneNumberValidator != ''||
+      this.dobValidator != ''||
+      this.heightValidator != ''||
+      this.bioValidator != '')
       ||
       (
         this.command.email == ''||
@@ -206,6 +208,7 @@ export class RegisterComponent {
       this.formValid = true;
     }
   }
+
   
   onSubmit(): void {
     this.ValidateForm();
@@ -269,6 +272,7 @@ export class RegisterComponent {
             this.sendEmailService.sendEmail(sendEmailFormData).subscribe(
               _response => {
                 console.log('Send Email successful');
+                this.router.navigate(["../public/login"]);
               },
               error => {
                 console.error('Send Email failed:', error);
