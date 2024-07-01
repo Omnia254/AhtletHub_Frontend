@@ -1,12 +1,15 @@
 .background {
   background-image: url("../../../../../assets/Images/log - Copy.jpg");
   background-size: cover;
+  display:flex;
+  flex-grow: 1;
+  flex-direction: column;
 }
 
 .container {
   width: 40%;
   margin: 20px 0;
-  margin-left: 30%; 
+  margin-left: 30%;
 }
 
 .card {
@@ -16,14 +19,13 @@
 }
 
 .card-body {
-  color: rgb(12, 4, 4);
+  color: white;
   padding: 20px;
 }
 
 h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #000000;
 }
 
 .measurement-container {

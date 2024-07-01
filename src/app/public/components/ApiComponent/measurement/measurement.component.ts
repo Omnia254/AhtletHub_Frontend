@@ -38,7 +38,7 @@
 //   }
 // }
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { MeasurementDto } from 'src/app/public/Interfaces/Athlete/MeasurementDto';
 import { MeasurementService } from 'src/app/public/services/ApIServices/measurement.service';
 import { Router } from '@angular/router';
@@ -50,6 +50,7 @@ import { Router } from '@angular/router';
 })
 export class MeasurementComponent implements OnInit {
   measurement?: MeasurementDto;
+  @HostBinding('class') dFlex = 'd-flex flex-column flex-grow-1';
 
   constructor(private measurementService: MeasurementService, private router: Router) {}
 
