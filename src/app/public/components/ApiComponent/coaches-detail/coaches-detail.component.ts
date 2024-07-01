@@ -1,7 +1,7 @@
 // coach-detail.component.ts
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CoachesService } from '../../../services/ApIServices/coaches.service';
 import { CoachDto,Gender } from '../../../interfaces';
 import { AthleteFavoriteService } from 'src/app/public/services/ApIServices/athlete-favorite.service';
@@ -21,6 +21,7 @@ export class CoachesDetailComponent implements OnInit {
 
 
   constructor(
+    private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router,
     private coachService: CoachesService,
@@ -62,13 +63,15 @@ export class CoachesDetailComponent implements OnInit {
             },
             error => {
               console.error('Error creating checkout session:', error);
-              // Handle error accordingly
             }
           );
-        //  console.log(response.canSubscribe);
-         // this.router.navigate(['/subscribe', coachId, subscriptionId, subscriptionDurationInMonths, subscriptionPrice, subscriptionName]);
         } else {
-          this.errorMessage = response.message;
+          this.snackBar.open("You are already subscribed with this coach on another plan.","Close",{
+            duration:3000,
+            horizontalPosition:'right',
+            verticalPosition:'top',
+            panelClass: 'custom-snack-bar'
+          })
         }
       },
       (error) => {

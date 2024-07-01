@@ -62,8 +62,6 @@ export class SubscribtionService implements OnInit{
  
     const sortingValue = sortingDirection === SortingDirection.Ascending ? '1' : '0';
     params = params.set('SortingDirection', sortingValue);
-
-     console.log(params);
     return this.http.get<PageResults<Subscription>>(`${this.apiUrl}coaches/${this.coach}/subscribtions`, { params });
   }
 
@@ -76,7 +74,6 @@ export class SubscribtionService implements OnInit{
 
     return this.http.get<Subscription[]>(`${this.apiUrl}AthleteSubscribtion`, { params })
       .pipe(
-        //catchError(this.handleError)
       );
   }
 

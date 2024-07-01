@@ -12,9 +12,7 @@ export class NavBarComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService,
-    private tokenService:TokenService
-  ) {
+  constructor(private authService: AuthService) {
 
   }
 

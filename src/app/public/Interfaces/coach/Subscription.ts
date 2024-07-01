@@ -1,6 +1,6 @@
 // subscription.model.ts
 
-export interface SubscriptionFeature {
+export interface SubscribtionFeatureDto {
     subscriptionId: number;
     featureId: number;
     name: string;
@@ -13,7 +13,7 @@ export interface SubscriptionFeature {
     name: string;
     price: number;
     durationInMonths: number;
-    subscriptionsFeatures: SubscriptionFeature[];
+    subscribtionsFeatures: SubscribtionFeatureDto[];
   }
   
   export interface PageResults<T> {

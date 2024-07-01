@@ -89,7 +89,7 @@ export class LoginComponent {
             if (userResponse.isApproved) {
               this.setUserToken();
               this.authService.loggingIn();
-              this.router.navigate(['../homenav']);
+              this.router.navigate(['../home']);
             } else {
               this.validationCoach = 'Your documents are being approved, please wait for approval email.';
             }
@@ -103,8 +103,6 @@ export class LoginComponent {
           this.validation = 'Your account is deactivated, please contact the admin to reactivate it.';
         }
       }else if(userResponse.isLockedOut){
-        console.log(userResponse.lockoutEnd);
-        console.log(typeof userResponse.lockoutEnd);
         const lockoutEndDate = new Date(userResponse.lockoutEnd??"");
         this.validation = 'Your account is locked. You can login again after ' + lockoutEndDate.toLocaleTimeString('en-EG',this.options);
       }

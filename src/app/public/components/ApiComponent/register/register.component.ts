@@ -30,6 +30,24 @@ export class RegisterComponent {
     certificate: undefined, // Assigning undefined instead of null
     clientEmailConfirmationUrl: ''
   };
+  emailValidator = '';
+  confirmEmailValidator = '';
+  usernameValidator = '';
+  passwordValidator = '';
+  confirmPasswordValidator = '';
+  firstnameValidator = '';
+  lastnameValidator = '';
+  phoneNumberValidator = '';
+  dobValidator = '';
+  heightValidator = '';
+  bioValidator = '';
+  certValidator = '';
+  emailRegex = /^\w+([-.+']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+  passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+  phoneNumberRegex = /^(010|011|012)\d{8}$/;
+
+  formValid:boolean = false;
+
   @HostBinding('class') dFlex = 'd-flex flex-column flex-grow-1';
 
   constructor(
@@ -39,7 +57,161 @@ export class RegisterComponent {
     private uploadSevice: UploadingService
   ) { }
 
+  ValidateEmail(email:string){
+    if(!this.emailRegex.test(email)){
+      this.emailValidator = "Please enter a valid email address.";
+    }
+    else{
+      this.emailValidator = '';
+    }
+  }
+  ValidateConfirmEmail(email:string,confirmEmail:string){
+    if(!this.emailRegex.test(confirmEmail)){
+      this.confirmEmailValidator = "Please enter a valid email address.";
+    }
+    else if(email != confirmEmail){
+      this.confirmEmailValidator = "Please make sure the email addresses match.";
+    }
+    else{
+      this.confirmEmailValidator = '';
+    }
+  }
+
+  ValidateUsername(username:string){
+    if(username.length < 3){
+      this.usernameValidator = "Username must be longer than 3 characters.";
+    }
+    else if(username.length > 100){
+      this.usernameValidator = "Username must be shorter than 100 characters.";
+    }
+    else{
+      this.usernameValidator = '';
+    }
+  }
+
+  ValidatePassword(password:string){
+    if(!this.passwordRegex.test(password) || password.length < 8){
+      this.passwordValidator = "Passwords must be:\n-At least 8 characters long\n-Contain at least one letter, one number, and one special character.";
+    }
+    else{
+      this.passwordValidator = '';
+    }
+  }
+
+  
+  ValidateConfirmPassword(password:string,confirmPassword:string){
+    if(password != confirmPassword){
+      this.confirmPasswordValidator = "Please make sure your passwords match.";
+    }
+    else{
+      this.confirmPasswordValidator = '';
+    }
+  }
+
+  ValidateFirstName(firstname:string){
+    if(firstname.length < 3){
+      this.firstnameValidator = "First name should be longer than 3 characters.";
+    }
+    else if (firstname.length > 100){
+      this.firstnameValidator = "First name should be longer than 100 characters.";
+    }
+    else{
+      this.firstnameValidator = '';
+    }
+  }
+  
+  ValidateLastName(lastname:string){
+    if(lastname.length < 3){
+      this.lastnameValidator = "Last name should be longer than 3 characters.";
+    }
+    else if (lastname.length > 100){
+      this.lastnameValidator = "Last name should be longer than 100 characters.";
+    }
+    else{
+      this.lastnameValidator = '';
+    }
+  }
+
+  ValidatePhoneNumber(phoneNumber:string){
+    if(!this.phoneNumberRegex.test(phoneNumber)){
+      this.phoneNumberValidator = "Phone number must be 11 digits starting with 010|011|012.";
+    }
+    else{
+      this.phoneNumberValidator = '';
+    }
+  }
+
+  ValidateAge(age:string){
+    const today = new Date();
+    const enteredAge = new Date(age);
+    const curAge = today.getFullYear() - enteredAge.getFullYear();
+    if(curAge < 18){
+      this.dobValidator = "Age must be above 18.";
+    }
+    else{
+      this.dobValidator = '';
+    }
+  }
+
+  ValidateBio(bio:string){
+    if(bio != null && bio.length > 450){
+      this.bioValidator = "Bio cannot be longer than 450 characters.";
+    }
+    else{
+      this.bioValidator = '';
+    }
+  }
+
+  ValidateHeight(height:number){
+    if(height < 150){
+      this.heightValidator = "Height must be taller than 150 cm.";
+    }
+    else if(height > 250){
+      this.heightValidator = "Height must be shorter than 250 cm.";
+    }
+    else{
+      this.heightValidator = '';
+    }
+  }
+
+  ValidateForm(){
+    if(!(
+      (
+      this.emailValidator == ''||
+      this.confirmEmailValidator == ''||
+      this.usernameValidator == ''||
+      this.passwordValidator == ''||
+      this.confirmPasswordValidator == ''||
+      this.firstnameValidator == ''||
+      this.lastnameValidator == ''||
+      this.phoneNumberValidator == ''||
+      this.dobValidator == ''||
+      this.heightValidator == ''||
+      this.bioValidator == '')
+      ||
+      (
+        this.command.email == ''||
+        this.command.confirmEmail == ''||
+        this.command.firstName == ''||
+        this.command.lastName == ''||
+        this.command.password == ''||
+        this.command.confirmPassword == ''||
+        this.command.userName == ''||
+        this.command.phoneNumber == ''||
+        this.command.dateOfBirth == ''||
+        (this.command.isCoach == false && this.command.height == undefined)||
+        (this.command.isCoach == true && this.command.certificate == null)
+      )
+    )){
+      this.formValid = true;
+    }
+  }
+  
   onSubmit(): void {
+    this.ValidateForm();
+    if(!this.formValid){
+      return;
+    }
     const formData = new FormData();
     formData.append('email', this.command.email);
     formData.append('confirmEmail', this.command.confirmEmail);
@@ -142,11 +314,9 @@ export class RegisterComponent {
   }
 
   onFileSelected(event: any) {
-    console.log("onFileSelectedsucess");
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files?.length) {
       this.command.certificate = inputElement.files[0];
-
     }
   }
   onUpload() {

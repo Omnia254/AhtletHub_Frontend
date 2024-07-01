@@ -9,6 +9,8 @@ import { IsCoachService } from './public/services/ApIServices/is-coach.service';
 })
 export class AppComponent {
   title = 'login-and-register-example';
-  constructor(public isCoachService: IsCoachService) {}
+  constructor(public isCoachService: IsCoachService) {
+    console.log(isCoachService.isCoach);
+  }
 
 }

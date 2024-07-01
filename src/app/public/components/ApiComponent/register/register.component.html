@@ -2,61 +2,83 @@
   <div class="container pt-5">
 
     <h2>Registration form</h2>
-    <form (ngSubmit)="onSubmit()">
+    <form class="mb-3" (ngSubmit)="onSubmit()">
 
       <div class="row">
         <div class="form-group col-md-6">
           <label for="email">Email</label>
-          <input class="form-control" type="email" id="email" name="email" [(ngModel)]="command.email">
+          <input class="form-control" type="email" id="email" name="email" [(ngModel)]="command.email" #email="ngModel" (focusout)="ValidateEmail(email.value)" required>
+          <div *ngIf="emailValidator" class="alert-danger">
+              {{emailValidator}}
+          </div>
         </div>
         <div class="form-group col-md-6">
           <label for="confirmEmail">Confirm Email</label>
-          <input class="form-control" type="email" id="confirmEmail" name="confirmEmail" required [(ngModel)]="command.confirmEmail">
-        </div>
-        <div class="valid-feedback">
-          Looks good!
+          <input class="form-control" type="email" id="confirmEmail" name="confirmEmail" #confirmEmail="ngModel" [(ngModel)]="command.confirmEmail" (focusout)="ValidateConfirmEmail(email.value,confirmEmail.value)" required>
+          <div *ngIf="confirmEmailValidator" class="alert-danger">
+            {{confirmEmailValidator}}
+          </div>
         </div>
       </div>
       
       <div class="row">
-      <div class="form-group col-md-4">
-        <label for="userName">Username</label>
-        <input class="form-control" type="text" id="userName" name="userName" required [(ngModel)]="command.userName">
-      </div>
+        <div class="form-group col-md-4">
+          <label for="userName">Username</label>
+          <input class="form-control" type="text" id="userName" name="userName" #username="ngModel" [(ngModel)]="command.userName" (focusout)="ValidateUsername(username.value)" required>
+          <div *ngIf="usernameValidator" class="alert-danger">
+            {{usernameValidator}}
+          </div>
+        </div>
 
         <div class="form-group col-md-4">
           <label for="password">Password</label>
-          <input class="form-control" type="password" id="password" name="password" required [(ngModel)]="command.password">
+          <input class="form-control" type="password" id="password" name="password" #password="ngModel" required [(ngModel)]="command.password" (focusout)="[ValidatePassword(password.value), ValidateConfirmPassword(password.value,confirmPassword.value)]">
+          <div *ngIf="passwordValidator" class="alert-danger">
+            {{passwordValidator}}
+          </div>
         </div>
 
         <div class="form-group col-md-4">
           <label for="confirmPassword">Confirm Password</label>
-          <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="command.confirmPassword">
+          <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required [(ngModel)]="command.confirmPassword" (focusout)="ValidateConfirmPassword(password.value, confirmPassword.value)">
+          <div *ngIf="confirmPasswordValidator" class="alert-danger">
+            {{confirmPasswordValidator}}
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="form-group col-md-6">
           <label for="firstName">First Name</label>
-          <input class="form-control" type="text" id="firstName" name="firstName" required [(ngModel)]="command.firstName">
+          <input class="form-control" type="text" id="firstName" name="firstName" #firstname="ngModel" required [(ngModel)]="command.firstName" (focusout)="ValidateFirstName(firstname.value)">
+          <div *ngIf="firstnameValidator" class="alert-danger">
+            {{firstnameValidator}}
+          </div>
         </div>
         
         <div class="form-group col-md-6">
           <label for="lastName">Last Name</label>
-          <input class="form-control" type="text" id="lastName" name="lastName" required [(ngModel)]="command.lastName">
+          <input class="form-control" type="text" id="lastName" name="lastName" #lastname="ngModel" required [(ngModel)]="command.lastName" (focusout)="ValidateLastName(lastname.value)">
+          <div *ngIf="lastnameValidator" class="alert-danger">
+            {{lastnameValidator}}
+          </div>
         </div>
       </div>
         
       <div class="row">
         <div class="form-group col-md-4">
           <label for="phoneNumber">Phone Number</label>
-          <input class="form-control"type="text" id="phoneNumber" name="phoneNumber" required [(ngModel)]="command.phoneNumber">
+          <input class="form-control"type="text" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required [(ngModel)]="command.phoneNumber" (focusout)="ValidatePhoneNumber(phoneNumber.value)">
+          <div *ngIf="phoneNumberValidator" class="alert-danger">
+            {{phoneNumberValidator}}
+          </div>
         </div>
 
 
         <div class="form-group col-md-4">
           <label for="gender">Gender</label>
           <select class="form-control" id="gender" name="gender" required [(ngModel)]="command.gender">
+            <option disabled selected>Choose your gender</option>
             <option [ngValue]="0">Male</option>
             <option [ngValue]="1">Female</option>
           </select>
@@ -65,14 +87,20 @@
       
         <div class="form-group col-md-4">
           <label for="dateOfBirth">Date of Birth</label>
-          <input class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" required [(ngModel)]="command.dateOfBirth">
+          <input class="form-control" type="date" id="dateOfBirth" #dob="ngModel" name="dateOfBirth" required [(ngModel)]="command.dateOfBirth" (focusout)="ValidateAge(dob.value)">
+          <div *ngIf="dobValidator" class="alert-danger">
+            {{dobValidator}}
+          </div>
         </div>
       </div>
       
 
       <div class="form-group">
         <label for="bio">Bio</label>
-        <textarea class="form-control" id="bio" name="bio" [(ngModel)]="command.bio"></textarea>
+        <textarea class="form-control" id="bio" name="bio" #bio="ngModel" [(ngModel)]="command.bio" (focusout)="ValidateBio(bio.value)"></textarea>
+        <div *ngIf="bioValidator" class="alert-danger">
+          {{bioValidator}}
+        </div>
       </div>
     
 
@@ -91,10 +119,13 @@
     
       <div *ngIf="!command.isCoach" class="form-group">
         <label for="height">Height (cm)</label>
-        <input class="form-control" type="number" id="height" name="height" [(ngModel)]="command.height">
+        <input class="form-control" type="number" id="height" #height="ngModel" name="height" [(ngModel)]="command.height" (focusout)="ValidateHeight(height.value)">
+        <div *ngIf="heightValidator" class="alert-danger">
+          {{heightValidator}}
+        </div>
       </div>
     
-      <button class="form-control" type="submit" >Register</button>
+      <button class="form-control" type="submit">Register</button>
     </form>
   </div>
 </div>

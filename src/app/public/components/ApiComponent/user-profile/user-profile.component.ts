@@ -3,6 +3,7 @@ import { Gender, UpdatedUserDto } from 'src/app/public/Interfaces/User/UpdatedUs
 import { UserService } from 'src/app/public/services/ApIServices/user.service';
 import { UserDto } from 'src/app/public/Interfaces/User/UserDto';
 import {   jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 
 
@@ -25,13 +26,16 @@ export class UserProfileComponent implements OnInit {
   };
   @HostBinding('class') dFlex = 'd-flex flex-grow-1';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.accessToken = this.getAccessTokenFromLocalStorage();
     if (this.accessToken) {
       this.athleteId = this.getIdFromToken(this.accessToken);
       this.getUserById(this.athleteId);
+    }
+    else{
+      this.router.navigate(["../public/login"])
     }
   }
 

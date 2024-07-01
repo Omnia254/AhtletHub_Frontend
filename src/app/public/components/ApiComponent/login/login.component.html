@@ -8,7 +8,7 @@
           <input
             type="email"
             matInput
-            placeholder="Email"
+            placeholder="Email/Username"
             [(ngModel)]="user.userNameOrEmail"
             name="email"
             required
@@ -33,21 +33,16 @@
         <div *ngIf="validationCoach" class="alert alert-success mt-3">
           {{ validationCoach }}
         </div>
-        <div class="button">
-          <button
-            type="submit"
-            mat-button
-
-            (click)="newLogin()"
-          >
+        <div class="button1">
+          <button type="submit" (click)="newLogin()">
             Login
           </button>
+          <button [routerLink]="['/register']" >Create a new account</button>
         </div>
 
         <div class="button1">
-          <button [routerLink]="['/register']" >Register Now</button>
-          <button [routerLink]="['/resetpassword']" >Forget My Password</button>
         </div>
+        <a [routerLink]="['/resetpassword']" ><strong>Forgot My Password?</strong></a>
 
 
 

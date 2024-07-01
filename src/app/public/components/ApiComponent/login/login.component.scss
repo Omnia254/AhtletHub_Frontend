@@ -63,8 +63,7 @@ mat-card-content {
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      width: auto; /* Allow button width to adjust based on content */
-      margin: 0 8px; /* Add margin between buttons */
+      width: auto;
     }
 
     .button {
@@ -105,4 +104,7 @@ mat-card-content {
       }
     }
   }
+}
+a{
+  text-decoration: none;
 }

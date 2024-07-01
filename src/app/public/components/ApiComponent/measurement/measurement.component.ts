@@ -41,6 +41,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MeasurementDto } from 'src/app/public/Interfaces/Athlete/MeasurementDto';
 import { MeasurementService } from 'src/app/public/services/ApIServices/measurement.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-measurement',
@@ -50,7 +51,7 @@ import { MeasurementService } from 'src/app/public/services/ApIServices/measurem
 export class MeasurementComponent implements OnInit {
   measurement?: MeasurementDto;
 
-  constructor(private measurementService: MeasurementService) {}
+  constructor(private measurementService: MeasurementService, private router: Router) {}
 
   ngOnInit(): void {
     const athleteId = this.measurementService.getAthleteId();
@@ -59,7 +60,7 @@ export class MeasurementComponent implements OnInit {
     if (athleteId) {
       this.fetchMeasurement(athleteId, date);
     } else {
-      console.error('Athlete ID is not available.');
+      this.router.navigate(["../public/login"]);
     }
   }
 

@@ -1,8 +1,8 @@
 <!-- coach-detail.component.html -->
-<div class="coach-details d-flex row pt-3 px-3 flex-grow-1" *ngIf="coach; else notFound">
+<div class="coach-details d-flex flex-column pt-3 px-3 flex-grow-1" *ngIf="coach; else notFound">
   <div class="img-container d-flex flex-row col-auto">  
     <img class="rounded-circle border" src="{{ coach.sasProfilePicture === null? 'assets/Images/default-pp.jpg': coach.sasProfilePicture }}"/>
-    <div class="mx-3">
+    <div class="card coach-card p-3 w-75 mx-3">
       <h1><strong>{{ coach.firstName }} {{ coach.lastName }}</strong></h1>
       <p><strong>Gender:</strong> {{ coach.gender === Gender.Male? "Male" : "Female" }}</p>
       <p><strong>Date of Birth:</strong> {{ coach.dateOfBirth }}</p>
@@ -13,7 +13,7 @@
   </div>
     <!-- Display other fields as needed -->
   <div class="mx-3 my-5 row flex-grow-1 justify-content-around">
-    <div class="card p-3 col col-3 shadow bg-white rounded" *ngFor="let subscription of coach.subscribtions">
+    <div class="sub-card card p-3 col col-3 shadow bg-white rounded" *ngFor="let subscription of coach.subscribtions">
       <h1><strong>{{ subscription.name }}</strong></h1>
       <p>Price: {{ subscription.price }}$</p>
       <p>Duration: {{ subscription.durationInMonths }} months</p>

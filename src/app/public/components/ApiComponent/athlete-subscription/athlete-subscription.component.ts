@@ -14,9 +14,9 @@ export class AthleteSubscriptionComponent implements OnInit {
   constructor(private subscriptionService: SubscribtionService) {}
 
   ngOnInit(): void {
-    // Example usage: Fetch subscriptions on component initialization
     this.subscriptionService.getAthleteSubscriptions(true, 'Price', 'Ascending')
       .subscribe(subscriptions => {
+        console.log(subscriptions);
         this.subscriptions = subscriptions;
       });
   }

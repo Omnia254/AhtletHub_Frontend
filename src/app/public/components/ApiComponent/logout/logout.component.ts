@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/public/services/ApIServices/account.service';
 import { AuthService } from 'src/app/public/services/ApIServices/auth.service';
+import { IsCoachService } from 'src/app/public/services/ApIServices/is-coach.service';
 
 @Component({
   selector: 'app-logout',
@@ -13,7 +14,8 @@ export class LogoutComponent implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService,
-    private authService : AuthService
+    private authService : AuthService,
+    private isCoachService : IsCoachService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class LogoutComponent implements OnInit {
     this.accountService.revokeToken().subscribe({
       next: res => {
           if(res){
-            console.log(res.isRevoked);
+            this.isCoachService.isCoach = false;
             this.authService.loggingOut();
             this.removeToken();
             this.router.navigate(['../../home']);
