@@ -46,7 +46,7 @@ export class RegisterComponent {
   emailRegex = /^\w+([-.+']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
   passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
   phoneNumberRegex = /^(010|011|012)\d{8}$/;
-
+  formValidator='';
   formValid:boolean = false;
 
   @HostBinding('class') dFlex = 'd-flex flex-column flex-grow-1';
@@ -213,6 +213,7 @@ export class RegisterComponent {
   onSubmit(): void {
     this.ValidateForm();
     if(!this.formValid){
+      this.formValidator = "There's an issue with your data, please revise it and try again.";
       return;
     }
     const formData = new FormData();

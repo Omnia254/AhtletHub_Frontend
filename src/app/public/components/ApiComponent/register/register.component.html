@@ -126,6 +126,9 @@
       </div>
     
       <button class="form-control" type="submit">Register</button>
+      <div *ngIf="formValidator" class="alert-danger">
+        {{formValidator}}
+      </div>
     </form>
   </div>
 </div>
